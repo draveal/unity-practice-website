@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0A1A2F">
+<meta name="description" content="Datenschutzerklärung für die Unity-Practice-App und Website.">
+<meta property="og:title" content="Datenschutz — Unity Practice">
+<meta property="og:description" content="Welche Daten in der Unity-Practice-App und auf der Website verarbeitet werden.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unity-practice.com/privacy/">
+<meta property="og:image" content="https://unity-practice.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Datenschutz — Unity Practice">
+<meta name="twitter:description" content="Welche Daten in der Unity-Practice-App und auf der Website verarbeitet werden.">
+<link rel="canonical" href="https://unity-practice.com/privacy/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Datenschutz — Unity Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1A2F;--bg2:#0c1e38;--card:#0f2444;--border:#1a3050;--accent:#E0A93F;--accent3:#2DCECE;--text:#F5F7FA;--muted:#6080a0;--soft:#8ca0b8;--gold:#F2C94C;--radius:14px;--ff-serif:'Spectral',Georgia,serif;--ff-sans:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-sans);font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;border-bottom:.5px solid rgba(79,195,161,.15);background:rgba(7,14,26,.9);backdrop-filter:blur(14px);gap:16px}
+.nav-logo{font-family:var(--ff-serif);font-size:18px;font-weight:600;color:var(--text);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-size:13px;font-weight:500;color:#0A1A2F;background:var(--accent);border:none;border-radius:24px;padding:8px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.lb{background:none;border:.5px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;font-weight:500;padding:4px 8px;cursor:pointer;font-family:var(--ff-sans);letter-spacing:.5px;transition:border-color .2s,color .2s}
+.lb:hover,.lb.active{border-color:var(--accent);color:var(--accent)}
+.lang-btns{display:flex;gap:4px}
+main{max-width:800px;margin:0 auto;padding:140px 40px 100px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-decoration:none;margin-bottom:40px;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+.page-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);margin-bottom:16px}
+.page-title{font-family:var(--ff-serif);font-size:clamp(32px,5vw,56px);font-weight:300;line-height:1.15;margin-bottom:10px}
+.page-date{font-size:13px;color:var(--muted);margin-bottom:28px}
+.page-sub{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:48px}
+.sec{margin-bottom:40px}
+.sec h2{font-family:var(--ff-serif);font-size:23px;font-weight:300;color:var(--accent);margin-bottom:14px}
+.sec p{font-size:15px;color:var(--soft);line-height:1.85;margin-bottom:14px}
+.sec a{color:var(--accent3);text-decoration:none;border-bottom:.5px solid rgba(45,206,206,.4)}
+.sec a:hover{color:var(--gold);border-color:var(--gold)}
+.contact-box{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-top:48px}
+.contact-box h2{font-family:var(--ff-serif);font-size:21px;font-weight:300;color:var(--text);margin-bottom:10px}
+.contact-box p{font-size:14px;color:var(--soft);margin-bottom:8px}
+.contact-box a{font-size:16px;color:var(--accent);text-decoration:none}
+.contact-box a:hover{color:var(--gold)}
+.mob-lang-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(10,26,47,.97);border-top:.5px solid var(--border);padding:12px 20px;justify-content:center;gap:12px;backdrop-filter:blur(10px)}
+@media(max-width:900px){nav{padding:14px 20px}.nav-links{display:none}main{padding:100px 20px 90px}.lang-btns{display:none}.mob-lang-bar{display:flex}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Unity Practice</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#meaning" data-i18n="nav_about">Über die Praxis</a></li>
+    <li><a href="../wissenschaft/index.html" data-i18n="nav_wiss">Wissenschaft</a></li>
+    <li><a href="../ueber-samarth/index.html" data-i18n="nav_samarth">Samarth</a></li>
+    <li><a href="../stimmen/index.html" data-i18n="nav_stimmen">Stimmen</a></li>
+    <li><a href="../faq/index.html" data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-btns">
+      <button class="lb" data-lang="de">DE</button>
+      <button class="lb" data-lang="ru">RU</button>
+      <button class="lb" data-lang="en">EN</button>
+      <button class="lb" data-lang="es">ES</button>
+    </div>
+    <a href="../index.html#cta-final" class="nav-cta" data-i18n="nav_cta">App herunterladen</a>
+  </div>
+</nav>
+<main>
+  <a href="../index.html" class="back-link" data-i18n="back">← Zurück zur Startseite</a>
+  <div class="page-label" data-i18n="lbl">Datenschutz</div>
+  <h1 class="page-title" data-i18n="title">Datenschutzerklärung</h1>
+  <div class="page-date" data-i18n="updated">Letzte Aktualisierung: Juni 2026</div>
+  <p class="page-sub" data-i18n="sub">Diese Datenschutzerklärung gilt für die Unity-Practice-App (Android und iOS) sowie für die Website unity-practice.com. Sie beschreibt, welche Daten verarbeitet werden und wozu.</p>
+
+  <div class="sec"><h2 data-i18n="s1_h">1. Verantwortlicher</h2><p data-i18n="s1_p">Verantwortlich für die Datenverarbeitung ist das Team hinter Unity Practice. Bei Fragen zum Datenschutz erreichst du uns per E-Mail (siehe Kontakt am Ende dieser Seite).</p></div>
+
+  <div class="sec"><h2 data-i18n="s2_h">2. Geltungsbereich</h2><p data-i18n="s2_p">App und Website werden gemeinsam betrieben und teilen sich ein Backend. Die Teilnahme an der täglichen Praxis ist ohne Konto möglich; ein optionales Konto schaltet zusätzliche Funktionen wie deine Serie und Erinnerungen frei.</p></div>
+
+  <div class="sec"><h2 data-i18n="s3_h">3. Konto & Anmeldung</h2><p data-i18n="s3_p">Die Anmeldung ist freiwillig und erfolgt über Firebase Authentication (Google). Wenn du dich anmeldest, verarbeiten wir die von Google bereitgestellte Nutzerkennung (UID) sowie ggf. E-Mail-Adresse und Anzeigename, um dein Profil zuzuordnen.</p></div>
+
+  <div class="sec"><h2 data-i18n="s4_h">4. Daten in der App</h2><p data-i18n="s4_p">Für angemeldete Nutzer werden Daten in Google Firestore gespeichert: dein Profil (z. B. Sprache, Zeitzone, Erinnerungs-Einstellung) sowie deine Teilnahme an Praxis-Sitzungen, woraus deine Serie berechnet wird. Diese Daten dienen ausschließlich der Funktion der App.</p></div>
+
+  <div class="sec"><h2 data-i18n="s5_h">5. Push-Benachrichtigungen</h2><p data-i18n="s5_p">Wenn du Erinnerungen aktivierst, verarbeiten wir ein Push-Token (Firebase Cloud Messaging, FCM) deines Geräts, um dich vor einer Praxis zu benachrichtigen. Ist die Erinnerung nicht aktiviert, wird das Token nicht für Benachrichtigungen genutzt. Du kannst Erinnerungen jederzeit in der App deaktivieren.</p></div>
+
+  <div class="sec"><h2 data-i18n="s6_h">6. Diagnose & Fehlerberichte</h2><p data-i18n="s6_p">Diagnose- und Absturzberichte (Diagnostics) werden nur mit deiner ausdrücklichen Einwilligung erhoben und helfen uns, Fehler zu finden und zu beheben. Du kannst Diagnostics jederzeit in den App-Einstellungen deaktivieren.</p><p data-i18n="s6_p2">Die Inhalte deiner Praxis sowie persönliche Texte werden nicht automatisch als Bestandteil der Diagnosedaten übermittelt.</p></div>
+
+  <div class="sec"><h2 data-i18n="s7_h">7. YouTube-Inhalte</h2><p data-i18n="s7_p">Praxis-Videos werden über den eingebetteten oder externen YouTube-Player wiedergegeben. Beim Abspielen kann YouTube (Google) Daten gemäß seinen eigenen Datenschutzbestimmungen verarbeiten. Es gilt die Datenschutzerklärung von Google:</p><p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p></div>
+
+  <div class="sec"><h2 data-i18n="s8_h">8. Website: Cookies & Analyse</h2><p data-i18n="s8_p">Die Website verwendet keine Cookies und kein personenbezogenes Tracking. Für anonyme Reichweitenmessung kommt Umami zum Einsatz (cookiefrei, ohne personenbezogene Daten, DSGVO-konform). Wenn du dich für E-Mail-Erinnerungen einträgst, speichern wir deine E-Mail-Adresse ausschließlich zu diesem Zweck — keine Weitergabe an Dritte.</p></div>
+
+  <div class="sec"><h2 data-i18n="s9_h">9. Hosting & Auftragsverarbeiter</h2><p data-i18n="s9_p">Die Website wird über Cloudflare Pages bereitgestellt; die Verbindung ist über HTTPS verschlüsselt. Die Backend-Dienste der App (Authentifizierung, Datenbank, Push) werden durch Google Firebase erbracht. Eingesetzte Dienste: Google Firebase, YouTube/Google, Cloudflare, Umami sowie ein E-Mail-Versanddienst für Erinnerungen.</p></div>
+
+  <div class="sec"><h2 data-i18n="s10_h">10. Deine Rechte (DSGVO)</h2><p data-i18n="s10_p">Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Zur Ausübung deiner Rechte wende dich an die unten genannte Kontaktadresse.</p></div>
+
+  <div class="sec"><h2 data-i18n="s11_h">11. Löschung deines Kontos</h2><p data-i18n="s11_p">Du kannst die Löschung deines Kontos und der zugehörigen Daten jederzeit per E-Mail anfragen. Ohne Konto findet keine personenbezogene Speicherung in der App statt.</p></div>
+
+  <div class="sec"><h2 data-i18n="s12_h">12. Änderungen dieser Erklärung</h2><p data-i18n="s12_p">Wir können diese Datenschutzerklärung anpassen, wenn sich Funktionen oder rechtliche Anforderungen ändern. Die jeweils aktuelle Fassung ist immer auf dieser Seite verfügbar.</p></div>
+
+  <div class="contact-box">
+    <h2 data-i18n="contact_h">Kontakt</h2>
+    <p data-i18n="contact_p">Bei Fragen zum Datenschutz oder zur Ausübung deiner Rechte:</p>
+    <a href="mailto:support@unity-practice.com">support@unity-practice.com</a>
+  </div>
+</main>
+<script>
+var T={
+  de:{nav_about:'Über die Praxis',nav_wiss:'Wissenschaft',nav_samarth:'Samarth',nav_stimmen:'Stimmen',nav_faq:'FAQ',nav_cta:'App herunterladen',
+    back:'← Zurück zur Startseite',lbl:'Datenschutz',title:'Datenschutzerklärung',updated:'Letzte Aktualisierung: Juni 2026',
+    sub:'Diese Datenschutzerklärung gilt für die Unity-Practice-App (Android und iOS) sowie für die Website unity-practice.com. Sie beschreibt, welche Daten verarbeitet werden und wozu.',
+    s1_h:'1. Verantwortlicher',s1_p:'Verantwortlich für die Datenverarbeitung ist das Team hinter Unity Practice. Bei Fragen zum Datenschutz erreichst du uns per E-Mail (siehe Kontakt am Ende dieser Seite).',
+    s2_h:'2. Geltungsbereich',s2_p:'App und Website werden gemeinsam betrieben und teilen sich ein Backend. Die Teilnahme an der täglichen Praxis ist ohne Konto möglich; ein optionales Konto schaltet zusätzliche Funktionen wie deine Serie und Erinnerungen frei.',
+    s3_h:'3. Konto & Anmeldung',s3_p:'Die Anmeldung ist freiwillig und erfolgt über Firebase Authentication (Google). Wenn du dich anmeldest, verarbeiten wir die von Google bereitgestellte Nutzerkennung (UID) sowie ggf. E-Mail-Adresse und Anzeigename, um dein Profil zuzuordnen.',
+    s4_h:'4. Daten in der App',s4_p:'Für angemeldete Nutzer werden Daten in Google Firestore gespeichert: dein Profil (z. B. Sprache, Zeitzone, Erinnerungs-Einstellung) sowie deine Teilnahme an Praxis-Sitzungen, woraus deine Serie berechnet wird. Diese Daten dienen ausschließlich der Funktion der App.',
+    s5_h:'5. Push-Benachrichtigungen',s5_p:'Wenn du Erinnerungen aktivierst, verarbeiten wir ein Push-Token (Firebase Cloud Messaging, FCM) deines Geräts, um dich vor einer Praxis zu benachrichtigen. Ist die Erinnerung nicht aktiviert, wird das Token nicht für Benachrichtigungen genutzt. Du kannst Erinnerungen jederzeit in der App deaktivieren.',
+    s6_h:'6. Diagnose & Fehlerberichte',s6_p:'Diagnose- und Absturzberichte (Diagnostics) werden nur mit deiner ausdrücklichen Einwilligung erhoben und helfen uns, Fehler zu finden und zu beheben. Du kannst Diagnostics jederzeit in den App-Einstellungen deaktivieren.',s6_p2:'Die Inhalte deiner Praxis sowie persönliche Texte werden nicht automatisch als Bestandteil der Diagnosedaten übermittelt.',
+    s7_h:'7. YouTube-Inhalte',s7_p:'Praxis-Videos werden über den eingebetteten oder externen YouTube-Player wiedergegeben. Beim Abspielen kann YouTube (Google) Daten gemäß seinen eigenen Datenschutzbestimmungen verarbeiten. Es gilt die Datenschutzerklärung von Google:',
+    s8_h:'8. Website: Cookies & Analyse',s8_p:'Die Website verwendet keine Cookies und kein personenbezogenes Tracking. Für anonyme Reichweitenmessung kommt Umami zum Einsatz (cookiefrei, ohne personenbezogene Daten, DSGVO-konform). Wenn du dich für E-Mail-Erinnerungen einträgst, speichern wir deine E-Mail-Adresse ausschließlich zu diesem Zweck — keine Weitergabe an Dritte.',
+    s9_h:'9. Hosting & Auftragsverarbeiter',s9_p:'Die Website wird über Cloudflare Pages bereitgestellt; die Verbindung ist über HTTPS verschlüsselt. Die Backend-Dienste der App (Authentifizierung, Datenbank, Push) werden durch Google Firebase erbracht. Eingesetzte Dienste: Google Firebase, YouTube/Google, Cloudflare, Umami sowie ein E-Mail-Versanddienst für Erinnerungen.',
+    s10_h:'10. Deine Rechte (DSGVO)',s10_p:'Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Zur Ausübung deiner Rechte wende dich an die unten genannte Kontaktadresse.',
+    s11_h:'11. Löschung deines Kontos',s11_p:'Du kannst die Löschung deines Kontos und der zugehörigen Daten jederzeit per E-Mail anfragen. Ohne Konto findet keine personenbezogene Speicherung in der App statt.',
+    s12_h:'12. Änderungen dieser Erklärung',s12_p:'Wir können diese Datenschutzerklärung anpassen, wenn sich Funktionen oder rechtliche Anforderungen ändern. Die jeweils aktuelle Fassung ist immer auf dieser Seite verfügbar.',
+    contact_h:'Kontakt',contact_p:'Bei Fragen zum Datenschutz oder zur Ausübung deiner Rechte:'},
+  ru:{nav_about:'О практике',nav_wiss:'Наука',nav_samarth:'Самарт',nav_stimmen:'Отзывы',nav_faq:'FAQ',nav_cta:'Скачать приложение',
+    back:'← На главную',lbl:'Конфиденциальность',title:'Политика конфиденциальности',updated:'Последнее обновление: июнь 2026',
+    sub:'Эта политика конфиденциальности распространяется на приложение Unity Practice (Android и iOS) и на сайт unity-practice.com. Она описывает, какие данные обрабатываются и с какой целью.',
+    s1_h:'1. Ответственный',s1_p:'За обработку данных отвечает команда Unity Practice. По вопросам конфиденциальности свяжитесь с нами по электронной почте (см. контакт внизу страницы).',
+    s2_h:'2. Сфера применения',s2_p:'Приложение и сайт работают вместе и используют общий бэкенд. Участвовать в ежедневной практике можно без аккаунта; необязательный аккаунт открывает дополнительные функции — серию и напоминания.',
+    s3_h:'3. Аккаунт и вход',s3_p:'Вход добровольный и выполняется через Firebase Authentication (Google). При входе мы обрабатываем предоставленный Google идентификатор пользователя (UID), а также при наличии — email и отображаемое имя, чтобы связать их с вашим профилем.',
+    s4_h:'4. Данные в приложении',s4_p:'Для вошедших пользователей данные хранятся в Google Firestore: ваш профиль (например, язык, часовой пояс, настройка напоминаний) и участие в сессиях практики, на основе которого рассчитывается ваша серия. Эти данные служат исключительно для работы приложения.',
+    s5_h:'5. Push-уведомления',s5_p:'Если вы включаете напоминания, мы обрабатываем push-токен (Firebase Cloud Messaging, FCM) вашего устройства, чтобы уведомить вас перед практикой. Если напоминания выключены, токен не используется для уведомлений. Напоминания можно отключить в приложении в любое время.',
+    s6_h:'6. Диагностика и отчёты об ошибках',s6_p:'Диагностические отчёты и отчёты о сбоях (diagnostics) собираются только с вашего явного согласия и помогают нам находить и устранять ошибки. Вы можете в любой момент отключить diagnostics в настройках приложения.',s6_p2:'Содержимое вашей практики и личные тексты не отправляются автоматически как часть диагностических данных.',
+    s7_h:'7. Контент YouTube',s7_p:'Видео практик воспроизводятся через встроенный или внешний плеер YouTube. При воспроизведении YouTube (Google) может обрабатывать данные согласно собственной политике конфиденциальности. Действует политика конфиденциальности Google:',
+    s8_h:'8. Сайт: cookies и аналитика',s8_p:'Сайт не использует cookies и не ведёт персональное отслеживание. Для анонимного подсчёта посещений применяется Umami (без cookies, без персональных данных, соответствует GDPR). Если вы подписываетесь на email-напоминания, мы храним ваш email только для этой цели — без передачи третьим лицам.',
+    s9_h:'9. Хостинг и обработчики',s9_p:'Сайт размещён на Cloudflare Pages; соединение шифруется по HTTPS. Бэкенд-сервисы приложения (аутентификация, база данных, push) обеспечиваются Google Firebase. Используемые сервисы: Google Firebase, YouTube/Google, Cloudflare, Umami, а также сервис рассылки email для напоминаний.',
+    s10_h:'10. Ваши права (GDPR)',s10_p:'Вы имеете право на доступ, исправление, удаление, ограничение обработки, переносимость данных и возражение. Для реализации прав обратитесь по контактному адресу ниже.',
+    s11_h:'11. Удаление аккаунта',s11_p:'Вы можете в любой момент запросить удаление аккаунта и связанных с ним данных по электронной почте. Без аккаунта персональные данные в приложении не сохраняются.',
+    s12_h:'12. Изменения политики',s12_p:'Мы можем обновлять эту политику конфиденциальности при изменении функций или правовых требований. Актуальная версия всегда доступна на этой странице.',
+    contact_h:'Контакт',contact_p:'По вопросам конфиденциальности или для реализации ваших прав:'},
+  en:{nav_about:'About',nav_wiss:'Science',nav_samarth:'Samarth',nav_stimmen:'Voices',nav_faq:'FAQ',nav_cta:'Download App',
+    back:'← Back to Home',lbl:'Privacy',title:'Privacy Policy',updated:'Last updated: June 2026',
+    sub:'This privacy policy applies to the Unity Practice app (Android and iOS) and to the website unity-practice.com. It describes which data is processed and for what purpose.',
+    s1_h:'1. Controller',s1_p:'The team behind Unity Practice is responsible for data processing. For privacy questions, contact us by email (see Contact at the bottom of this page).',
+    s2_h:'2. Scope',s2_p:'The app and website are operated together and share one backend. Taking part in the daily practice is possible without an account; an optional account unlocks additional features such as your streak and reminders.',
+    s3_h:'3. Account & Sign-in',s3_p:'Signing in is voluntary and uses Firebase Authentication (Google). If you sign in, we process the user ID (UID) provided by Google, and where applicable your email address and display name, to associate them with your profile.',
+    s4_h:'4. Data in the App',s4_p:'For signed-in users, data is stored in Google Firestore: your profile (e.g. language, time zone, reminder setting) and your attendance of practice sessions, from which your streak is calculated. This data is used solely for the app to function.',
+    s5_h:'5. Push Notifications',s5_p:'If you enable reminders, we process a push token (Firebase Cloud Messaging, FCM) from your device to notify you before a practice. If reminders are not enabled, the token is not used for notifications. You can disable reminders in the app at any time.',
+    s6_h:'6. Diagnostics & Error Reports',s6_p:'Diagnostics and crash reports are collected only with your explicit consent and help us find and fix errors. You can disable diagnostics in the app settings at any time.',s6_p2:'The content of your practice and personal texts are not sent automatically as part of the diagnostics data.',
+    s7_h:'7. YouTube Content',s7_p:'Practice videos are played via the embedded or external YouTube player. During playback, YouTube (Google) may process data according to its own privacy policy. The Google privacy policy applies:',
+    s8_h:'8. Website: Cookies & Analytics',s8_p:'The website uses no cookies and no personal tracking. For anonymous reach measurement we use Umami (cookie-free, no personal data, GDPR-compliant). If you subscribe to email reminders, we store your email address solely for that purpose — no sharing with third parties.',
+    s9_h:'9. Hosting & Processors',s9_p:'The website is served via Cloudflare Pages; the connection is encrypted via HTTPS. The app backend services (authentication, database, push) are provided by Google Firebase. Services used: Google Firebase, YouTube/Google, Cloudflare, Umami, and an email delivery service for reminders.',
+    s10_h:'10. Your Rights (GDPR)',s10_p:'You have the right to access, rectification, erasure, restriction of processing, data portability and objection. To exercise your rights, contact the address below.',
+    s11_h:'11. Deleting Your Account',s11_p:'You can request deletion of your account and the associated data at any time by email. Without an account, no personal data is stored in the app.',
+    s12_h:'12. Changes to This Policy',s12_p:'We may update this privacy policy when features or legal requirements change. The current version is always available on this page.',
+    contact_h:'Contact',contact_p:'For privacy questions or to exercise your rights:'}
+};
+T.es=T.en; // ES nutzt vorerst die englische Fassung (Übersetzungs-Policy)
+function applyLang(lang){
+  if(!T[lang])return;
+  localStorage.setItem('up_lang',lang);
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[lang][k]!==undefined)el.textContent=T[lang][k];
+  });
+  document.querySelectorAll('.lb').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});
+  document.querySelectorAll('a[href*="index.html"]').forEach(function(a){
+    var h=a.getAttribute('href').split('?')[0];
+    var hi=h.indexOf('#');
+    a.setAttribute('href',hi>-1?h.slice(0,hi)+'?lang='+lang+h.slice(hi):h+'?lang='+lang);
+  });
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.lb');if(b)applyLang(b.dataset.lang);});
+(function(){var p=new URLSearchParams(window.location.search).get('lang');var l=(p&&T[p])?p:(localStorage.getItem('up_lang')||(navigator.language||'de').substring(0,2));applyLang(T[l]?l:'de');})();
+</script>
+<div class="mob-lang-bar">
+  <button class="lb" data-lang="de">DE</button>
+  <button class="lb" data-lang="ru">RU</button>
+  <button class="lb" data-lang="en">EN</button>
+  <button class="lb" data-lang="es">ES</button>
+</div>
+</body>
+</html>
