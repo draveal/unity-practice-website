@@ -1,0 +1,9 @@
+# Supabase-Projektkonfiguration für Unity Practice (Web).
+# Die project_id wird beim `npx supabase link --project-ref <REF>` gesetzt;
+# bis dahin Platzhalter.
+project_id = "unity-practice-web"
+
+# Feedback-Endpoint ist öffentlich: Besucher sind in Firebase (Google) eingeloggt,
+# NICHT in Supabase, haben also kein Supabase-JWT. Daher JWT-Prüfung aus.
+[functions.feedback]
+verify_jwt = false

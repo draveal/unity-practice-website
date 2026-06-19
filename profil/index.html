@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Unity Practice — dein persönliches Dashboard: nächste Session, Serie, Kalender, Meilensteine.">
+<link rel="canonical" href="https://unity-practice.com/profil/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0A1A2F">
+<title>Dashboard — Unity Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1A2F;--bg2:#0c1e38;--card:#0f2444;--border:#1a3050;--accent:#E0A93F;--accent2:#1a2800;--accent3:#2DCECE;--text:#F5F7FA;--muted:#6080a0;--soft:#8ca0b8;--gold:#F2C94C;--gold-subtle:rgba(224,169,63,.22);--radius:14px;--ff-serif:'Spectral',Georgia,serif;--ff-sans:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-sans);font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;border-bottom:.5px solid rgba(79,195,161,.15);background:rgba(7,14,26,.9);backdrop-filter:blur(14px);gap:16px}
+.nav-logo{font-family:var(--ff-serif);font-size:18px;font-weight:600;color:var(--text);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-size:13px;font-weight:500;color:#0A1A2F;background:var(--accent);border:none;border-radius:24px;padding:8px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.lb{background:none;border:.5px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;font-weight:500;padding:4px 8px;cursor:pointer;font-family:var(--ff-sans);letter-spacing:.5px;transition:border-color .2s,color .2s}
+.lb:hover,.lb.active{border-color:var(--accent);color:var(--accent)}
+.lang-btns{display:flex;gap:4px}
+main{max-width:860px;margin:0 auto;padding:110px 40px 60px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-decoration:none;margin-bottom:16px;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+.page-title{font-family:var(--ff-serif);font-size:clamp(28px,5vw,48px);font-weight:300;line-height:1.15;margin-bottom:6px}
+.page-sub{font-size:15px;color:var(--soft);margin-bottom:20px}
+.dash-loading{text-align:center;color:var(--muted);font-size:14px;padding:60px 0}
+.login-box{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center;max-width:460px;margin:20px auto}
+.login-box p{font-size:14px;color:var(--soft);margin-bottom:24px;line-height:1.7}
+.google-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1f1f1f;border:none;border-radius:28px;padding:12px 24px;font-family:var(--ff-sans);font-size:14px;font-weight:500;cursor:pointer;transition:opacity .2s}
+.google-btn:hover{opacity:.9}
+.acct-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.acct-info{font-size:14px;color:var(--text)}
+.acct-info small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.row-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-ghost{background:none;border:.5px solid var(--border);border-radius:20px;color:var(--muted);font-size:12px;padding:7px 16px;cursor:pointer;font-family:var(--ff-sans);transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--accent3);color:var(--accent3)}
+.panel{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.panel-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);margin-bottom:10px}
+/* A next session */
+.next-card{text-align:center}
+.next-big{font-family:var(--ff-serif);font-size:48px;line-height:1;color:var(--accent);font-weight:300}
+.next-count{font-size:13px;color:var(--soft);margin-top:4px}
+.next-zones{font-size:12px;color:var(--muted);margin-top:3px}
+.next-desc{font-size:14px;color:var(--soft);margin-top:8px}
+.next-join{display:inline-block;margin-top:12px;background:var(--accent);color:#0A1A2F;border:none;border-radius:26px;padding:9px 24px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer}
+.next-none{color:var(--muted);font-size:14px;text-align:center;padding:8px 0}
+/* B stats */
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat-box{background:var(--bg2);border:.5px solid var(--border);border-radius:12px;padding:12px}
+.stat-num{font-family:var(--ff-serif);font-size:24px;color:var(--accent);line-height:1}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:4px}
+.stat-sub{font-size:11px;color:var(--soft);margin-top:2px}
+/* C calendar */
+.cal-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-size:11px;color:var(--muted)}
+.cal-key{display:inline-flex;align-items:center;gap:6px}
+.cal-dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+.cal-dot.here{background:rgba(242,201,76,.85)}
+.cal-dot.not{background:var(--bg2);border:.5px solid var(--border)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:75%;margin:0 auto}
+.cal-cell{aspect-ratio:1;border-radius:5px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted)}
+.cal-cell.here{background:rgba(242,201,76,.16);border-color:var(--accent);color:var(--accent)}
+.cal-cell.today{box-shadow:0 0 0 1.5px var(--accent3)}
+.cal-cell.empty{background:none;border:none}
+/* D milestones */
+.mile{padding:10px 0;border-bottom:.5px solid rgba(26,48,80,.6)}
+.mile:last-child{border-bottom:none}
+.mile-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mile-name{font-size:14px;color:var(--text)}
+.mile-name b{font-weight:500}
+.mile-state{font-size:11px;letter-spacing:.4px;border-radius:20px;padding:3px 10px;white-space:nowrap}
+.mile-state.done{color:var(--accent);border:.5px solid rgba(242,201,76,.4)}
+.mile-state.future{color:var(--muted);border:.5px solid var(--border)}
+.mile-state.active{color:var(--accent3);border:.5px solid rgba(45,206,206,.4)}
+.mile-desc{font-size:12.5px;color:var(--soft);margin-top:4px;line-height:1.5}
+.mile-bar{height:7px;border-radius:5px;background:var(--bg2);border:.5px solid var(--border);margin-top:7px;overflow:hidden}
+.mile-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent3),var(--accent))}
+/* E world */
+.world-total{font-size:15px;color:var(--text);margin-bottom:8px}
+.world-total b{color:var(--accent);font-weight:500}
+.world-list{display:flex;flex-direction:column;gap:6px}
+.world-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--soft)}
+.world-row .wc{color:var(--text)}
+.world-na{font-size:12px;color:var(--muted)}
+/* F history accordion */
+.acc-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:none;border:none;cursor:pointer;color:var(--text);font-family:var(--ff-sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3)}
+.acc-arrow{width:20px;height:20px;border:.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s,border-color .3s}
+.acc-arrow svg{width:10px;height:10px;stroke:var(--soft);fill:none;stroke-width:2}
+.panel.open .acc-arrow{transform:rotate(45deg);border-color:var(--gold)}
+.panel.open .acc-arrow svg{stroke:var(--gold)}
+.acc-body{display:none;margin-top:12px}
+.panel.open .acc-body{display:block}
+.acc-subtitle{font-size:13px;color:var(--soft);margin-bottom:8px}
+.hist-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:.5px solid rgba(26,48,80,.6);font-size:13.5px}
+.hist-item:last-child{border-bottom:none}
+.hist-date{color:var(--soft)}
+.hist-meta{color:var(--muted);font-size:12px}
+.hist-empty{font-size:13px;color:var(--muted);padding:6px 0}
+/* settings */
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:.5px solid rgba(26,48,80,.6)}
+.set-row:last-child{border-bottom:none}
+.set-key{font-size:14px;color:var(--soft)}
+.set-val{font-size:14px;color:var(--text)}
+select.set-select{background:var(--bg2);color:var(--text);border:.5px solid var(--border);border-radius:8px;padding:7px 12px;font-family:var(--ff-sans);font-size:13px;cursor:pointer;outline:none}
+.set-hint{font-size:11px;color:var(--muted);margin-top:5px}
+/* modal */
+.modal-back{position:fixed;inset:0;background:rgba(7,14,26,.8);backdrop-filter:blur(6px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-back.open{display:flex}
+.modal{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);max-width:480px;width:100%;padding:20px;position:relative}
+.modal h3{font-family:var(--ff-serif);font-size:24px;font-weight:300;margin-bottom:12px}
+.modal label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
+.modal select,.modal textarea{width:100%;background:var(--bg2);color:var(--text);border:.5px solid var(--border);border-radius:10px;padding:11px 14px;font-family:var(--ff-sans);font-size:14px;outline:none}
+.modal textarea{min-height:120px;resize:vertical;line-height:1.6}
+.modal select:focus,.modal textarea:focus{border-color:var(--accent3)}
+.modal-hint{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;line-height:1}
+.btn-primary{background:var(--accent);color:#0A1A2F;border:none;border-radius:24px;padding:10px 22px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--ff-sans)}
+.btn-primary:disabled{opacity:.5;cursor:default}
+.modal-status{font-size:13px;margin-top:12px}
+.modal-status.ok{color:#5ee0a0}
+.modal-status.err{color:#ff6b6b}
+.mob-lang-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(10,26,47,.97);border-top:.5px solid var(--border);padding:12px 20px;justify-content:center;gap:12px;backdrop-filter:blur(10px)}
+@media(max-width:900px){nav{padding:14px 20px}.nav-links{display:none}main{padding:100px 20px 80px}.lang-btns{display:none}.mob-lang-bar{display:flex}}
+@media(max-width:560px){.stats-grid{grid-template-columns:1fr}.next-big{font-size:52px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Unity Practice</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#meaning" data-i18n="nav_about">Über die Praxis</a></li>
+    <li><a href="../wissenschaft/index.html" data-i18n="nav_wiss">Wissenschaft</a></li>
+    <li><a href="../ueber-samarth/index.html" data-i18n="nav_samarth">Samarth</a></li>
+    <li><a href="../stimmen/index.html" data-i18n="nav_stimmen">Stimmen</a></li>
+    <li><a href="../faq/index.html" data-i18n="nav_faq">FAQ</a></li>
+    <li><a href="index.html" class="active" data-i18n="nav_dashboard">Dashboard</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-btns">
+      <button class="lb" data-lang="de">DE</button><button class="lb" data-lang="ru">RU</button><button class="lb" data-lang="en">EN</button><button class="lb" data-lang="es">ES</button>
+    </div>
+    <a href="../index.html#cta-final" class="nav-cta" data-i18n="nav_cta">App herunterladen</a>
+  </div>
+</nav>
+<main>
+  <a href="../index.html" class="back-link" data-i18n="back">← Zurück zur Startseite</a>
+  <h1 class="page-title" data-i18n="title">Mein Dashboard</h1>
+  <p class="page-sub" data-i18n="sub">Gemeinschaft und Kontinuität — deine Praxis im Überblick.</p>
+
+  <div class="dash-loading" id="dash-loading" data-i18n="loading">Lädt…</div>
+
+  <div class="login-box" id="dash-loggedout" style="display:none">
+    <p data-i18n="login_prompt">Melde dich mit Google an, um dein Dashboard zu sehen.</p>
+    <button class="google-btn" id="google-login-btn">
+      <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.3 0-9.7-2.6-11.3-7l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.6l6.2 5.2C39.9 36.4 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+      <span data-i18n="login_btn">Mit Google anmelden</span>
+    </button>
+  </div>
+
+  <div id="dash-loggedin" style="display:none">
+    <div class="acct-bar">
+      <div class="acct-info"><span id="acct-email"></span><small><span data-i18n="acct_lbl">Konto</span>: <span id="acct-status"></span></small></div>
+      <div class="row-btns">
+        <a class="btn-ghost" id="admin-console-link" data-i18n="admin_console" href="#" target="_blank" rel="noopener" style="display:none">Admin console</a>
+        <button class="btn-ghost" id="help-btn" data-i18n="help_btn">Hilfe & Feedback</button>
+        <button class="btn-ghost" id="logout-btn" data-i18n="logout">Abmelden</button>
+      </div>
+    </div>
+
+    <!-- A: Nächste Session -->
+    <div class="panel">
+      <div class="panel-title" data-i18n="next_lbl">Nächste Session</div>
+      <div class="next-card" id="next-card"></div>
+    </div>
+
+    <!-- B: Übersicht -->
+    <div class="panel">
+      <div class="panel-title" data-i18n="ov_lbl">Deine Übersicht</div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num" id="ov-total">0</div><div class="stat-lbl" data-i18n="ov_total">Gesamte Sessions</div><div class="stat-sub" id="ov-total-since"></div></div>
+        <div class="stat-box"><div class="stat-num" id="ov-streak">0</div><div class="stat-lbl" data-i18n="ov_streak">Aktuelle Serie</div><div class="stat-sub" id="ov-streak-unit" data-i18n="ov_streak_unit">Tage in Folge</div></div>
+        <div class="stat-box"><div class="stat-num" id="ov-longest">0</div><div class="stat-lbl" data-i18n="ov_longest">Längste Serie</div><div class="stat-sub" data-i18n="ov_longest_unit">Persönlicher Rekord</div></div>
+        <div class="stat-box"><div class="stat-num" id="ov-month">0</div><div class="stat-lbl" data-i18n="ov_month">Dieser Monat</div><div class="stat-sub" id="ov-month-sub"></div></div>
+      </div>
+    </div>
+
+    <!-- C: Kalender -->
+    <div class="panel">
+      <div class="panel-title"><span data-i18n="cal_lbl">Anwesenheitskalender</span> · <span id="cal-month"></span></div>
+      <div class="cal-head">
+        <span class="cal-key"><span class="cal-dot here"></span> <span data-i18n="cal_here">Dabei gewesen</span></span>
+        <span class="cal-key"><span class="cal-dot not"></span> <span data-i18n="cal_not">Nicht dabei</span></span>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+
+    <!-- D: Meilensteine -->
+    <div class="panel">
+      <div class="panel-title" data-i18n="mil_lbl">Meilensteine deiner Praxis</div>
+      <div id="mile-list"></div>
+    </div>
+
+    <!-- E: Weltweites Feld -->
+    <div class="panel">
+      <div class="panel-title" data-i18n="world_lbl">Weltweites Feld</div>
+      <div class="world-total" id="world-total"></div>
+      <div class="world-list" id="world-list"></div>
+    </div>
+
+    <!-- F: Verlauf (Accordion, default zu) -->
+    <div class="panel" id="hist-panel">
+      <button class="acc-head" id="hist-toggle" aria-expanded="false">
+        <span data-i18n="hist_lbl">Verlauf</span>
+        <span class="acc-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-subtitle" id="hist-subtitle" data-i18n="hist_title">Deine Momente – Letzte Sessions</div>
+        <div id="history-list"></div>
+      </div>
+    </div>
+
+    <!-- Einstellungen -->
+    <div class="panel">
+      <div class="panel-title" data-i18n="set_lbl">Einstellungen</div>
+      <div class="set-row"><span class="set-key" data-i18n="set_reminder">Erinnerungen</span>
+        <select class="set-select" id="reminder-select">
+          <option value="off" data-i18n="rem_off">Aus</option>
+          <option value="t30" data-i18n="rem_t30">30 Min vorher</option>
+          <option value="t30_t5" data-i18n="rem_t30_t5">30 &amp; 5 Min vorher</option>
+        </select>
+      </div>
+      <div class="set-row"><span class="set-key" data-i18n="set_lang">Sprache</span><span class="set-val" id="set-language">—</span></div>
+      <div class="set-row"><span class="set-key" data-i18n="set_tz">Zeitzone</span><span class="set-val" id="set-timezone">—</span></div>
+      <div class="set-hint" id="reminder-hint" data-i18n="set_reminder_hint">Bei aktiver Erinnerung fragt der Browser nach der Erlaubnis für Benachrichtigungen.</div>
+    </div>
+  </div>
+</main>
+
+<!-- Hilfe & Feedback Modal -->
+<div class="modal-back" id="help-modal">
+  <div class="modal">
+    <button class="modal-close" id="help-close" aria-label="Schließen">×</button>
+    <h3 data-i18n="help_title">Hilfe & Feedback</h3>
+    <label data-i18n="help_cat">Grund auswählen</label>
+    <select id="help-category">
+      <option data-i18n="help_cat_bug">🐛 Technischer Fehler (Bug/Support)</option>
+      <option data-i18n="help_cat_idea">💡 Verbesserungsvorschlag</option>
+      <option data-i18n="help_cat_q">❓ Ich habe eine Frage</option>
+    </select>
+    <label data-i18n="help_msg">Dein Anliegen</label>
+    <textarea id="help-message" data-i18n-ph="help_msg_ph" placeholder="Beschreibe dein Anliegen…"></textarea>
+    <div class="modal-hint" id="help-email-hint"></div>
+    <div class="modal-status" id="help-status"></div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="help-cancel" data-i18n="help_cancel">Abbrechen</button>
+      <button class="btn-primary" id="help-send" data-i18n="help_send">Absenden</button>
+    </div>
+  </div>
+</div>
+
+<div class="mob-lang-bar">
+  <button class="lb" data-lang="de">DE</button><button class="lb" data-lang="ru">RU</button><button class="lb" data-lang="en">EN</button><button class="lb" data-lang="es">ES</button>
+</div>
+
+<script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script>
+var T={
+ de:{nav_about:'Über die Praxis',nav_wiss:'Wissenschaft',nav_samarth:'Samarth',nav_stimmen:'Stimmen',nav_faq:'FAQ',nav_dashboard:'Dashboard',nav_cta:'App herunterladen',
+  back:'← Zurück zur Startseite',title:'Mein Dashboard',sub:'Gemeinschaft und Kontinuität — deine Praxis im Überblick.',loading:'Lädt…',
+  login_prompt:'Melde dich mit Google an, um dein Dashboard zu sehen.',login_btn:'Mit Google anmelden',
+  acct_lbl:'Konto',acct_google:'mit Google verknüpft',acct_anon:'anonym',logout:'Abmelden',help_btn:'Hilfe & Feedback',admin_console:'Admin console',
+  next_lbl:'Nächste Session',next_today:'Heute',next_starts:'beginnt in',next_text:'Abendpraxis mit Samarth · ca. {min} Min',next_join:'Teilnehmen',next_none:'Keine geplante Session',
+  ov_lbl:'Deine Übersicht',ov_total:'Gesamte Sessions',ov_total_since:'seit {date}',ov_streak:'Aktuelle Serie',ov_streak_unit:'Tage in Folge',ov_longest:'Längste Serie',ov_longest_unit:'Persönlicher Rekord',ov_month:'Dieser Monat',ov_month_sub:'{a} von {b} Sessions',
+  cal_lbl:'Anwesenheitskalender',cal_here:'Dabei gewesen',cal_not:'Nicht dabei',
+  mil_lbl:'Meilensteine deiner Praxis',mil_done:'Erreicht',mil_future:'Zukünftig',mil_active:'In Arbeit',mil_remaining:'Noch {n} Sessions bis zum nächsten Meilenstein',
+  mil7_t:'7 Tage – Erste Woche',mil7_d:'Du bist zur Praxis zurückgekehrt. Das ist der wichtigste Schritt.',
+  mil30_t:'30 Tage – Erster Monat',mil30_d:'Ein Monat gemeinsamer Praxis. Du bist Teil des Feldes.',
+  mil100_t:'100 Tage – Tiefe Verwurzelung',mil100_d:'Beständigkeit, die trägt.',
+  mil365_t:'365 Tage – Ein Jahr im Feld',mil365_d:'Ein Jahr. Du bist Teil der Geschichte dieser Gemeinschaft.',
+  world_lbl:'Weltweites Feld',world_total:'Gesamt heute: <b>{n}</b> Menschen · in {c} Ländern',world_na:'Live-Daten erscheinen kurz vor und während der Session.',
+  hist_lbl:'Verlauf',hist_title:'Deine Momente – Letzte Sessions',hist_empty:'Noch keine Praktiken aufgezeichnet.',hist_min:'Min',hist_with:'dabei',
+  set_lbl:'Einstellungen',set_reminder:'Erinnerungen',rem_off:'Aus',rem_t30:'30 Min vorher',rem_t30_t5:'30 & 5 Min vorher',set_lang:'Sprache',set_tz:'Zeitzone',
+  set_reminder_hint:'Bei aktiver Erinnerung fragt der Browser nach der Erlaubnis für Benachrichtigungen. Der Versand 30 Min vor der Session erfolgt über das Backend (Push).',
+  help_title:'Hilfe & Feedback',help_cat:'Grund auswählen',help_cat_bug:'🐛 Technischer Fehler (Bug/Support)',help_cat_idea:'💡 Verbesserungsvorschlag',help_cat_q:'❓ Ich habe eine Frage',
+  help_msg:'Dein Anliegen',help_msg_ph:'Beschreibe dein Anliegen…',help_email_hint:'Wir nutzen deine registrierte E-Mail-Adresse ({email}), um dir zu antworten.',
+  help_cancel:'Abbrechen',help_send:'Absenden',help_sending:'Senden…',help_sent:'Danke! Deine Nachricht ist angekommen.',help_error:'Konnte nicht senden. Versuch es später nochmal.'},
+ ru:{nav_about:'О практике',nav_wiss:'Наука',nav_samarth:'Самарт',nav_stimmen:'Отзывы',nav_faq:'FAQ',nav_dashboard:'Кабинет',nav_cta:'Скачать приложение',
+  back:'← На главную',title:'Мой кабинет',sub:'Сообщество и постоянство — твоя практика в обзоре.',loading:'Загрузка…',
+  login_prompt:'Войди через Google, чтобы увидеть свой кабинет.',login_btn:'Войти через Google',
+  acct_lbl:'Аккаунт',acct_google:'связан с Google',acct_anon:'анонимно',logout:'Выйти',help_btn:'Помощь и отзыв',admin_console:'Админ-консоль',
+  next_lbl:'Следующая сессия',next_today:'Сегодня',next_starts:'начнётся через',next_text:'Вечерняя практика с Самартом · ок. {min} мин',next_join:'Присоединиться',next_none:'Нет запланированной сессии',
+  ov_lbl:'Твой обзор',ov_total:'Всего сессий',ov_total_since:'с {date}',ov_streak:'Текущая серия',ov_streak_unit:'дней подряд',ov_longest:'Самая длинная серия',ov_longest_unit:'личный рекорд',ov_month:'Этот месяц',ov_month_sub:'{a} из {b} сессий',
+  cal_lbl:'Календарь участия',cal_here:'Был(а)',cal_not:'Не был(а)',
+  mil_lbl:'Вехи твоей практики',mil_done:'Достигнуто',mil_future:'Впереди',mil_active:'В процессе',mil_remaining:'Ещё {n} сессий до следующей вехи',
+  mil7_t:'7 дней – Первая неделя',mil7_d:'Ты вернулся к практике. Это самый важный шаг.',
+  mil30_t:'30 дней – Первый месяц',mil30_d:'Месяц совместной практики. Ты часть поля.',
+  mil100_t:'100 дней – Глубокие корни',mil100_d:'Постоянство, которое держит.',
+  mil365_t:'365 дней – Год в поле',mil365_d:'Год. Ты часть истории этого сообщества.',
+  world_lbl:'Мировое поле',world_total:'Сегодня всего: <b>{n}</b> человек · в {c} странах',world_na:'Живые данные появляются незадолго до и во время сессии.',
+  hist_lbl:'История',hist_title:'Твои моменты – последние сессии',hist_empty:'Пока нет записанных практик.',hist_min:'мин',hist_with:'участников',
+  set_lbl:'Настройки',set_reminder:'Напоминания',rem_off:'Выкл',rem_t30:'За 30 минут',rem_t30_t5:'За 30 и 5 минут',set_lang:'Язык',set_tz:'Часовой пояс',
+  set_reminder_hint:'При включённом напоминании браузер запросит разрешение на уведомления. Отправка за 30 минут до сессии — через бэкенд (push).',
+  help_title:'Помощь и отзыв',help_cat:'Выбери причину',help_cat_bug:'🐛 Техническая ошибка (баг/поддержка)',help_cat_idea:'💡 Предложение по улучшению',help_cat_q:'❓ У меня есть вопрос',
+  help_msg:'Твоё сообщение',help_msg_ph:'Опиши свой вопрос…',help_email_hint:'Мы используем твой email ({email}), чтобы ответить тебе.',
+  help_cancel:'Отмена',help_send:'Отправить',help_sending:'Отправка…',help_sent:'Спасибо! Твоё сообщение получено.',help_error:'Не удалось отправить. Попробуй позже.'},
+ en:{nav_about:'About',nav_wiss:'Science',nav_samarth:'Samarth',nav_stimmen:'Voices',nav_faq:'FAQ',nav_dashboard:'Dashboard',nav_cta:'Download App',
+  back:'← Back to Home',title:'My Dashboard',sub:'Community and continuity — your practice at a glance.',loading:'Loading…',
+  login_prompt:'Sign in with Google to see your dashboard.',login_btn:'Sign in with Google',
+  acct_lbl:'Account',acct_google:'linked with Google',acct_anon:'anonymous',logout:'Sign out',help_btn:'Help & Feedback',admin_console:'Admin console',
+  next_lbl:'Next session',next_today:'Today',next_starts:'starts in',next_text:'Evening practice with Samarth · ~{min} min',next_join:'Join',next_none:'No scheduled session',
+  ov_lbl:'Your overview',ov_total:'Total sessions',ov_total_since:'since {date}',ov_streak:'Current streak',ov_streak_unit:'days in a row',ov_longest:'Longest streak',ov_longest_unit:'personal record',ov_month:'This month',ov_month_sub:'{a} of {b} sessions',
+  cal_lbl:'Attendance calendar',cal_here:'Attended',cal_not:'Not attended',
+  mil_lbl:'Milestones of your practice',mil_done:'Achieved',mil_future:'Upcoming',mil_active:'In progress',mil_remaining:'{n} more sessions to the next milestone',
+  mil7_t:'7 days – First week',mil7_d:'You returned to the practice. That is the most important step.',
+  mil30_t:'30 days – First month',mil30_d:'A month of shared practice. You are part of the field.',
+  mil100_t:'100 days – Deeply rooted',mil100_d:'Consistency that holds.',
+  mil365_t:'365 days – A year in the field',mil365_d:'A year. You are part of this community’s story.',
+  world_lbl:'Worldwide field',world_total:'Total today: <b>{n}</b> people · in {c} countries',world_na:'Live data appears shortly before and during the session.',
+  hist_lbl:'History',hist_title:'Your moments – recent sessions',hist_empty:'No practices recorded yet.',hist_min:'min',hist_with:'present',
+  set_lbl:'Settings',set_reminder:'Reminders',rem_off:'Off',rem_t30:'30 min before',rem_t30_t5:'30 & 5 min before',set_lang:'Language',set_tz:'Timezone',
+  set_reminder_hint:'When a reminder is on, the browser asks for notification permission. Sending 30 min before the session runs via the backend (push).',
+  help_title:'Help & Feedback',help_cat:'Choose a reason',help_cat_bug:'🐛 Technical issue (bug/support)',help_cat_idea:'💡 Suggestion',help_cat_q:'❓ I have a question',
+  help_msg:'Your message',help_msg_ph:'Describe your request…',help_email_hint:'We use your registered email ({email}) to reply to you.',
+  help_cancel:'Cancel',help_send:'Send',help_sending:'Sending…',help_sent:'Thank you! Your message arrived.',help_error:'Could not send. Please try again later.'}
+};
+T.es=T.en;
+var curLang='de';
+function applyLang(lang){
+  if(!T[lang])return; curLang=lang; localStorage.setItem('up_lang',lang); document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(T[lang][k]!==undefined)el.textContent=T[lang][k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var k=el.getAttribute('data-i18n-ph');if(T[lang][k]!==undefined)el.placeholder=T[lang][k];});
+  document.querySelectorAll('.lb').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});
+  document.querySelectorAll('a[href*="index.html"]').forEach(function(a){var h=a.getAttribute('href').split('?')[0];var hi=h.indexOf('#');a.setAttribute('href',hi>-1?h.slice(0,hi)+'?lang='+lang+h.slice(hi):h+'?lang='+lang);});
+  if(window._dashRerender)window._dashRerender();
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.lb');if(b)applyLang(b.dataset.lang);});
+(function(){var p=new URLSearchParams(location.search).get('lang');var l=(p&&T[p])?p:(localStorage.getItem('up_lang')||(navigator.language||'de').substring(0,2));applyLang(T[l]?l:'de');})();
+</script>
+<!-- Umami Analytics (cookieless). Host + data-website-id aus dem Umami-Cloud-Dashboard. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="<UMAMI_WEBSITE_ID>"></script>
+<script defer>
+/* Feedback-Endpoint: Supabase Edge Function (kostenloser Tier, ersetzt die alte
+   Firebase-Function, die den Blaze-Plan gebraucht hätte).
+   ⚠️ <PROJECT_REF> durch den echten Supabase-Projekt-Ref ersetzen
+   (Supabase Dashboard → Project Settings → Reference ID), z. B.
+   https://abcd1234.supabase.co/functions/v1/feedback */
+var FEEDBACK_URL='https://<PROJECT_REF>.supabase.co/functions/v1/feedback';
+/* URL der Admin-Konsole (admin_v2), abgesichert über Cloudflare Access (ADR-016).
+   Platzhalter <ADMIN_HOST> nach Einrichtung des Access-geschützten Subdomains setzen,
+   z.B. https://admin.unity-practice.pages.dev/ */
+var ADMIN_CONSOLE_URL='https://<ADMIN_HOST>/';
+window.addEventListener('load',function(){
+  var firebaseConfig={apiKey:'AIzaSyBDzW-qdbkqkBlaIJuQ5wIC6HMt66utg7w',authDomain:'unity-practice-one.firebaseapp.com',projectId:'unity-practice-one',storageBucket:'unity-practice-one.firebasestorage.app',messagingSenderId:'71640644837',appId:'1:71640644837:web:f746c7024dde4f7784e80c',measurementId:'G-FVWGSQH3XZ'};
+  var loadingEl=document.getElementById('dash-loading');
+  if(typeof firebase==='undefined'){if(loadingEl)loadingEl.textContent='Firebase nicht geladen.';return;}
+  try{firebase.initializeApp(firebaseConfig);}catch(e){}
+  var auth=firebase.auth(),db=firebase.firestore(); window._fb={auth:auth,db:db};
+  var elOut=document.getElementById('dash-loggedout'),elIn=document.getElementById('dash-loggedin');
+  var lastData=null,countdownTimer=null,currentUserEmail='';
+  function t(k){return (T[curLang]&&T[curLang][k])||k;}
+  function fmtTpl(k,map){var s=t(k);for(var p in map)s=s.replace('{'+p+'}',map[p]);return s;}
+  function escHtml(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function safeUrl(u){return /^https?:\/\//i.test(String(u||''))?String(u):'';}
+  function toDate(v){if(!v)return null;if(typeof v.toDate==='function')return v.toDate();if(v instanceof Date)return v;var d=new Date(v);return isNaN(d)?null:d;}
+  function utcKey(d){return d.getUTCFullYear()+'-'+(d.getUTCMonth()+1)+'-'+d.getUTCDate();}
+  function streakFrom(set){var a=new Date();a=new Date(Date.UTC(a.getUTCFullYear(),a.getUTCMonth(),a.getUTCDate()));if(!set.has(utcKey(a)))a.setUTCDate(a.getUTCDate()-1);var s=0;while(set.has(utcKey(a))){s++;a.setUTCDate(a.getUTCDate()-1);}return s;}
+  /* Pluralisierte Serien-Einheit ("Tage in Folge") je Sprache, abhängig von n */
+  function streakUnit(n){
+    if(curLang==='ru'){var m10=n%10,m100=n%100;
+      if(m10===1&&m100!==11)return 'день подряд';
+      if(m10>=2&&m10<=4&&(m100<12||m100>14))return 'дня подряд';
+      return 'дней подряд';}
+    if(curLang==='de')return n===1?'Tag in Folge':'Tage in Folge';
+    return n===1?'day in a row':'days in a row'; // en + es (T.es=T.en)
+  }
+  function longestFrom(set){if(!set.size)return 0;var keys=Array.from(set).map(function(k){var p=k.split('-');return Date.UTC(+p[0],+p[1]-1,+p[2]);}).sort(function(a,b){return a-b;});var best=1,cur=1,DAY=86400000;for(var i=1;i<keys.length;i++){if(keys[i]-keys[i-1]===DAY){cur++;}else if(keys[i]!==keys[i-1]){cur=1;}if(cur>best)best=cur;}return best;}
+
+  document.getElementById('google-login-btn').addEventListener('click',function(){auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){alert('Login: '+(e&&e.message));});});
+  document.getElementById('logout-btn').addEventListener('click',function(){auth.signOut();});
+
+  /* Erinnerungen + Browser-Benachrichtigung */
+  document.getElementById('reminder-select').addEventListener('change',function(){
+    var mode=this.value,u=auth.currentUser;
+    if(u)db.collection('users').doc(u.uid).set({reminder_mode:mode},{merge:true});
+    if(mode!=='off'&&'Notification'in window&&Notification.permission==='default'){Notification.requestPermission();}
+  });
+
+  /* Verlauf-Accordion (default zu) */
+  document.getElementById('hist-toggle').addEventListener('click',function(){
+    var p=document.getElementById('hist-panel');var open=p.classList.toggle('open');
+    this.setAttribute('aria-expanded',open?'true':'false');
+  });
+
+  /* Hilfe & Feedback Modal */
+  var modal=document.getElementById('help-modal');
+  function openModal(){
+    document.getElementById('help-status').textContent='';
+    document.getElementById('help-email-hint').textContent=fmtTpl('help_email_hint',{email:currentUserEmail||'—'});
+    modal.classList.add('open');
+  }
+  function closeModal(){modal.classList.remove('open');}
+  document.getElementById('help-btn').addEventListener('click',openModal);
+  document.getElementById('help-close').addEventListener('click',closeModal);
+  document.getElementById('help-cancel').addEventListener('click',closeModal);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+  document.getElementById('help-send').addEventListener('click',async function(){
+    var btn=this,msg=document.getElementById('help-message').value.trim();
+    var cat=document.getElementById('help-category').value;
+    var st=document.getElementById('help-status');
+    if(!msg){st.className='modal-status err';st.textContent=t('help_msg_ph');return;}
+    btn.disabled=true;st.className='modal-status';st.textContent=t('help_sending');
+    try{
+      var r=await fetch(FEEDBACK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userEmail:currentUserEmail,category:cat,message:msg})});
+      if(!r.ok)throw new Error('bad');
+      st.className='modal-status ok';st.textContent=t('help_sent');
+      document.getElementById('help-message').value='';
+      setTimeout(closeModal,1600);
+    }catch(e){st.className='modal-status err';st.textContent=t('help_error');}
+    btn.disabled=false;
+  });
+
+  /* ---- Rendering ---- */
+  function renderNext(sess){
+    var box=document.getElementById('next-card');
+    if(countdownTimer){clearInterval(countdownTimer);countdownTimer=null;}
+    if(!sess||!toDate(sess.start_time_utc)){box.innerHTML='<div class="next-none">'+t('next_none')+'</div>';return;}
+    var d=toDate(sess.start_time_utc);
+    var localT=d.toLocaleTimeString(curLang,{hour:'2-digit',minute:'2-digit',hour12:false});
+    var ber=d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Berlin'});
+    var ist=d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Istanbul'});
+    var dayLabel=d.toLocaleDateString(curLang,{weekday:'long',day:'2-digit',month:'short'});
+    var min=sess.duration_min||sess.duration||20;
+    var url=safeUrl(sess.stream_url||sess.audio_url||sess.telegram_youtube_url||'');
+    box.innerHTML='<div class="next-big">'+localT+'</div>'+
+      '<div class="next-count" id="next-count"></div>'+
+      '<div class="next-zones">'+dayLabel+' · Istanbul '+ist+' · Berlin '+ber+'</div>'+
+      '<div class="next-desc">'+fmtTpl('next_text',{min:min})+'</div>'+
+      (url?'<a class="next-join" href="'+url+'" target="_blank" rel="noopener">'+t('next_join')+'</a>':'');
+    function tick(){
+      var ms=d-new Date();var c=document.getElementById('next-count');if(!c)return;
+      if(ms<=0){c.textContent=t('next_today');return;}
+      var h=Math.floor(ms/3600000),m=Math.floor(ms%3600000/60000),s=Math.floor(ms%60000/1000);
+      c.textContent=t('next_starts')+' '+(h>0?h+'h ':'')+m+'m '+s+'s';
+    }
+    tick();countdownTimer=setInterval(tick,1000);
+  }
+  function renderStats(d){
+    document.getElementById('ov-total').textContent=d.total;
+    document.getElementById('ov-total-since').textContent=d.since?fmtTpl('ov_total_since',{date:d.since}):'';
+    document.getElementById('ov-streak').textContent=d.streak;
+    var su=document.getElementById('ov-streak-unit');if(su)su.textContent=streakUnit(d.streak);
+    document.getElementById('ov-longest').textContent=d.longest;
+    document.getElementById('ov-month').textContent=d.monthCount;
+    document.getElementById('ov-month-sub').textContent=(d.monthTotal!=null)?fmtTpl('ov_month_sub',{a:d.monthCount,b:d.monthTotal}):'';
+  }
+  function renderCalendar(set){
+    var now=new Date();var y=now.getFullYear(),m=now.getMonth();
+    document.getElementById('cal-month').textContent=now.toLocaleDateString(curLang,{month:'long',year:'numeric'});
+    var first=new Date(y,m,1);var startDow=(first.getDay()+6)%7; // Mo=0
+    var days=new Date(y,m+1,0).getDate();var cells='';
+    for(var i=0;i<startDow;i++)cells+='<div class="cal-cell empty"></div>';
+    for(var dnum=1;dnum<=days;dnum++){
+      var dd=new Date(Date.UTC(y,m,dnum));var here=set.has(utcKey(dd));
+      var today=(dnum===now.getDate());
+      cells+='<div class="cal-cell'+(here?' here':'')+(today?' today':'')+'">'+dnum+'</div>';
+    }
+    document.getElementById('cal-grid').innerHTML=cells;
+  }
+  function renderMilestones(total){
+    var ms=[{n:7,t:'mil7_t',d:'mil7_d'},{n:30,t:'mil30_t',d:'mil30_d'},{n:100,t:'mil100_t',d:'mil100_d'},{n:365,t:'mil365_t',d:'mil365_d'}];
+    var nextIdx=ms.findIndex(function(x){return total<x.n;});
+    var html=ms.map(function(x,i){
+      var done=total>=x.n;var isNext=(i===nextIdx);
+      var state=done?'done':(isNext?'active':'future');
+      var stateLbl=done?t('mil_done'):(isNext?t('mil_active'):t('mil_future'));
+      var desc=(isNext)?fmtTpl('mil_remaining',{n:(x.n-total)}):t(x.d);
+      var bar=isNext?('<div class="mile-bar"><span style="width:'+Math.min(100,Math.round(total/x.n*100))+'%"></span></div>'):'';
+      return '<div class="mile"><div class="mile-top"><span class="mile-name"><b>'+t(x.t)+'</b></span><span class="mile-state '+state+'">'+stateLbl+'</span></div><div class="mile-desc">'+desc+'</div>'+bar+'</div>';
+    }).join('');
+    document.getElementById('mile-list').innerHTML=html;
+  }
+  function renderWorld(sess){
+    var box=document.getElementById('world-total'),list=document.getElementById('world-list');
+    var total=sess&&(sess.participant_count!=null?sess.participant_count:(sess.today_total!=null?sess.today_total:null));
+    var countries=sess&&(sess.country_count!=null?sess.country_count:null);
+    var top=sess&&(sess.top_countries||null); // erwartet: [{name,count}]
+    if(total==null){box.innerHTML='';list.innerHTML='<div class="world-na">'+t('world_na')+'</div>';return;}
+    box.innerHTML=fmtTpl('world_total',{n:Number(total).toLocaleString(curLang),c:(countries!=null?countries:'—')});
+    if(top&&top.length){list.innerHTML=top.slice(0,5).map(function(c){return '<div class="world-row"><span>'+escHtml(c.name||c.country||'')+'</span><span class="wc">'+Number(c.count||0).toLocaleString(curLang)+'</span></div>';}).join('');}
+    else list.innerHTML='';
+  }
+  function renderHistory(items){
+    var box=document.getElementById('history-list');
+    if(!items.length){box.innerHTML='<div class="hist-empty">'+t('hist_empty')+'</div>';return;}
+    box.innerHTML=items.slice(0,15).map(function(it){
+      var meta=[];if(it.min)meta.push(it.min+' '+t('hist_min'));if(it.present)meta.push(Number(it.present).toLocaleString(curLang)+' '+t('hist_with'));
+      var when=it.date.toLocaleString(curLang,{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+      return '<div class="hist-item"><span class="hist-date">'+when+'</span><span class="hist-meta">'+meta.join(' · ')+'</span></div>';
+    }).join('');
+  }
+  window._dashRerender=function(){if(!lastData)return;renderNext(lastData.session);renderStats(lastData);renderCalendar(lastData.set);renderMilestones(lastData.total);renderWorld(lastData.session);renderHistory(lastData.history);
+    var p=document.getElementById('hist-panel');if(lastData.history.length&&!p.classList.contains('open')){/* bleibt zu by default */}};
+
+  async function loadNextSession(){
+    try{
+      var cfg=await db.collection('config').doc('app').get();
+      var sid=cfg.exists?cfg.data().current_session_id:null;var sess=null;
+      if(sid){var ss=await db.collection('sessions').doc(sid).get();if(ss.exists)sess=ss.data();}
+      var now=new Date();
+      if(!sess||(toDate(sess.start_time_utc)&&toDate(sess.start_time_utc)<now&&sess.status!=='live'&&sess.status!=='running')){
+        var up=await db.collection('sessions').where('start_time_utc','>',firebase.firestore.Timestamp.fromDate(now)).orderBy('start_time_utc').limit(1).get();
+        if(!up.empty)sess=up.docs[0].data();
+      }
+      return sess;
+    }catch(e){return null;}
+  }
+  async function monthSessionsTotal(){
+    try{var now=new Date();var s=new Date(now.getFullYear(),now.getMonth(),1);var e=new Date(now.getFullYear(),now.getMonth()+1,1);
+      var q=await db.collection('sessions').where('start_time_utc','>=',firebase.firestore.Timestamp.fromDate(s)).where('start_time_utc','<',firebase.firestore.Timestamp.fromDate(e)).get();
+      return q.size;
+    }catch(e){return null;}
+  }
+
+  async function loadDashboard(user){
+    currentUserEmail=user.email||'';
+    document.getElementById('acct-email').textContent=currentUserEmail;
+    var isG=(user.providerData||[]).some(function(p){return p.providerId==='google.com';});
+    document.getElementById('acct-status').textContent=isG?t('acct_google'):t('acct_anon');
+    // Admin-Konsolen-Link nur für Nutzer mit admins/{uid} (operator/superadmin).
+    // Sichtbarkeit = reines UX; echter Schutz: Cloudflare Access + Firestore Rules (ADR-016).
+    (function(){var al=document.getElementById('admin-console-link');if(!al)return;
+      db.collection('admins').doc(user.uid).get().then(function(s){
+        if(s.exists){al.href=ADMIN_CONSOLE_URL;al.style.display='';}else{al.style.display='none';}
+      }).catch(function(){al.style.display='none';});})();
+    try{var ps=await db.collection('users').doc(user.uid).get();var p=(ps.exists&&ps.data())||{};
+      document.getElementById('reminder-select').value=(p.reminder_mode||'off');
+      document.getElementById('set-language').textContent=(p.language||document.documentElement.lang||'—').toUpperCase();
+      document.getElementById('set-timezone').textContent=p.timezone||Intl.DateTimeFormat().resolvedOptions().timeZone||'—';
+    }catch(e){}
+    var set=new Set(),total=0,history=[],earliest=null;
+    var now=new Date(),thisMonth=now.getUTCMonth(),thisYear=now.getUTCFullYear(),monthCount=0;
+    try{
+      var as=await db.collection('users').doc(user.uid).collection('attendance').get();
+      as.forEach(function(doc){var a=doc.data()||{};
+        var d=toDate(a.completed_at)||toDate(a.committed_at);
+        if(a.completed){total++;}
+        if(d){set.add(utcKey(d));if(!earliest||d<earliest)earliest=d;
+          if(d.getUTCFullYear()===thisYear&&d.getUTCMonth()===thisMonth&&a.completed)monthCount++;
+          history.push({date:d,min:a.duration_min||a.duration||null,present:a.participant_count||null,completed:!!a.completed});}
+      });
+    }catch(e){}
+    history.sort(function(x,y){return y.date-x.date;});
+    var session=await loadNextSession();
+    var monthTotal=await monthSessionsTotal();
+    lastData={total:total,since:earliest?earliest.toLocaleDateString(curLang,{month:'long',year:'numeric'}):'',
+      streak:streakFrom(set),longest:longestFrom(set),monthCount:monthCount,monthTotal:monthTotal,
+      set:set,history:history,session:session};
+    window._dashRerender();
+  }
+
+  auth.onAuthStateChanged(function(user){
+    if(loadingEl)loadingEl.style.display='none';
+    if(user){elOut.style.display='none';elIn.style.display='block';loadDashboard(user);}
+    else{elOut.style.display='block';elIn.style.display='none';lastData=null;if(countdownTimer){clearInterval(countdownTimer);}var al=document.getElementById('admin-console-link');if(al)al.style.display='none';}
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# --- Build- / Tool-Caches ---
+.vite/
+.claude/
+node_modules/
+*.log
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Firebase lokale Secrets / Runtime ---
+.runtimeconfig.json
+functions/.runtimeconfig.json
+
+# --- Interne Doku & Setup (NICHT öffentlich, nur lokal) ---
+SETUP-AUTH.md
+SETUP-FEEDBACK.md
+SETUP-REMINDERS.md
+TEST-DASHBOARD.md
+supabase-setup.sql
+praxis-text-komprimiert.md

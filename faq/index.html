@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0A1A2F">
+<!-- Umami Analytics (cookieless). data-website-id aus dem Umami-Cloud-Dashboard. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="<UMAMI_WEBSITE_ID>"></script>
+<meta name="description" content="Unity Practice FAQ — 30 Antworten zu Konzept, Wissenschaft, App, Datenschutz und mehr.">
+<meta property="og:title" content="FAQ — Unity Practice">
+<meta property="og:description" content="30 Antworten zu Konzept, Wissenschaft, App, Datenschutz und mehr.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://unity-practice.com/faq/">
+<meta property="og:image" content="https://unity-practice.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FAQ — Unity Practice">
+<meta name="twitter:description" content="30 Antworten zu Konzept, Wissenschaft, App, Datenschutz und mehr.">
+<meta name="twitter:image" content="https://unity-practice.com/og-image.jpg">
+<link rel="canonical" href="https://unity-practice.com/faq/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>FAQ — Unity Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1A2F;--bg2:#0c1e38;--card:#0f2444;--border:#1a3050;--accent:#E0A93F;--accent2:#1a2800;--accent3:#2DCECE;--text:#F5F7FA;--muted:#6080a0;--soft:#8ca0b8;--gold:#F2C94C;--gold-subtle:rgba(224,169,63,.22);--radius:14px;--ff-serif:'Spectral',Georgia,serif;--ff-sans:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-sans);font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;border-bottom:.5px solid rgba(79,195,161,.15);background:rgba(7,14,26,.9);backdrop-filter:blur(14px);gap:16px}
+.nav-logo{font-family:var(--ff-serif);font-size:18px;font-weight:600;color:var(--text);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-size:13px;font-weight:500;color:#0A1A2F;background:var(--accent);border:none;border-radius:24px;padding:8px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.lb{background:none;border:.5px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;font-weight:500;padding:4px 8px;cursor:pointer;font-family:var(--ff-sans);letter-spacing:.5px;transition:border-color .2s,color .2s}
+.lb:hover,.lb.active{border-color:var(--accent);color:var(--accent)}
+.lang-btns{display:flex;gap:4px}
+main{max-width:800px;margin:0 auto;padding:140px 40px 100px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-decoration:none;margin-bottom:40px;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+.page-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);margin-bottom:16px}
+.page-title{font-family:var(--ff-serif);font-size:clamp(32px,5vw,60px);font-weight:300;line-height:1.15;margin-bottom:24px}
+.page-sub{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:40px}
+.search-wrap{position:relative;margin-bottom:56px}
+.search-input{width:100%;background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:14px 20px 14px 44px;font-family:var(--ff-sans);font-size:14px;color:var(--text);outline:none;transition:border-color .2s}
+.search-input::placeholder{color:var(--muted)}
+.search-input:focus{border-color:rgba(45,206,206,.4)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;pointer-events:none}
+.search-count{font-size:12px;color:var(--muted);margin-top:8px;min-height:18px}
+.faq-group{margin-bottom:48px}
+.faq-group[hidden]{display:none}
+.faq-group-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);margin-bottom:20px;padding-bottom:10px;border-bottom:.5px solid var(--border)}
+.faq-item{border-bottom:.5px solid var(--border)}
+.faq-item[hidden]{display:none}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:none;cursor:pointer;padding:20px 0;text-align:left;font-family:var(--ff-sans);font-size:15px;font-weight:400;color:var(--text);transition:color .2s;gap:16px}
+.faq-q:hover{color:var(--gold)}
+.faq-arrow{width:20px;height:20px;flex-shrink:0;border:.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s,border-color .3s}
+.faq-arrow svg{width:10px;height:10px;stroke:var(--soft);fill:none;stroke-width:2}
+.faq-item.open .faq-arrow{transform:rotate(45deg);border-color:var(--gold)}
+.faq-item.open .faq-arrow svg{stroke:var(--gold)}
+.faq-a{font-size:14px;color:var(--soft);line-height:1.8;padding-bottom:20px;display:none;max-width:640px}
+.faq-item.open .faq-a{display:block}
+.faq-a a{color:var(--accent3);text-decoration:none}
+.faq-a a:hover{color:var(--gold)}
+.no-results{text-align:center;padding:60px 0;color:var(--muted);font-size:14px;display:none}
+.ask-btn-wrap{text-align:center;margin-top:60px;padding-top:40px;border-top:.5px solid var(--border)}
+.ask-btn{display:inline-flex;align-items:center;gap:8px;background:none;border:.5px solid var(--border);border-radius:24px;padding:12px 24px;color:var(--soft);font-family:var(--ff-sans);font-size:14px;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s}
+.ask-btn:hover{border-color:var(--accent3);color:var(--accent3)}
+.mob-lang-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(10,26,47,.97);border-top:.5px solid var(--border);padding:12px 20px;justify-content:center;gap:12px;backdrop-filter:blur(10px)}
+@media(max-width:900px){nav{padding:14px 20px}.nav-links{display:none}main{padding:100px 20px 80px}.lang-btns{display:none}.mob-lang-bar{display:flex}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Unity Practice</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#meaning" data-i18n="nav_about">Über die Praxis</a></li>
+    <li><a href="../wissenschaft/index.html" data-i18n="nav_wiss">Wissenschaft</a></li>
+    <li><a href="../ueber-samarth/index.html" data-i18n="nav_samarth">Samarth</a></li>
+    <li><a href="../stimmen/index.html" data-i18n="nav_stimmen">Stimmen</a></li>
+    <li><a href="index.html" class="active" data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-btns">
+      <button class="lb" data-lang="de">DE</button>
+      <button class="lb" data-lang="ru">RU</button>
+      <button class="lb" data-lang="en">EN</button>
+      <button class="lb" data-lang="es">ES</button>
+    </div>
+    <a href="../index.html#cta-final" class="nav-cta" data-i18n="nav_cta">App herunterladen</a>
+  </div>
+</nav>
+<main>
+  <a href="../index.html" class="back-link" data-i18n="back">← Zurück zur Startseite</a>
+  <div class="page-label" data-i18n="lbl">Häufige Fragen</div>
+  <h1 class="page-title">FAQ</h1>
+  <p class="page-sub" data-i18n="sub">30 Antworten zu Konzept, Wissenschaft, App, Datenschutz und Community.</p>
+
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="search-input" id="faq-search" type="search" data-placeholder-i18n="search_ph" placeholder="Fragen durchsuchen…" autocomplete="off">
+    <div class="search-count" id="search-count"></div>
+  </div>
+
+  <div class="faq-group" id="g1">
+    <div class="faq-group-title" data-i18n="g1">Konzept &amp; Synchronizität</div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q1">Was ist synchrone Meditation?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a1">Das ist eine Praxis, bei der Menschen aus aller Welt im selben Moment meditieren. Die App hat einen globalen Timer, der tausende Teilnehmer in Echtzeit verbindet und einen kraftvollen Effekt gemeinsamer Präsenz und kollektiver Intention erzeugt.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q2">Wie funktioniert das mit den verschiedenen Zeitzonen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a2">Du musst nichts selbst berechnen. Der globale Timer passt sich automatisch an deine Ortszeit an. Jeder sieht seine eigene Startzeit — 20:00 Uhr in Moskau, 19:00 Uhr in Berlin — aber alle beginnen gleichzeitig.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q3">Was ist Unity Practice? Wie funktioniert es?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a3">Unity Practice ist eine tägliche synchrone Praxis. Jeden Tag zur gleichen Zeit halten tausende Menschen weltweit inne und praktizieren gemeinsam. Du öffnest die App, tippst auf "Ich bin dabei", und eine 15–20-minütige Sitzung beginnt. Das Wichtigste: gleichzeitig mit allen anderen.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q4">Wie oft finden globale Meditationen statt?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a4">Die synchronen Praktiken finden täglich zur gleichen Zeit statt. Das ermöglicht Teilnehmern aus allen Teilen der Welt, regelmäßig gemeinsam zu üben. Zukünftig planen wir eine zweite tägliche Sitzung.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q5">Was tue ich, wenn ich ein paar Minuten zu spät komme?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a5">Du kannst jederzeit während der laufenden Meditation einsteigen. Der Timer läuft für alle synchron — du tauchst einfach sanft in die gemeinsame Stille ein. Pünktlichkeit ist ideal, aber Verspätung kein Problem.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q6">Kann ich außerhalb des globalen Zeitplans selbst praktizieren?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a6">Ja, die App hat einen persönlichen Übungsmodus. Die größte Stärke liegt jedoch in den synchronen Sitzungen — sie erzeugen einen Resonanzeffekt, der die Intention jedes Einzelnen vervielfacht.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q7">Brauche ich Vorkenntnisse in Meditation?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a7">Nein. Die Praxis eignet sich für Einsteiger und Erfahrene. Wir kombinieren Stille mit kurzen, wissenschaftlich fundierten Sprachhinweisen. Kein Vorwissen erforderlich.</div></div>
+  </div>
+
+  <div class="faq-group" id="g2">
+    <div class="faq-group-title" data-i18n="g2">Wissenschaft &amp; Wirksamkeit</div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q8">Gibt es wissenschaftliche Belege für Gruppenmeditation?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a8">Ja. Neurowissenschaftliche Studien zeigen, dass gemeinsame Praxis zu neuronaler Kohärenz führt — der Synchronisierung von Gehirnwellen. Auf der <a href="../wissenschaft/">Wissenschaftsseite</a> findest du Studien von HeartMath, Global Consciousness Project und zum Maharishi-Effekt.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q9">Was ist der Maharishi-Effekt?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a9">Ein wissenschaftlich belegtes Phänomen: Wenn ein bestimmter Prozentsatz der Bevölkerung gleichzeitig meditiert, sinken Kriminalität und soziale Spannungen statistisch signifikant. Veröffentlicht u.a. im Journal of Conflict Resolution.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q10">Wie lang dauert eine Sitzung?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a10">15 bis 20 Minuten. Das ist die forschungsbestätigte optimale Zeit: genug, um das Nervensystem zu reset und tiefe Kohärenz zu erreichen — kurz genug für den Alltag.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q11">Brauche ich Meditationserfahrung für den Effekt?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a11">Absolut nicht. Die Synchronizität selbst schafft eine unterstützende Umgebung. Viele Einsteiger berichten, dass es in der Gruppe leichter fällt, Aufmerksamkeit zu halten als allein.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q12">Was ist neuronale Kohärenz?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a12">Ein Phänomen, bei dem Gehirnwellen von Menschen, die gemeinsam üben, beginnen sich zu synchronisieren. EEG-Studien zeigen, dass Gruppenmeditation ein gemeinsames Kohärenzfeld erzeugt, das die Teilnehmer und den umgebenden Raum beeinflussen kann.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q13">Wie funktioniert HeartMath-Synchronisation?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a13">HeartMath zeigt: Wenn Menschen kohärentes Atmen und Dankbarkeit praktizieren, synchronisieren sich ihre Herzrhythmen — auch über Distanz. Unity Practice erzeugt diese soziale Kohärenz in globalem Maßstab.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q14">Was sind morphische Felder nach Sheldrake?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a14">Sheldrakes Theorie (1981): Es gibt ein kollektives Gedächtnis, das sich mit jeder Wiederholung verstärkt. Je mehr Menschen gemeinsam üben, desto leichter und tiefer wird der Zustand für jeden Neuen. Gemeinsam bauen wir dieses Feld auf.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q15">Warum 15–20 Minuten und nicht 5 oder 60?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a15">Studien zeigen, dass tiefe Kohärenz nach ~12–15 Minuten erreicht wird. 20 Minuten ist das Optimum: genug für den Effekt, aber nicht so lang, dass Menschen die Praxis wegen Zeitmangels überspringen.</div></div>
+  </div>
+
+  <div class="faq-group" id="g3">
+    <div class="faq-group-title" data-i18n="g3">App &amp; Technologie</div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q16">Auf welchen Geräten funktioniert die App?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a16">Kostenlos für iOS (App Store) und Android (Google Play). iPad und Android-Tablets werden ebenfalls unterstützt.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q17">Wie verpasse ich den Start nicht?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a17">Aktiviere Push-Benachrichtigungen in der App — sie erinnern dich 5–15 Minuten vor dem Start. Oder abonniere unseren kostenlosen Telegram-Bot für sofortige Erinnerungen.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q18">Bleibt die App stabil wenn tausende gleichzeitig einsteigen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a18">Ja. Unsere Infrastruktur basiert auf globaler Cloud-Technologie, ausgelegt für enorme Spitzenlastspitzen in der Startsekunde — ohne Verzögerungen.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q19">Funktioniert die App ohne Internet?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a19">Für globale Sitzungen ist Internet erforderlich (der Timer läuft in Echtzeit). Für die persönliche Praxis wird nach dem Download kein Internet benötigt.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q20">Wie viel Speicher benötigt die App?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a20">Etwa 50–80 MB. Kontinuierlich optimiert für schnellen Betrieb auch auf älteren Smartphones.</div></div>
+  </div>
+
+  <div class="faq-group" id="g4">
+    <div class="faq-group-title" data-i18n="g4">Kosten, Daten &amp; Community</div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q21">Was kostet die Teilnahme?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a21">Die tägliche synchrone Praxis ist und bleibt absolut kostenlos. Keine Abonnements, keine In-App-Käufe.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q22">Wie sind meine persönlichen Daten geschützt?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a22">Wir erheben keine persönlichen Informationen und verwenden keine Werbetrackers. E-Mail oder Bot-Abonnement werden ausschließlich für Erinnerungen genutzt. Die Teilnahme ist vollständig anonym — kein Konto nötig.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q23">Wo kann ich mich mit anderen Teilnehmern austauschen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a23">In unserer Telegram-Community. Den Link findest du in der App oder im Footer der Website. Teilnehmer teilen Erfahrungen, diskutieren Wissenschaft und unterstützen sich gegenseitig.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q24">Wer leitet das Projekt?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a24">Das Projekt wurde von Samarth Sammasati gegründet — einem Praktizierenden mit langjähriger Erfahrung. Er bezeichnet sich nicht als Lehrer. Unterstützt von einem internationalen Team aus Freiwilligen aus Achtsamkeit, Kognitionswissenschaft und Klangtherapie.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q25">Wie kann ich das Projekt unterstützen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a25">Erzähl Freunden davon und praktiziere mit uns. Hinterlasse eine Bewertung im App Store oder Google Play. Für Partnerschaft oder Volunteering: <a href="mailto:info@unity-practice.com">info@unity-practice.com</a>.</div></div>
+  </div>
+
+  <div class="faq-group" id="g5">
+    <div class="faq-group-title" data-i18n="g5">Weitere Fragen</div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q26">Was bedeutet der Name Unity Practice?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a26">„Unity" bedeutet Einheit, Ganzheit. „Practice" — Praxis, tägliches Üben. Unity Practice ist eine Lebensweise: die tägliche Rückkehr zu sich selbst, zu anderen, zur Welt. Die Praxis der Einheit mit sich und allen Lebewesen.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q27">Was ist das Thema der täglichen Praxis?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a27">Das Thema ist immer dasselbe: Aufmerksamkeit auf Liebe, Güte und Fürsorge für alle Lebewesen richten. Kein wechselnder Text — eine tiefe, beständige Praxis. Jeden Tag dieselbe Intention, die mit der Zeit eine mächtige innere Stütze schafft.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q28">Was ist der Streak in der App?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a28">Die Anzahl aufeinanderfolgender Tage, an denen du praktiziert hast. Kein Wettbewerb — ein persönlicher Marker für Konsequenz. Wenn du einen Tag auslässt, setzt er zurück. Das ist in Ordnung.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q29">Was passiert mit meinen Daten wenn ich die App lösche?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a29">Alle Daten werden sofort und unwiderruflich gelöscht. Wir speichern nichts auf unseren Servern. Kein Streak kann wiederhergestellt werden. Das ist bewusst so: Deine Teilnahme ist hier und jetzt.</div></div>
+    <div class="faq-item"><button class="faq-q"><span data-i18n="q30">Wie bekomme ich Hilfe bei App-Problemen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a" data-i18n="a30">Schreib uns an <a href="mailto:support@unity-practice.com">support@unity-practice.com</a> — Antwort innerhalb von 24 Stunden. Oder stelle eine Frage in der Telegram-Community.</div></div>
+  </div>
+
+  <div class="no-results" id="no-results" data-i18n="no_results">Keine Ergebnisse gefunden.</div>
+
+  <div class="ask-btn-wrap">
+    <a href="mailto:support@unity-practice.com" class="ask-btn" data-i18n="ask_btn">+ Eigene Frage stellen</a>
+  </div>
+</main>
+<script>
+var T={
+  de:{
+    nav_about:'Über die Praxis',nav_wiss:'Wissenschaft',nav_samarth:'Samarth',nav_stimmen:'Stimmen',nav_faq:'FAQ',nav_cta:'App herunterladen',
+    back:'← Zurück zur Startseite',lbl:'Häufige Fragen',sub:'30 Antworten zu Konzept, Wissenschaft, App, Datenschutz und Community.',
+    search_ph:'Fragen durchsuchen…',no_results:'Keine Ergebnisse gefunden.',ask_btn:'+ Eigene Frage stellen',res_one:'Ergebnis',res_many:'Ergebnisse',
+    g1:'Konzept & Synchronizität',g2:'Wissenschaft & Wirksamkeit',g3:'App & Technologie',g4:'Kosten, Daten & Community',g5:'Weitere Fragen',
+    q1:'Was ist synchrone Meditation?',a1:'Das ist eine Praxis, bei der Menschen aus aller Welt im selben Moment meditieren. Die App hat einen globalen Timer, der tausende Teilnehmer in Echtzeit verbindet und einen kraftvollen Effekt gemeinsamer Präsenz und kollektiver Intention erzeugt.',
+    q2:'Wie funktioniert das mit den verschiedenen Zeitzonen?',a2:'Du musst nichts selbst berechnen. Der globale Timer passt sich automatisch an deine Ortszeit an. Jeder sieht seine eigene Startzeit — 20:00 in Moskau, 19:00 in Berlin — aber alle beginnen gleichzeitig.',
+    q3:'Was ist Unity Practice? Wie funktioniert es?',a3:'Unity Practice ist eine tägliche synchrone Praxis. Jeden Tag zur gleichen Zeit halten tausende Menschen weltweit inne und praktizieren gemeinsam. Du öffnest die App, tippst auf "Ich bin dabei", und eine 15–20-minütige Sitzung beginnt. Das Wichtigste: gleichzeitig mit allen anderen.',
+    q4:'Wie oft finden globale Meditationen statt?',a4:'Die synchronen Praktiken finden täglich zur gleichen Zeit statt. Das ermöglicht Teilnehmern aus allen Teilen der Welt, regelmäßig gemeinsam zu üben. Zukünftig planen wir eine zweite tägliche Sitzung.',
+    q5:'Was tue ich, wenn ich ein paar Minuten zu spät komme?',a5:'Du kannst jederzeit während der laufenden Meditation einsteigen. Der Timer läuft für alle synchron — du tauchst einfach sanft in die gemeinsame Stille ein. Pünktlichkeit ist ideal, aber Verspätung kein Problem.',
+    q6:'Kann ich außerhalb des globalen Zeitplans selbst praktizieren?',a6:'Ja, die App hat einen persönlichen Übungsmodus. Die größte Stärke liegt jedoch in den synchronen Sitzungen — sie erzeugen einen Resonanzeffekt, der die Intention jedes Einzelnen vervielfacht.',
+    q7:'Brauche ich Vorkenntnisse in Meditation?',a7:'Nein. Die Praxis eignet sich für Einsteiger und Erfahrene. Wir kombinieren Stille mit kurzen, wissenschaftlich fundierten Sprachhinweisen. Kein Vorwissen erforderlich.',
+    q8:'Gibt es wissenschaftliche Belege für Gruppenmeditation?',a8:'Ja. Neurowissenschaftliche Studien zeigen, dass gemeinsame Praxis zu neuronaler Kohärenz führt — der Synchronisierung von Gehirnwellen. Auf der Wissenschaftsseite findest du Studien von HeartMath, Global Consciousness Project und zum Maharishi-Effekt.',
+    q9:'Was ist der Maharishi-Effekt?',a9:'Ein wissenschaftlich belegtes Phänomen: Wenn ein bestimmter Prozentsatz der Bevölkerung gleichzeitig meditiert, sinken Kriminalität und soziale Spannungen statistisch signifikant. Veröffentlicht u.a. im Journal of Conflict Resolution.',
+    q10:'Wie lang dauert eine Sitzung?',a10:'15 bis 20 Minuten. Das ist die forschungsbestätigte optimale Zeit: genug, um das Nervensystem zu reset und tiefe Kohärenz zu erreichen — kurz genug für den Alltag.',
+    q11:'Brauche ich Meditationserfahrung für den Effekt?',a11:'Absolut nicht. Die Synchronizität selbst schafft eine unterstützende Umgebung. Viele Einsteiger berichten, dass es in der Gruppe leichter fällt, Aufmerksamkeit zu halten als allein.',
+    q12:'Was ist neuronale Kohärenz?',a12:'Ein Phänomen, bei dem Gehirnwellen von Menschen, die gemeinsam üben, beginnen sich zu synchronisieren. EEG-Studien zeigen, dass Gruppenmeditation ein gemeinsames Kohärenzfeld erzeugt, das die Teilnehmer und den umgebenden Raum beeinflussen kann.',
+    q13:'Wie funktioniert HeartMath-Synchronisation?',a13:'HeartMath zeigt: Wenn Menschen kohärentes Atmen und Dankbarkeit praktizieren, synchronisieren sich ihre Herzrhythmen — auch über Distanz. Unity Practice erzeugt diese soziale Kohärenz in globalem Maßstab.',
+    q14:'Was sind morphische Felder nach Sheldrake?',a14:'Sheldrakes Theorie (1981): Es gibt ein kollektives Gedächtnis, das sich mit jeder Wiederholung verstärkt. Je mehr Menschen gemeinsam üben, desto leichter und tiefer wird der Zustand für jeden Neuen. Gemeinsam bauen wir dieses Feld auf.',
+    q15:'Warum 15–20 Minuten und nicht 5 oder 60?',a15:'Studien zeigen, dass tiefe Kohärenz nach ~12–15 Minuten erreicht wird. 20 Minuten ist das Optimum: genug für den Effekt, aber nicht so lang, dass Menschen die Praxis wegen Zeitmangels überspringen.',
+    q16:'Auf welchen Geräten funktioniert die App?',a16:'Kostenlos für iOS (App Store) und Android (Google Play). iPad und Android-Tablets werden ebenfalls unterstützt.',
+    q17:'Wie verpasse ich den Start nicht?',a17:'Aktiviere Push-Benachrichtigungen in der App — sie erinnern dich 5–15 Minuten vor dem Start. Oder abonniere unseren kostenlosen Telegram-Bot für sofortige Erinnerungen.',
+    q18:'Bleibt die App stabil wenn tausende gleichzeitig einsteigen?',a18:'Ja. Unsere Infrastruktur basiert auf globaler Cloud-Technologie, ausgelegt für enorme Spitzenlastspitzen in der Startsekunde — ohne Verzögerungen.',
+    q19:'Funktioniert die App ohne Internet?',a19:'Für globale Sitzungen ist Internet erforderlich (der Timer läuft in Echtzeit). Für die persönliche Praxis wird nach dem Download kein Internet benötigt.',
+    q20:'Wie viel Speicher benötigt die App?',a20:'Etwa 50–80 MB. Kontinuierlich optimiert für schnellen Betrieb auch auf älteren Smartphones.',
+    q21:'Was kostet die Teilnahme?',a21:'Die tägliche synchrone Praxis ist und bleibt absolut kostenlos. Keine Abonnements, keine In-App-Käufe.',
+    q22:'Wie sind meine persönlichen Daten geschützt?',a22:'Wir erheben keine persönlichen Informationen und verwenden keine Werbetrackers. E-Mail oder Bot-Abonnement werden ausschließlich für Erinnerungen genutzt. Die Teilnahme ist vollständig anonym — kein Konto nötig.',
+    q23:'Wo kann ich mich mit anderen Teilnehmern austauschen?',a23:'In unserer Telegram-Community. Den Link findest du in der App oder im Footer der Website. Teilnehmer teilen Erfahrungen, diskutieren Wissenschaft und unterstützen sich gegenseitig.',
+    q24:'Wer leitet das Projekt?',a24:'Das Projekt wurde von Samarth Sammasati gegründet — einem Praktizierenden mit langjähriger Erfahrung. Er bezeichnet sich nicht als Lehrer. Unterstützt von einem internationalen Team aus Freiwilligen aus Achtsamkeit, Kognitionswissenschaft und Klangtherapie.',
+    q25:'Wie kann ich das Projekt unterstützen?',a25:'Erzähl Freunden davon und praktiziere mit uns. Hinterlasse eine Bewertung im App Store oder Google Play. Für Partnerschaft oder Volunteering: info@unity-practice.com.',
+    q26:'Was bedeutet der Name Unity Practice?',a26:'„Unity" bedeutet Einheit, Ganzheit. „Practice" — Praxis. Unity Practice ist eine Lebensweise: die tägliche Rückkehr zu sich selbst, zu anderen, zur Welt. Die Praxis der Einheit mit sich und allen Lebewesen.',
+    q27:'Was ist das Thema der täglichen Praxis?',a27:'Das Thema ist immer dasselbe: Aufmerksamkeit auf Liebe, Güte und Fürsorge für alle Lebewesen. Kein wechselnder Text — eine tiefe, beständige Praxis. Jeden Tag dieselbe Intention, die mit der Zeit eine mächtige innere Stütze schafft.',
+    q28:'Was ist der Streak in der App?',a28:'Die Anzahl aufeinanderfolgender Tage, an denen du praktiziert hast. Kein Wettbewerb — ein persönlicher Marker für Konsequenz. Wenn du einen Tag auslässt, setzt er zurück. Das ist in Ordnung.',
+    q29:'Was passiert mit meinen Daten wenn ich die App lösche?',a29:'Alle Daten werden sofort und unwiderruflich gelöscht. Wir speichern nichts auf unseren Servern. Kein Streak kann wiederhergestellt werden. Deine Teilnahme ist hier und jetzt.',
+    q30:'Wie bekomme ich Hilfe bei App-Problemen?',a30:'Schreib uns an support@unity-practice.com — Antwort innerhalb von 24 Stunden. Oder stelle eine Frage in der Telegram-Community.'
+  },
+  ru:{
+    nav_about:'О практике',nav_wiss:'Наука',nav_samarth:'Самарт',nav_stimmen:'Отзывы',nav_faq:'FAQ',nav_cta:'Скачать приложение',
+    back:'← На главную',lbl:'Часто задаваемые вопросы',sub:'30 ответов о концепции, науке, приложении, данных и сообществе.',
+    search_ph:'Поиск по вопросам…',no_results:'Ничего не найдено.',ask_btn:'+ Задать свой вопрос',res_one:'результат',res_few:'результата',res_many:'результатов',
+    g1:'Концепция и синхронность',g2:'Наука и эффективность',g3:'Приложение и технологии',g4:'Стоимость, данные и сообщество',g5:'Дополнительные вопросы',
+    q1:'Что такое синхронная медитация?',a1:'Это практика, при которой люди со всего мира медитируют в одну и ту же секунду. В приложении встроен глобальный таймер, который объединяет тысячи участников в реальном времени, создавая мощный эффект общего присутствия и коллективного намерения.',
+    q2:'Как это работает, если мы находимся в разных часовых поясах?',a2:'Вам не нужно ничего высчитывать. Глобальный таймер автоматически подстраивается под ваше локальное время. Каждый видит своё время начала — 20:00 по Москве, 19:00 по Берлину — но все начинают одновременно.',
+    q3:'Что такое Unity Practice? Как это работает?',a3:'Unity Practice — это ежедневная синхронная практика. Каждый день в одно и то же время тысячи людей по всему миру останавливаются и практикуют вместе. Вы открываете приложение, нажимаете «Я участвую», и начинается 15–20-минутная сессия. Главное — сделать это одновременно со всеми.',
+    q4:'Как часто проходят глобальные медитации?',a4:'Синхронные практики проходят каждый день в одно и то же время. Это позволяет участникам из разных уголков планеты регулярно практиковать вместе. В будущем планируем добавить вторую ежедневную сессию.',
+    q5:'Что делать, если я опоздаю на несколько минут?',a5:'Вы можете присоединиться в любой момент. Таймер идёт синхронно для всех — вы просто плавно включитесь в общую тишину. Пунктуальность предпочтительна, но опоздание — не проблема.',
+    q6:'Могу ли я практиковать вне глобального расписания?',a6:'Да, в приложении есть режим персональной практики. Однако главная сила — именно регулярные коллективные сессии: они создают эффект резонанса, многократно усиливающий намерение каждого.',
+    q7:'Нужен ли опыт медитации?',a7:'Нет. Практика подходит и новичкам, и опытным. Мы сочетаем тишину с короткими научно обоснованными голосовыми подсказками. Никаких специальных знаний не требуется.',
+    q8:'Есть ли научные доказательства пользы групповых медитаций?',a8:'Да. Исследования в нейробиологии показывают, что совместная практика способствует нейронной когерентности — синхронизации мозговых волн. На странице Науки вы найдёте исследования HeartMath, Global Consciousness Project и эффект Махариши.',
+    q9:'Что такое эффект Махариши?',a9:'Научно задокументированный феномен: когда определённый процент населения медитирует одновременно, уровень преступности и социальной напряжённости статистически значимо снижается. Опубликовано в Journal of Conflict Resolution.',
+    q10:'Какова длительность одной сессии?',a10:'15–20 минут. Это оптимальное время, подтверждённое исследованиями: достаточно для перезагрузки нервной системы и глубокой когерентности — но легко вписывается в ритм дня.',
+    q11:'Нужен ли опыт медитации, чтобы почувствовать эффект?',a11:'Абсолютно нет. Сама синхронность создаёт поддерживающую среду. Многие начинающие отмечают, что в группе легче удерживать внимание, чем в одиночку.',
+    q12:'Что такое нейронная когерентность?',a12:'Явление, при котором мозговые волны людей, практикующих вместе, начинают синхронизироваться. ЭЭГ-исследования показывают, что групповая медитация создаёт общее поле когерентности, влияющее на участников и окружающее пространство.',
+    q13:'Как работает синхронизация сердечного ритма HeartMath?',a13:'HeartMath показал: когда люди практикуют когерентное дыхание и состояние благодарности, их сердечные ритмы синхронизируются — даже на расстоянии. Unity Practice создаёт эту социальную когерентность в глобальном масштабе.',
+    q14:'Что такое морфические поля Шелдрейка?',a14:'Теория Шелдрейка (1981): существует коллективная память, которая усиливается с каждым повторением практики. Чем больше людей практикуют вместе, тем легче и глубже состояние для каждого нового участника. Мы создаём такое поле вместе.',
+    q15:'Почему 15–20 минут, а не 5 или 60?',a15:'Исследования показывают: глубокая когерентность достигается примерно через 12–15 минут практики. 20 минут — оптимум: достаточно для эффекта, но не настолько долго, чтобы люди пропускали из-за нехватки времени.',
+    q16:'На каких устройствах работает приложение?',a16:'Бесплатно для iOS (App Store) и Android (Google Play). Версия для iPad и Android-планшетов также поддерживается.',
+    q17:'Как не пропустить начало медитации?',a17:'Включите push-уведомления в приложении — они напомнят за 5–15 минут. Или подпишитесь на бесплатного Telegram-бота для мгновенных напоминаний.',
+    q18:'Будет ли приложение стабильно работать при тысячах одновременных подключений?',a18:'Да. Инфраструктура построена на глобальных облачных технологиях и рассчитана на огромные пиковые нагрузки в секунду старта.',
+    q19:'Можно ли использовать приложение без интернета?',a19:'Для глобальных синхронных сессий нужен интернет (таймер в реальном времени). Для персональной практики после загрузки интернет не требуется.',
+    q20:'Сколько места занимает приложение?',a20:'Около 50–80 МБ. Постоянно оптимизируется для быстрой работы даже на старых смартфонах.',
+    q21:'Сколько стоит участие?',a21:'Ежедневная синхронная практика всегда была и остаётся абсолютно бесплатной. Никаких подписок, никаких внутренних покупок.',
+    q22:'Как защищены мои личные данные?',a22:'Мы не собираем личную информацию и не используем рекламные трекеры. Email или бот-подписка — только для выбранных вами напоминаний. Участие полностью анонимно — аккаунт не нужен.',
+    q23:'Где общаться с другими участниками?',a23:'В нашем Telegram-сообществе. Ссылка — в приложении или в футере сайта. Участники делятся опытом, обсуждают статьи и поддерживают друг друга.',
+    q24:'Кто руководит проектом?',a24:'Проект создан Самартом Самасати — практикующим с многолетним опытом. Он не называет себя учителем. Проект поддерживается международной командой волонтёров из области осознанности, когнитивных наук и звуковой терапии.',
+    q25:'Как поддержать проект или стать его частью?',a25:'Лучшая поддержка — рассказать друзьям и практиковать вместе. Оставьте отзыв в App Store или Google Play. Для партнёрства или волонтёрства: info@unity-practice.com.',
+    q26:'Что означает название Unity Practice?',a26:'«Unity» — единство, целостность. «Practice» — практика. Unity Practice — это образ жизни: ежедневное возвращение к себе, к другим, к миру. Практика единства с собой и всеми живыми существами.',
+    q27:'Какова тема ежедневной практики?',a27:'Тема всегда одна: направление внимания на любовь, доброту и заботу ко всем живым существам. Не меняющийся текст — глубокая, устойчивая практика. Каждый день — то же намерение, со временем создающее мощную внутреннюю опору.',
+    q28:'Что такое серия (streak) в приложении?',a28:'Количество дней подряд, которые вы практиковали с нами. Не соревнование — ваш личный маркер последовательности. Если пропустили — серия обнуляется. Это нормально.',
+    q29:'Что произойдёт с данными при удалении приложения?',a29:'Все данные немедленно и безвозвратно удаляются. Мы не храним их на своих серверах. Восстановить серию невозможно. Это сделано намеренно: ваше участие — здесь и сейчас.',
+    q30:'Как получить помощь при проблемах с приложением?',a30:'Напишите на support@unity-practice.com — ответ в течение 24 часов. Или задайте вопрос в Telegram-сообществе.'
+  },
+  en:{
+    nav_about:'About',nav_wiss:'Science',nav_samarth:'Samarth',nav_stimmen:'Voices',nav_faq:'FAQ',nav_cta:'Download App',
+    back:'← Back to Home',lbl:'Frequently Asked Questions',sub:'30 answers on concept, science, app, privacy and community.',
+    search_ph:'Search questions…',no_results:'No results found.',ask_btn:'+ Ask your own question',res_one:'result',res_many:'results',
+    g1:'Concept & Simultaneity',g2:'Science & Effectiveness',g3:'App & Technology',g4:'Cost, Privacy & Community',g5:'Further Questions',
+    q1:'What is synchronized meditation?',a1:'A practice where people from all over the world meditate at the exact same moment. The app has a global timer connecting thousands of participants in real time, creating a powerful effect of shared presence and collective intention.',
+    q2:'How does it work across different time zones?',a2:'You don\'t need to calculate anything. The global timer automatically adjusts to your local time. Everyone sees their own start time — 20:00 in Moscow, 19:00 in Berlin — but all begin simultaneously.',
+    q3:'What is Unity Practice? How does it work?',a3:'Unity Practice is a daily synchronized practice. Every day at the same time thousands of people worldwide pause and practice together. You open the app, tap "I\'m in", and a 15–20 minute session begins. The key: doing it simultaneously with everyone else.',
+    q4:'How often do global meditations take place?',a4:'Synchronized practices take place every day at the same time. This allows participants from all over the world to practice together regularly. We plan to add a second daily session in the future.',
+    q5:'What if I\'m a few minutes late?',a5:'You can join the ongoing meditation at any time. The timer runs synchronously for everyone — you simply ease gently into the shared silence. Punctuality is ideal, but being a little late is no problem.',
+    q6:'Can I practice outside the global schedule?',a6:'Yes, the app has a personal practice mode. However, the greatest strength lies in the synchronized sessions — they create a resonance effect that multiplies each person\'s intention.',
+    q7:'Do I need prior meditation experience?',a7:'No. The practice suits both beginners and the experienced. We combine silence with brief, science-backed voice cues. No prior knowledge required.',
+    q8:'Is there scientific evidence for group meditation?',a8:'Yes. Neuroscientific studies show that shared practice leads to neural coherence — the synchronization of brain waves. On the Science page you\'ll find studies from HeartMath, the Global Consciousness Project and research on the Maharishi Effect.',
+    q9:'What is the Maharishi Effect?',a9:'A scientifically documented phenomenon: when a certain percentage of the population meditates simultaneously, crime and social tensions decrease statistically significantly. Published in the Journal of Conflict Resolution, among others.',
+    q10:'How long does one session last?',a10:'15 to 20 minutes. The research-confirmed optimal time: enough to reset the nervous system and reach deep coherence — short enough to fit into daily life.',
+    q11:'Do I need meditation experience to feel the effect?',a11:'Absolutely not. The synchronicity itself creates a supportive environment. Many beginners report it\'s easier to maintain attention in a group than alone.',
+    q12:'What is neural coherence?',a12:'A phenomenon where the brain waves of people practicing together begin to synchronize. EEG studies show that group meditation creates a shared coherence field that can influence both participants and the surrounding space.',
+    q13:'How does HeartMath heart rhythm synchronization work?',a13:'HeartMath shows: when people practice coherent breathing and gratitude, their heart rhythms synchronize — even across distance. Unity Practice creates this social coherence on a global scale.',
+    q14:'What are morphic fields according to Sheldrake?',a14:'Sheldrake\'s theory (1981): there is a collective memory that strengthens with each repetition of a practice. The more people practice together, the easier and deeper the state becomes for each new participant. Together we build this field.',
+    q15:'Why 15–20 minutes and not 5 or 60?',a15:'Studies show deep coherence is achieved after about 12–15 minutes of practice. 20 minutes is the optimum: enough for the effect, but not so long that people skip it due to time constraints.',
+    q16:'On which devices does the app work?',a16:'Free for iOS (App Store) and Android (Google Play). iPad and Android tablets are also supported.',
+    q17:'How do I not miss the start?',a17:'Enable push notifications in the app — they remind you 5–15 minutes before the start. Or subscribe to our free Telegram bot for instant reminders.',
+    q18:'Does the app stay stable when thousands connect simultaneously?',a18:'Yes. Our infrastructure is built on global cloud technology designed to handle enormous peak loads at the start second — without delays.',
+    q19:'Does the app work without internet?',a19:'An internet connection is required for global sessions (the timer runs in real time). For personal practice, no internet is needed after downloading.',
+    q20:'How much storage does the app require?',a20:'About 50–80 MB. Continuously optimized for fast operation even on older smartphones.',
+    q21:'What does participation cost?',a21:'The daily synchronized practice is and will remain absolutely free. No subscriptions, no in-app purchases.',
+    q22:'How is my personal data protected?',a22:'We collect no personal information and use no advertising trackers. Email or bot subscriptions are used solely for the reminders you choose. Participation is completely anonymous — no account needed.',
+    q23:'Where can I connect with other participants?',a23:'In our Telegram community. The link is in the app or in the website footer. Participants share experiences, discuss science and support each other.',
+    q24:'Who leads the project?',a24:'The project was created by Samarth Sammasati — a practitioner with many years of experience. He does not call himself a teacher. Supported by an international volunteer team from mindfulness, cognitive science and sound therapy.',
+    q25:'How can I support the project?',a25:'Tell friends about us and practice with us. Leave a review in the App Store or Google Play. For partnership or volunteering: info@unity-practice.com.',
+    q26:'What does the name Unity Practice mean?',a26:'"Unity" means oneness, wholeness. "Practice" means daily exercise. Unity Practice is a way of life: the daily return to yourself, to others, to the world. The practice of unity with yourself and all living beings.',
+    q27:'What is the theme of the daily practice?',a27:'The theme is always the same: directing attention toward love, kindness and care for all living beings. Not a changing affirmation — a deep, stable practice. Every day the same intention, building a powerful inner foundation over time.',
+    q28:'What is the streak in the app?',a28:'The number of consecutive days you have practiced with us. Not a competition — your personal marker of consistency. If you miss a day, it resets. That is fine.',
+    q29:'What happens to my data if I delete the app?',a29:'All data is immediately and irrevocably deleted. We store nothing on our servers. No streak can be restored. Your participation is here and now.',
+    q30:'How do I get help with app problems?',a30:'Write to support@unity-practice.com — response within 24 hours. Or ask a question in the Telegram community.'
+  },
+  es:{
+    nav_about:'Sobre la práctica',nav_wiss:'Ciencia',nav_samarth:'Samarth',nav_stimmen:'Voces',nav_faq:'FAQ',nav_cta:'Descargar app',
+    back:'← Volver al inicio',lbl:'Preguntas frecuentes',sub:'30 respuestas sobre concepto, ciencia, app, privacidad y comunidad.',
+    search_ph:'Buscar preguntas…',no_results:'No se encontraron resultados.',ask_btn:'+ Hacer tu propia pregunta',res_one:'resultado',res_many:'resultados',
+    g1:'Concepto y simultaneidad',g2:'Ciencia y eficacia',g3:'App y tecnología',g4:'Costos, privacidad y comunidad',g5:'Preguntas adicionales',
+    q1:'¿Qué es la meditación sincrónica?',a1:'Una práctica en la que personas de todo el mundo meditan en el mismo momento. La app tiene un temporizador global que conecta a miles de participantes en tiempo real, creando un poderoso efecto de presencia compartida e intención colectiva.',
+    q2:'¿Cómo funciona con diferentes zonas horarias?',a2:'No necesitas calcular nada. El temporizador global se ajusta automáticamente a tu hora local. Cada uno ve su propia hora de inicio — 20:00 en Moscú, 19:00 en Berlín — pero todos comienzan simultáneamente.',
+    q3:'¿Qué es Unity Practice? ¿Cómo funciona?',a3:'Unity Practice es una práctica diaria sincronizada. Cada día a la misma hora miles de personas en todo el mundo se detienen y practican juntas. Abres la app, pulsas "Estoy listo" y comienza una sesión de 15–20 minutos. Lo fundamental: hacerlo simultáneamente con todos.',
+    q4:'¿Con qué frecuencia tienen lugar las meditaciones globales?',a4:'Las prácticas sincronizadas tienen lugar todos los días a la misma hora. Esto permite a los participantes de todo el mundo practicar juntos regularmente. En el futuro planeamos añadir una segunda sesión diaria.',
+    q5:'¿Qué hago si llego unos minutos tarde?',a5:'Puedes unirte a la meditación en cualquier momento. El temporizador corre sincrónicamente para todos — simplemente te deslizas en el silencio compartido. La puntualidad es ideal, pero llegar tarde no es ningún problema.',
+    q6:'¿Puedo practicar fuera del horario global?',a6:'Sí, la app tiene un modo de práctica personal. Sin embargo, la mayor fortaleza radica en las sesiones sincronizadas — crean un efecto de resonancia que multiplica la intención de cada persona.',
+    q7:'¿Necesito conocimientos previos de meditación?',a7:'No. La práctica es adecuada tanto para principiantes como para experimentados. Combinamos silencio con breves indicaciones de voz respaldadas por la ciencia. No se requieren conocimientos previos.',
+    q8:'¿Hay evidencia científica sobre la meditación grupal?',a8:'Sí. Los estudios de neurociencia muestran que la práctica compartida conduce a la coherencia neuronal — la sincronización de las ondas cerebrales. En la página de Ciencia encontrarás estudios de HeartMath, el Global Consciousness Project y el Efecto Maharishi.',
+    q9:'¿Qué es el Efecto Maharishi?',a9:'Un fenómeno científicamente documentado: cuando un cierto porcentaje de la población medita simultáneamente, la delincuencia y las tensiones sociales disminuyen de manera estadísticamente significativa. Publicado en el Journal of Conflict Resolution.',
+    q10:'¿Cuánto dura una sesión?',a10:'15 a 20 minutos. El tiempo óptimo confirmado por la investigación: suficiente para reiniciar el sistema nervioso y alcanzar coherencia profunda — lo bastante corto para encajar en el día.',
+    q11:'¿Necesito experiencia en meditación para sentir el efecto?',a11:'Absolutamente no. La sincronía en sí crea un entorno de apoyo. Muchos principiantes informan que es más fácil mantener la atención en grupo que solos.',
+    q12:'¿Qué es la coherencia neuronal?',a12:'Un fenómeno en el que las ondas cerebrales de personas que practican juntas comienzan a sincronizarse. Los estudios de EEG muestran que la meditación grupal crea un campo de coherencia compartido que puede influir en los participantes y el espacio circundante.',
+    q13:'¿Cómo funciona la sincronización del ritmo cardíaco de HeartMath?',a13:'HeartMath muestra: cuando las personas practican respiración coherente y gratitud, sus ritmos cardíacos se sincronizan — incluso a distancia. Unity Practice crea esta coherencia social a escala global.',
+    q14:'¿Qué son los campos mórficos de Sheldrake?',a14:'La teoría de Sheldrake (1981): existe una memoria colectiva que se fortalece con cada repetición de una práctica. Cuantas más personas practican juntas, más fácil y profundo se vuelve el estado para cada nuevo participante.',
+    q15:'¿Por qué 15–20 minutos y no 5 o 60?',a15:'Los estudios muestran que la coherencia profunda se alcanza tras unos 12–15 minutos de práctica. 20 minutos es el óptimo: suficiente para el efecto, pero no tan largo que la gente lo omita por falta de tiempo.',
+    q16:'¿En qué dispositivos funciona la app?',a16:'Gratis para iOS (App Store) y Android (Google Play). También compatible con iPad y tablets Android.',
+    q17:'¿Cómo no me pierdo el inicio?',a17:'Activa las notificaciones push en la app — te recordarán 5–15 minutos antes del inicio. O suscríbete a nuestro bot de Telegram gratuito para recordatorios instantáneos.',
+    q18:'¿La app permanece estable con miles de conexiones simultáneas?',a18:'Sí. Nuestra infraestructura está construida sobre tecnología cloud global diseñada para manejar enormes cargas pico en el segundo de inicio, sin retrasos.',
+    q19:'¿Funciona la app sin internet?',a19:'Se necesita internet para las sesiones globales (el temporizador funciona en tiempo real). Para la práctica personal, no se necesita internet después de descargar la app.',
+    q20:'¿Cuánto espacio ocupa la app?',a20:'Alrededor de 50–80 MB. Continuamente optimizada para funcionar rápido incluso en smartphones más antiguos.',
+    q21:'¿Cuánto cuesta la participación?',a21:'La práctica diaria sincronizada es y seguirá siendo absolutamente gratuita. Sin suscripciones, sin compras en la app.',
+    q22:'¿Cómo están protegidos mis datos personales?',a22:'No recopilamos información personal ni usamos rastreadores publicitarios. El email o la suscripción al bot se usa exclusivamente para los recordatorios que elijas. La participación es completamente anónima — no se necesita cuenta.',
+    q23:'¿Dónde puedo conectarme con otros participantes?',a23:'En nuestra comunidad de Telegram. El enlace está en la app o en el pie de página del sitio. Los participantes comparten experiencias, discuten ciencia y se apoyan mutuamente.',
+    q24:'¿Quién lidera el proyecto?',a24:'El proyecto fue creado por Samarth Sammasati — un practicante con muchos años de experiencia. No se llama a sí mismo maestro. Apoyado por un equipo internacional de voluntarios de atención plena, ciencias cognitivas y terapia del sonido.',
+    q25:'¿Cómo puedo apoyar el proyecto?',a25:'Habla con amigos y practica con nosotros. Deja una reseña en App Store o Google Play. Para asociaciones o voluntariado: info@unity-practice.com.',
+    q26:'¿Qué significa el nombre Unity Practice?',a26:'"Unity" significa unidad, plenitud. "Practice" — práctica diaria. Unity Practice es una forma de vida: el regreso diario a uno mismo, a los demás, al mundo. La práctica de la unidad con uno mismo y con todos los seres vivos.',
+    q27:'¿Cuál es el tema de la práctica diaria?',a27:'El tema es siempre el mismo: dirigir la atención hacia el amor, la bondad y el cuidado por todos los seres vivos. No un texto cambiante — una práctica profunda y estable. Cada día la misma intención, que con el tiempo crea un apoyo interior poderoso.',
+    q28:'¿Qué es el streak en la app?',a28:'El número de días consecutivos que has practicado con nosotros. No es una competencia — tu marcador personal de consistencia. Si te saltas un día, se reinicia. Está bien.',
+    q29:'¿Qué pasa con mis datos si borro la app?',a29:'Todos los datos se eliminan inmediata e irrevocablemente. No los almacenamos en nuestros servidores. Ningún streak puede restaurarse. Tu participación es aquí y ahora.',
+    q30:'¿Cómo obtengo ayuda con problemas de la app?',a30:'Escríbenos a support@unity-practice.com — respuesta en 24 horas. O haz una pregunta en la comunidad de Telegram.'
+  }
+};
+function applyLang(lang){
+  if(!T[lang])return;
+  localStorage.setItem('up_lang',lang);
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[lang][k]!==undefined)el.textContent=T[lang][k];
+  });
+  var si=document.getElementById('faq-search');
+  if(si)si.placeholder=T[lang].search_ph||'';
+  document.querySelectorAll('.lb').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});
+  document.querySelectorAll('a[href*="index.html"]').forEach(function(a){
+    var h=a.getAttribute('href').split('?')[0];
+    var hi=h.indexOf('#');
+    a.setAttribute('href',hi>-1?h.slice(0,hi)+'?lang='+lang+h.slice(hi):h+'?lang='+lang);
+  });
+  runSearch();
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.lb');if(b)applyLang(b.dataset.lang);});
+document.querySelectorAll('.faq-item').forEach(function(item){
+  item.querySelector('.faq-q').addEventListener('click',function(){
+    var open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');});
+    if(!open)item.classList.add('open');
+  });
+});
+function pluralResult(n,L){
+  if(L.res_few){ /* russische 3-Form-Pluralisierung */
+    var m10=n%10,m100=n%100;
+    if(m10===1&&m100!==11)return L.res_one;
+    if(m10>=2&&m10<=4&&!(m100>=12&&m100<=14))return L.res_few;
+    return L.res_many;
+  }
+  return n===1?L.res_one:L.res_many;
+}
+function runSearch(){
+  var val=(document.getElementById('faq-search').value||'').toLowerCase().trim();
+  var lang=document.documentElement.lang||'de';
+  var visible=0;
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    if(!val){item.hidden=false;visible++;return;}
+    var qEl=item.querySelector('[data-i18n^="q"]');
+    var aEl=item.querySelector('[data-i18n^="a"]');
+    var qTxt=(qEl?qEl.textContent:'').toLowerCase();
+    var aTxt=(aEl?aEl.textContent:'').toLowerCase();
+    var match=qTxt.indexOf(val)>-1||aTxt.indexOf(val)>-1;
+    item.hidden=!match;
+    if(match)visible++;
+  });
+  document.querySelectorAll('.faq-group').forEach(function(g){
+    var hasVisible=g.querySelectorAll('.faq-item:not([hidden])').length>0;
+    g.hidden=val&&!hasVisible;
+  });
+  var noR=document.getElementById('no-results');
+  if(noR)noR.style.display=(val&&visible===0)?'block':'none';
+  var cnt=document.getElementById('search-count');
+  if(cnt){
+    if(val&&visible>0){
+      var L=T[lang];
+      cnt.textContent=visible+' '+pluralResult(visible,L);
+    } else {cnt.textContent='';}
+  }
+}
+document.getElementById('faq-search').addEventListener('input',runSearch);
+(function(){var p=new URLSearchParams(window.location.search).get('lang');var l=(p&&T[p])?p:(localStorage.getItem('up_lang')||(navigator.language||'de').substring(0,2));applyLang(T[l]?l:'de');})();
+</script>
+<div class="mob-lang-bar">
+  <button class="lb" data-lang="de">DE</button>
+  <button class="lb" data-lang="ru">RU</button>
+  <button class="lb" data-lang="en">EN</button>
+  <button class="lb" data-lang="es">ES</button>
+</div>
+</body>
+</html>

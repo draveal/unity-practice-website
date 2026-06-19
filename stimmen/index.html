@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0A1A2F">
+<!-- Umami Analytics (cookieless). data-website-id aus dem Umami-Cloud-Dashboard. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="<UMAMI_WEBSITE_ID>"></script>
+<meta name="description" content="Unity Practice — echte Erfahrungsberichte von Menschen aus der Praxis der Einheit.">
+<meta property="og:title" content="Stimmen — Unity Practice">
+<meta property="og:description" content="Echte Erfahrungsberichte von Menschen aus der Praxis der Einheit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://unity-practice.com/stimmen/">
+<meta property="og:image" content="https://unity-practice.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stimmen — Unity Practice">
+<meta name="twitter:description" content="Echte Erfahrungsberichte von Menschen aus der Praxis der Einheit.">
+<meta name="twitter:image" content="https://unity-practice.com/og-image.jpg">
+<link rel="canonical" href="https://unity-practice.com/stimmen/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Stimmen — Unity Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1A2F;--bg2:#0c1e38;--card:#0f2444;--border:#1a3050;--accent:#E0A93F;--accent2:#1a2800;--accent3:#2DCECE;--text:#F5F7FA;--muted:#6080a0;--soft:#8ca0b8;--gold:#F2C94C;--gold-subtle:rgba(224,169,63,.22);--radius:14px;--ff-serif:'Spectral',Georgia,serif;--ff-sans:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-sans);font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;border-bottom:.5px solid rgba(79,195,161,.15);background:rgba(7,14,26,.9);backdrop-filter:blur(14px);gap:16px}
+.nav-logo{font-family:var(--ff-serif);font-size:18px;font-weight:600;color:var(--text);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-size:13px;font-weight:500;color:#0A1A2F;background:var(--accent);border:none;border-radius:24px;padding:8px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.lb{background:none;border:.5px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;font-weight:500;padding:4px 8px;cursor:pointer;font-family:var(--ff-sans);letter-spacing:.5px;transition:border-color .2s,color .2s}
+.lb:hover,.lb.active{border-color:var(--accent);color:var(--accent)}
+.lang-btns{display:flex;gap:4px}
+main{max-width:760px;margin:0 auto;padding:140px 40px 100px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-decoration:none;margin-bottom:40px;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+.page-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);margin-bottom:16px}
+.page-title{font-family:var(--ff-serif);font-size:clamp(32px,5vw,60px);font-weight:300;line-height:1.15;margin-bottom:24px}
+.page-sub{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:14px}
+.orig-note{font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:56px;padding:12px 16px;border-left:2px solid var(--border);background:rgba(15,36,68,.4);border-radius:0 8px 8px 0}
+.tm-card{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:26px 30px;margin-bottom:18px}
+.tm-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;padding-bottom:12px;border-bottom:.5px solid var(--border)}
+.tm-name{font-family:var(--ff-serif);font-size:20px;font-weight:400;color:var(--text)}
+.tm-date{font-size:12px;color:var(--muted);flex-shrink:0;letter-spacing:.5px}
+.tm-body{font-size:14.5px;color:var(--soft);line-height:1.8}
+.tm-body p{margin-bottom:12px}
+.tm-body p:last-child{margin-bottom:0}
+.tm-body strong{color:var(--text);font-weight:500}
+.tm-foot{text-align:center;margin-top:56px;padding-top:40px;border-top:.5px solid var(--border)}
+.tm-foot a{display:inline-flex;align-items:center;gap:8px;background:none;border:.5px solid var(--border);border-radius:24px;padding:12px 24px;color:var(--soft);font-family:var(--ff-sans);font-size:14px;text-decoration:none;transition:border-color .2s,color .2s}
+.tm-foot a:hover{border-color:var(--accent);color:var(--accent)}
+.mob-lang-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(10,26,47,.97);border-top:.5px solid var(--border);padding:12px 20px;justify-content:center;gap:12px;backdrop-filter:blur(10px)}
+@media(max-width:900px){nav{padding:14px 20px}.nav-links{display:none}main{padding:100px 20px 80px}.lang-btns{display:none}.mob-lang-bar{display:flex}.tm-card{padding:22px 22px}.tm-head{flex-direction:column;gap:4px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Unity Practice</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#meaning" data-i18n="nav_about">Über die Praxis</a></li>
+    <li><a href="../wissenschaft/index.html" data-i18n="nav_wiss">Wissenschaft</a></li>
+    <li><a href="../ueber-samarth/index.html" data-i18n="nav_samarth">Samarth</a></li>
+    <li><a href="index.html" class="active" data-i18n="nav_stimmen">Stimmen</a></li>
+    <li><a href="../faq/index.html" data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-btns">
+      <button class="lb" data-lang="de">DE</button>
+      <button class="lb" data-lang="ru">RU</button>
+      <button class="lb" data-lang="en">EN</button>
+      <button class="lb" data-lang="es">ES</button>
+    </div>
+    <a href="../index.html#cta-final" class="nav-cta" data-i18n="nav_cta">App herunterladen</a>
+  </div>
+</nav>
+<main>
+  <a href="../index.html" class="back-link" data-i18n="back">← Zurück zur Startseite</a>
+  <div class="page-label" data-i18n="lbl">Echte Stimmen</div>
+  <h1 class="page-title" data-i18n="title">Was Menschen erleben</h1>
+  <p class="page-sub" data-i18n="sub">Echte, ungekürzte Erfahrungsberichte von Menschen, die die Praxis der Einheit machen.</p>
+  <div class="orig-note" data-i18n="note">Hinweis: Die Berichte erscheinen im russischen Original — der Sprache, in der sie geschrieben wurden. Nachnamen sind aus Datenschutzgründen abgekürzt.</div>
+
+  <div class="tm-list">
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Любовь</span><span class="tm-date">20.10.2023</span></div>
+      <div class="tm-body"><p>Практика Единства — это мой первый духовный опыт. И когда я осознала себя везде, куда бы я ни посмотрела... это невозможно передать словами. Смотрю на коробку — я коробка, смотрю на кота — я кот, смотрю в окно на дома — я дома. Потом я ходила очень медленно, словно внутри себя самой. И когда я пережила этот духовный опыт, то пожелание счастья «пусть во мне, как во всём...» стало очевидным 💯 Моя жизнь и жизнь моего окружения изменилась очень сильно. Словно вся Вселенная помогает мне ❤️</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Дмитрий</span><span class="tm-date">23.10.2023</span></div>
+      <div class="tm-body">
+        <p><strong>Мой отзыв о практике ЕДИНСТВА</strong></p>
+        <p>Данную практику делаю уже на протяжении года и могу сказать следующее. Во мне реально начал раскрываться аспект любви, безусловной любви! Я никогда и подумать не мог, что такие состояния возможны, когда ты просто всё фильтруешь через это чувство. Смотришь на людей вокруг и кайфуешь от их присутствия, от понимания что они — это часть тебя.</p>
+        <p>Также благодаря практике сильно трансформировались отношения с родителями (особенно с папой). Я никогда от него не ощущал такой любви как сейчас. То, что практика повлияла положительно на мою индивидуальную жизнь и моё восприятие — это 100% факт! И это помогает всем живым существам, так как всё ЕДИНО.</p>
+        <p>Как-то я был в очень сильном состоянии любви ко всему, и часто с этим чувством входил в ЕДИНСТВО. Я много раз замечал как внутреннее состояние реально влияет на внешний мир. И это не фантазия, и не просто научная теория. Теперь это мой личный опыт 🙏❤️</p>
+        <p>Благодарю Самарт за то что однажды передал данную практику 🙏❤️. Пусть все живые существа во всех мирах будут счастливы и свободны 🙏❤️🙌</p>
+      </div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Наталья</span><span class="tm-date">28.10.2023</span></div>
+      <div class="tm-body">
+        <p>Я пересылаю Практику Любви людям, которые мне доверяют и обращаются ко мне за помощью — тем, про кого интуитивно чувствую, что им сейчас не хватает любви. И получаю обратную связь.</p>
+        <p>Сегодня двое мне написали (мужчина и женщина), что испытывают невероятное состояние Любви. Мужчина сказал, что это впервые в их жизни, что не знал, что Благодарность может чувствоваться даже сильнее, чем Любовь. Другая женщина почти то же самое — включила телевизор по привычке и слушать его совсем не может.</p>
+        <p>И это простые люди, не занимающиеся вообще никакими духовными практиками. Их не надо убеждать — их благодарность накрывает, и ощущение, что выпал самый счастливый билет. Благодарю 🔥🙏</p>
+      </div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Мария К.</span><span class="tm-date">21.10.2023</span></div>
+      <div class="tm-body">
+        <p>Друзья, всем привет! Делаю ПЭ чуть больше недели. Расскажу об эффекте, возможно для кого-то мой пример станет стимулом начать и/или продолжать практику 🙏❤️</p>
+        <p>У меня есть пятилетняя дочь, прекрасный ребёнок. И я никогда не чувствовала к ней любви — всё что угодно, но только не любовь. Будто мне была не доступна такая простая функция. В полночь по мск делаю единство по пятому варианту, решила поместить чувство себя в ребёнка. И появилось очень тонкое чистейшее чувство. Думала, что показалось. Сейчас проверяю ещё и ещё! Это теперь со мной!</p>
+        <p>Самарт, благодарю тебя ❤️🥲</p>
+      </div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">lutik4943</span><span class="tm-date">04.11.2023</span></div>
+      <div class="tm-body"><p>Чуть больше года практикую Единство. За это время Любовь превратилась в аспект Целого — Наполненность, и это невероятный опыт прямого переживания Того, чем мы являемся на самом деле. Много самых невероятных изменений произошло в жизни. Присоединяйтесь!</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">lutik4943</span><span class="tm-date">11.11.2023</span></div>
+      <div class="tm-body"><p>Каждый день после дхьяна-йоги такая невероятная практика Единства, что кажется, Любовь наполняет Всё Мироздание и прямо сейчас делает Мир чище и добрее. Слова не могут этого передать, но это можно почувствовать в прямом опыте. ЛЮБОВЬ как Наполненность ВЕЗДЕ!</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Yaroslav S.</span><span class="tm-date">12.11.2023</span></div>
+      <div class="tm-body"><p>Обожаю это состояние. Это когда просто из тебя всё льётся, и ты видишь как это влияет на то, что вокруг тебя, и от этого только укрепляешься в решении идти дальше. Это удивительно. Спасибо за милость. ❤️🙏</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Любовь</span><span class="tm-date">14.11.2023</span></div>
+      <div class="tm-body"><p>Первое время делала Практику Единства под голос. Ничего не ощущала. Ничего не происходило. Проходила программы, слушала ретриты, вычищала заряды. Продолжала всё это время делать Практику Единства. И постепенно стала замечать, что она уже не такая, как раньше. Стали исчезать границы тела, затем границы восприятия, затем границы Сознания. В один из дней исчезла Я. И это, как говорится, «ни в сказке сказать, ни пером описать». Пишу для тех, кто хочет чуда. Оно произойдёт. Просто продолжайте 🙏</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Марина</span><span class="tm-date">26.11.2023</span></div>
+      <div class="tm-body"><p>Практика единства сейчас идёт просто как единство — осознаём в любой момент, намереваем больше любви, как поток энергии, в любой момент времени без привязки ко времени.</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Любовь М.</span><span class="tm-date">26.11.2023</span></div>
+      <div class="tm-body"><p>Когда начинали практику, я делала под голос каждый час. Теперь почти не вхожу в чат — бывает, просто остановлюсь, почувствую единство, пошлю любовь и делаю свои дела дальше. Правильно это или нет, но у меня так.</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Виктор Г.</span><span class="tm-date">26.11.2023</span></div>
+      <div class="tm-body"><p>Продолжаю делать практику единства. То, что делает Самарт, достойно уважения — это круто. Практика единства мне нравится тем, что она настоящая.</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Наталья</span><span class="tm-date">29.01.2024</span></div>
+      <div class="tm-body">
+        <p>Когда совершенно случайно наткнулась на этот чат, меня увлекла практика — голос Самарта попадал каждым словом и ноткой, как влага на высушенную и потрескавшуюся землю.</p>
+        <p>Когда моё сердце раскрывается и лучики света прикасаются к сердцам всех живых существ во всех мирах — в теле стали происходить изменения. Мне захотелось встать и кружиться, в этом движении столько лёгкости и непринуждённости, я откровенно кайфанула от себя и тела в танце.</p>
+        <p>Моё восприятие мира изменилось, к окружающим людям стала относиться трезво. Конфликтные ситуации стали появляться реже процентов на 80%. Не знаю, как это работает, но мне стала нравиться эта жизнь.</p>
+        <p>Я уже пропитана до мозга костей, и ценнее практики для меня нет — на все случаи жизни, во всех ситуациях она помогает мне опираться на себя и давать опору другим. Благодарю автора и организаторов этого пространства, оно исцеляющее 💞🙏🕉️</p>
+      </div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Любовь</span><span class="tm-date">20.02.2024</span></div>
+      <div class="tm-body"><p>После 2 лет в программах Самарта, делая все практики, которые он передал, практика Единства становится новой реальностью твоего восприятия. Она становится непрерывной. И становится невозможным быть не в принятии, не в благодарности, не в любви. Жизнь стала очевидной и интересной. Эмоции, мысли, чувства стали наблюдаемыми. Всё это доставляет удовольствие и восхищение.<br>«Я в этом фильме — главный актёр, я — сценарист в нём, я — режиссёр».</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Тамара С.</span><span class="tm-date">05.04.2024</span></div>
+      <div class="tm-body"><p>То, что донейшн на ПЕ возвращается тебе сторицей, это стопудово! Только нужно искренне и от всего сердца отдавать, не задумываясь и не просчитывая. Убедилась сама не раз. Буквально часа два назад увидела послание Самарта и перевела. Сейчас пришёл перевод мне в 10 раз больше — а я этого вообще не ожидала. Видимо, этот Вселенский закон так работает. Самарт, благодарю тебя за то, что ты делаешь для всеобщего блага 🙏❤️</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Наталья</span><span class="tm-date">11.04.2024</span></div>
+      <div class="tm-body"><p>Я здесь совсем недавно, понравилась идея челленджа. Сама практика-медитация очень понятная и удобная по времени. Делала каждый час в течение дня. Сразу же заметила, что люди стали ко мне тянуться, как на мёд: кто-то захотел поговорить, кто-то написал, хотя давно не общались; дома родные стали более весёлые и спокойные, на работе дела пошли спокойнее и гармоничнее. Всего за 7 дней такой потрясающий результат. Спасибо Вам, Самарт, огромное ❤️</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Анастасия Р.</span><span class="tm-date">11.04.2024</span></div>
+      <div class="tm-body"><p>Практика единства стала частью моей жизни, напоминание стоит на каждый час. Внешне мало что изменилось, но внутренне я очень поменялась. Если раньше я думала только о себе, сейчас думаю о том, чтобы помочь другим. Изменилось отношение к близким — я стала более мягкой, принимающей. И ещё стала более стрессоустойчивой. Очень хотелось бы, чтобы как можно больше людей делали эту практику, тогда мир поменялся бы в лучшую сторону 🙏</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Evgenia W.</span><span class="tm-date">11.04.2024</span></div>
+      <div class="tm-body"><p>💯❤️ Практика Единства подарила ясность во многих вопросах, честность с собой, доброту и понимание ситуации. Благодарю тебя, Самарт, и всех.</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Ольга Т.</span><span class="tm-date">11.04.2024</span></div>
+      <div class="tm-body">
+        <p>Практика Единства позволяет быть в состоянии Любви и покоя, даже когда звучит воздушная тревога и слышны взрывы. Она помогает чувствовать, что ты не это тело и личность, а они даны как роль на время, но ты нечто бесконечное.</p>
+        <p>Проводя её, ты можешь легко обращаться ко всему во Вселенной, чувствуя, что ведёшь диалог, а не монолог, который никто не слышит. На бытовом уровне становишься мягче и внимательнее — это влияет на все сферы жизни.</p>
+        <p>То, что делает Самарт, сейчас необходимо этому миру. Делаю ПЕ каждый час бодрствования, минут 10–15. Это стало приятной потребностью. И хочу обнять всех участников группы — всех этих незнакомых мне людей, которых я больше не чувствую чужими. Мира всем нам. 💚</p>
+      </div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">ЛюдМила</span><span class="tm-date">11.04.2024</span></div>
+      <div class="tm-body"><p>Стало больше покоя и любви, и в состояние Единства входишь уже быстро и легко. А любовь — как фон в течение дня. Про тело: оно стало более гибким и здоровым, полным энергии, уменьшилось количество сна, зато улучшилось его качество. Также стали приходить такие же люди в моё окружение — в которых больше любви и сострадания. Это чудесным образом работает. Благодарю Самарт за всё и за эту Практику особенно 🙏❤️</p></div>
+    </div>
+
+    <div class="tm-card">
+      <div class="tm-head"><span class="tm-name">Наталья</span><span class="tm-date">11.04.2024</span></div>
+      <div class="tm-body">
+        <p><strong>Обратная связь 🙌</strong> Благодарю Самарт 🙏 за Единство 💞 и за всё, что делаете для мира. Я намереваю Единство по будильнику, шаг 30 мин, и посвящаю каждое дело и практику Единству 🙏💞</p>
+        <p>Мне нравится себя чувствовать в этом состоянии — расширения, безусловности любви и внутренней тишины. Два года в этой практике.</p>
+        <p>На физическом плане здоровье улучшилось. Артрит отпустил свою железную, леденящую хватку. Тело восстановило амплитуду движения примерно на 70% — это замечательный результат. А ведь врачи говорили, что будет только хуже, что это вылечить нельзя. Сейчас мне легко 💃</p>
+        <p>Отношения мои с миром поменялись кардинально. Слов не хватает, чтобы выразить свою благодарность Самарту и каждому практикующему 🙏 низкий поклон вам 💞</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tm-foot">
+    <a href="../index.html#cta-final" data-i18n="cta">App herunterladen — kostenlos →</a>
+  </div>
+</main>
+
+<div class="mob-lang-bar">
+  <button class="lb" data-lang="de">DE</button>
+  <button class="lb" data-lang="ru">RU</button>
+  <button class="lb" data-lang="en">EN</button>
+  <button class="lb" data-lang="es">ES</button>
+</div>
+
+<script>
+var T={
+  de:{nav_about:'Über die Praxis',nav_wiss:'Wissenschaft',nav_samarth:'Samarth',nav_stimmen:'Stimmen',nav_faq:'FAQ',nav_cta:'App herunterladen',
+    back:'← Zurück zur Startseite',lbl:'Echte Stimmen',title:'Was Menschen erleben',
+    sub:'Echte, ungekürzte Erfahrungsberichte von Menschen, die die Praxis der Einheit machen.',
+    note:'Hinweis: Die Berichte erscheinen im russischen Original — der Sprache, in der sie geschrieben wurden. Nachnamen sind aus Datenschutzgründen abgekürzt.',
+    cta:'App herunterladen — kostenlos →'},
+  ru:{nav_about:'О практике',nav_wiss:'Наука',nav_samarth:'Самарт',nav_stimmen:'Отзывы',nav_faq:'FAQ',nav_cta:'Скачать приложение',
+    back:'← На главную',lbl:'Реальные отзывы',title:'Что переживают люди',
+    sub:'Настоящие, неотредактированные отзывы людей, которые делают Практику Единства.',
+    note:'Отзывы приводятся в оригинале — на русском языке, на котором они были написаны. Фамилии сокращены из соображений конфиденциальности.',
+    cta:'Скачать приложение — бесплатно →'},
+  en:{nav_about:'About',nav_wiss:'Science',nav_samarth:'Samarth',nav_stimmen:'Voices',nav_faq:'FAQ',nav_cta:'Download App',
+    back:'← Back to Home',lbl:'Real Voices',title:'What People Experience',
+    sub:'Real, unedited testimonials from people who do the Practice of Unity.',
+    note:'These testimonials appear in the original Russian — the language they were written in. Last names are abbreviated for privacy.',
+    cta:'Download the app — free →'},
+  es:{nav_about:'Sobre la práctica',nav_wiss:'Ciencia',nav_samarth:'Samarth',nav_stimmen:'Voces',nav_faq:'FAQ',nav_cta:'Descargar app',
+    back:'← Volver al inicio',lbl:'Voces reales',title:'Lo que viven las personas',
+    sub:'Testimonios reales y sin editar de personas que hacen la Práctica de la Unidad.',
+    note:'Los testimonios aparecen en su ruso original — el idioma en que fueron escritos. Los apellidos se abrevian por privacidad.',
+    cta:'Descargar la app — gratis →'}
+};
+function applyLang(lang){
+  if(!T[lang])return;
+  localStorage.setItem('up_lang',lang);
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[lang][k]!==undefined)el.textContent=T[lang][k];
+  });
+  document.querySelectorAll('.lb').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});
+  document.querySelectorAll('a[href*="index.html"]').forEach(function(a){
+    var h=a.getAttribute('href').split('?')[0];
+    var hi=h.indexOf('#');
+    a.setAttribute('href',hi>-1?h.slice(0,hi)+'?lang='+lang+h.slice(hi):h+'?lang='+lang);
+  });
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.lb');if(b)applyLang(b.dataset.lang);});
+(function(){var p=new URLSearchParams(window.location.search).get('lang');var l=(p&&T[p])?p:(localStorage.getItem('up_lang')||(navigator.language||'de').substring(0,2));applyLang(T[l]?l:'de');})();
+</script>
+</body>
+</html>
