@@ -1,0 +1,23 @@
+# Gitleaks — Secret-Scan Konfiguration
+# Firebase Web API Keys sind by design öffentlich (nur Projekt-Identifier).
+# Echte Secrets (YouTube, Service Account, Supabase) müssen in Cloudflare/GitHub Secrets.
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Firebase Web SDK config — öffentlich by design, geschützt durch Firestore Rules + domain restriction"
+regexes = [
+  # Unity Practice Firebase Project Key
+  'AIzaSyBDzW-qdbkqkBlaIJuQ5wIC6HMt66utg7w',
+]
+
+[[allowlists]]
+description = "Platzhalter-Strings in Kommentaren / Doku"
+regexes = [
+  '<PROJECT_REF>',
+  '<ADMIN_HOST>',
+  '<UMAMI_WEBSITE_ID>',
+  'YOUR_.*_HERE',
+  'REPLACE_WITH',
+]
