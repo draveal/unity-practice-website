@@ -926,7 +926,7 @@ window.openDatenschutz=function(){
   window.open('/privacy/?lang='+l,'_blank','noopener');
 };
 
-var SUBSCRIBE_URL='https://europe-west1-unity-practice-one.cloudfunctions.net/subscribeEmail';
+var SUBSCRIBE_URL='https://worker-email.draveal99.workers.dev/subscribe';
 document.getElementById('email-btn').addEventListener('click',async function(){
   var input=document.getElementById('email-input');
   var val=(input.value||'').trim();
