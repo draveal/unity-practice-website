@@ -237,6 +237,12 @@ section{position:relative;z-index:1}
 .email-input:focus{border-color:var(--accent)}
 .email-submit{background:transparent;border:.5px solid var(--gold);color:var(--gold);border-radius:28px;padding:12px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--ff-sans);white-space:nowrap;transition:background .2s,color .2s}
 .email-submit:hover{background:var(--gold);color:#0A1A2F}
+.email-slots{margin-top:14px;max-width:440px;margin-left:auto;margin-right:auto;text-align:left}
+.email-slots-title{font-size:12px;color:var(--soft);margin-bottom:8px}
+.email-slots-list{display:flex;flex-wrap:wrap;gap:8px}
+.email-slot{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:.5px solid var(--border);border-radius:22px;padding:7px 14px;font-size:13px;color:var(--text);cursor:pointer;transition:border-color .2s}
+.email-slot:hover{border-color:var(--accent)}
+.email-slot input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;margin:0}
 .email-note{font-size:11px;color:var(--muted);margin-top:10px}
 .email-consent{display:flex;align-items:flex-start;gap:8px;margin-top:12px;font-size:12px;color:var(--soft);line-height:1.5;text-align:left;cursor:pointer}
 .email-consent input{margin-top:2px;flex-shrink:0;accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
@@ -678,6 +684,7 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
         <input type="email" class="email-input" placeholder="deine@email.com" id="email-input">
         <button class="email-submit" id="email-btn">Erinnern</button>
       </div>
+      <div class="email-slots" id="email-slots" hidden></div>
       <label class="email-consent"><input type="checkbox" id="email-consent"><span id="email-consent-label">Ich bin einverstanden, dass meine E-Mail zur Erinnerung gespeichert wird. <a href="#" onclick="openDatenschutz();return false;">Datenschutz</a></span></label>
       <div class="email-note" id="email-note">Nur eine Erinnerung vor der Praxis. Kein Spam. Jederzeit abmeldbar.</div>
     </div>
@@ -927,6 +934,70 @@ window.openDatenschutz=function(){
 };
 
 var SUBSCRIBE_URL='https://worker-email.draveal99.workers.dev/subscribe';
+
+/* ── SLOT-AUSWAHL ── Praxiszeiten dynamisch aus Firestore config/app
+   (public read). Zeiten sind in Стамбул-Zeit gespeichert (HH:MM) und werden
+   in die Lokalzeit des Besuchers umgerechnet. Slots sind im Admin frei
+   ein-/ausschaltbar → niemals hartcodieren. */
+var _emailSlots=[]; // [{slot, time}] der aktivierten Slots
+function _fv(v){
+  if(!v)return undefined;
+  if('stringValue'in v)return v.stringValue;
+  if('integerValue'in v)return parseInt(v.integerValue,10);
+  if('doubleValue'in v)return v.doubleValue;
+  if('booleanValue'in v)return v.booleanValue;
+  if('mapValue'in v)return _fmap(v.mapValue.fields||{});
+  if('arrayValue'in v)return (v.arrayValue.values||[]).map(_fv);
+  return undefined;
+}
+function _fmap(f){var o={};for(var k in f)o[k]=_fv(f[k]);return o;}
+// Стамбул-Offset (Minuten vor UTC) für einen Zeitpunkt — folgt etwaiger DST.
+function _istOffsetMin(d){
+  var p={};new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Istanbul',hour12:false,
+    year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})
+    .formatToParts(d).forEach(function(x){p[x.type]=x.value;});
+  var asUTC=Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute);
+  return (asUTC-d.getTime())/60000;
+}
+// "HH:MM" Стамбул → Lokalzeit-String des Besuchers (heutiges Datum als Anker).
+function _slotLocalTime(hhmm){
+  var t=hhmm.split(':'),hh=+t[0],mm=+t[1],now=new Date();
+  var anchor=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),hh,mm);
+  var off=_istOffsetMin(new Date(anchor));
+  return new Date(anchor-off*60000).toLocaleTimeString(currentLang,{hour:'2-digit',minute:'2-digit'});
+}
+function _renderEmailSlots(){
+  var box=document.getElementById('email-slots');
+  if(!box)return;
+  // 0–1 aktiver Slot → keine Auswahl nötig (abonniert automatisch alle).
+  if(_emailSlots.length<2){box.hidden=true;box.innerHTML='';return;}
+  var L=LANGS[currentLang]||LANGS.de;
+  // bisherige Auswahl bewahren (Re-Render bei Sprachwechsel)
+  var prev={};box.querySelectorAll('input[type=checkbox]').forEach(function(b){prev[b.value]=b.checked;});
+  var html='<div class="email-slots-title">'+(L.email_slots_title||'')+'</div><div class="email-slots-list">';
+  _emailSlots.forEach(function(s){
+    var on=prev[s.slot]!==false; // Default: angekreuzt
+    html+='<label class="email-slot"><input type="checkbox" value="'+s.slot+'"'+(on?' checked':'')+'>'
+      +'<span>'+_slotLocalTime(s.time)+'</span></label>';
+  });
+  box.innerHTML=html+'</div>';
+  box.hidden=false;
+}
+window._renderEmailSlots=_renderEmailSlots;
+(async function loadEmailSlots(){
+  try{
+    var r=await fetch('https://firestore.googleapis.com/v1/projects/unity-practice-one/databases/(default)/documents/config/app');
+    if(!r.ok)return;
+    var cfg=_fmap((await r.json()).fields||{});
+    var sched=cfg.session_schedule||{};
+    var sessions=Array.isArray(sched.sessions)?sched.sessions:[];
+    _emailSlots=sessions.filter(function(s){return s&&s.enabled!==false&&s.time;})
+      .map(function(s){return {slot:Number(s.slot),time:String(s.time)};})
+      .sort(function(a,b){return a.time.localeCompare(b.time);});
+    _renderEmailSlots();
+  }catch(e){/* Auswahl optional — bei Fehler abonniert man alle Slots */}
+})();
+
 document.getElementById('email-btn').addEventListener('click',async function(){
   var input=document.getElementById('email-input');
   var val=(input.value||'').trim();
@@ -939,10 +1010,21 @@ document.getElementById('email-btn').addEventListener('click',async function(){
   }
   var L=LANGS[currentLang]||LANGS.de;
   var note=document.getElementById('email-note');
+  // Slot-Auswahl einsammeln. Alle angekreuzt (oder keine Auswahl sichtbar)
+  // → [] = alle Slots. Sonst die gewählten Slot-Nummern.
+  var boxes=document.querySelectorAll('#email-slots input[type=checkbox]');
+  var slots=[],allChecked=true;
+  boxes.forEach(function(b){if(b.checked)slots.push(Number(b.value));else allChecked=false;});
+  if(boxes.length&&!slots.length){
+    var sb=document.getElementById('email-slots');
+    if(sb){sb.style.color='#ff6b6b';setTimeout(function(){sb.style.color='';},2500);}
+    return;
+  }
+  var payloadSlots=(!boxes.length||allChecked)?[]:slots;
   var btn=this;btn.disabled=true;
   try{
     var r=await fetch(SUBSCRIBE_URL,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email:val,lang:currentLang,consent:true})});
+      body:JSON.stringify({email:val,lang:currentLang,consent:true,slots:payloadSlots})});
     if(!r.ok)throw new Error('bad');
     input.value='';if(consent)consent.checked=false;
     note.textContent=L.email_thanks;note.style.color='var(--accent)';
@@ -991,7 +1073,7 @@ var LANGS={
     cta_lbl:'Jetzt einsteigen',cta_title:'Die Praxis beginnt',cta_em:'mit dir',
     cta_sub:'Lade die App herunter — kostenlos, ohne Registrierung, sofort.',
     btn_browser:'Im Browser öffnen →',
-    email_ph:'deine@email.com',email_btn:'Erinnern',
+    email_ph:'deine@email.com',email_btn:'Erinnern',email_slots_title:'An welche Praxiszeiten erinnern? (deine Zeit)',
     email_note:'Nur eine Erinnerung vor der Praxis. Kein Spam.',
     email_thanks:'Fast geschafft! Wir haben dir eine E-Mail geschickt — bestätige darin den Link, dann bist du dabei.',email_err:'Das hat nicht geklappt. Bitte später erneut versuchen.',
     auth_or:'oder',auth_login:'Mit Google anmelden',auth_hint:'Optional — speichert deine Serie und erinnert dich vor der Praxis.',auth_streak_lbl:'Tage Serie',auth_completed_lbl:'abgeschlossene Praktiken',auth_reminder:'Erinnerungen vor der Praxis',auth_dashboard:'Volles Dashboard →',auth_logout:'Abmelden',auth_welcome_new:'Willkommen! Deine Serie erscheint hier nach deiner ersten Praxis.',
@@ -1057,7 +1139,7 @@ var LANGS={
     cta_lbl:'Начать сейчас',cta_title:'Практика начинается',cta_em:'с тобой',
     cta_sub:'Скачай приложение — бесплатно, без регистрации, прямо сейчас.',
     btn_browser:'Открыть в браузере →',
-    email_ph:'твой@email.com',email_btn:'Напомнить',
+    email_ph:'твой@email.com',email_btn:'Напомнить',email_slots_title:'О каких практиках напоминать? (твоё время)',
     email_note:'Только одно напоминание до практики. Без спама.',
     email_thanks:'Почти готово! Мы отправили тебе письмо — подтверди ссылку в нём, и всё готово.',email_err:'Не получилось. Попробуй позже.',
     auth_or:'или',auth_login:'Войти через Google',auth_hint:'Необязательно — сохраняет твою серию и напоминает перед практикой.',auth_streak_lbl:'дней подряд',auth_completed_lbl:'завершённых практик',auth_reminder:'Напоминания перед практикой',auth_dashboard:'Полный кабинет →',auth_logout:'Выйти',auth_welcome_new:'Добро пожаловать! Твоя серия появится здесь после первой практики.',
@@ -1123,7 +1205,7 @@ var LANGS={
     cta_lbl:'Join now',cta_title:'The practice begins',cta_em:'with you',
     cta_sub:'Download the app — free, no registration, right now.',
     btn_browser:'Open in browser →',
-    email_ph:'your@email.com',email_btn:'Remind me',
+    email_ph:'your@email.com',email_btn:'Remind me',email_slots_title:'Which practice times to remind you of? (your time)',
     email_note:'Just one reminder before practice. No spam.',
     email_thanks:'Almost there! We sent you an email — confirm the link in it to complete your subscription.',email_err:'That didn\'t work. Please try again later.',
     auth_or:'or',auth_login:'Sign in with Google',auth_hint:'Optional — saves your streak and reminds you before practice.',auth_streak_lbl:'day streak',auth_completed_lbl:'completed practices',auth_reminder:'Reminders before practice',auth_dashboard:'Full dashboard →',auth_logout:'Sign out',auth_welcome_new:'Welcome! Your streak will show up here after your first practice.',
@@ -1189,7 +1271,7 @@ var LANGS={
     cta_lbl:'Únete ahora',cta_title:'La práctica comienza',cta_em:'contigo',
     cta_sub:'Descarga la app — gratis, sin registro, ahora mismo.',
     btn_browser:'Abrir en navegador →',
-    email_ph:'tu@email.com',email_btn:'Recordarme',
+    email_ph:'tu@email.com',email_btn:'Recordarme',email_slots_title:'¿De qué horarios de práctica recordarte? (tu hora)',
     email_note:'Solo un recordatorio antes de la práctica. Sin spam.',
     email_thanks:'¡Ya casi! Te enviamos un correo — confirma el enlace para completar tu suscripción.',email_err:'No funcionó. Inténtalo más tarde.',
     auth_or:'o',auth_login:'Iniciar sesión con Google',auth_hint:'Opcional — guarda tu racha y te recuerda antes de la práctica.',auth_streak_lbl:'días de racha',auth_completed_lbl:'prácticas completadas',auth_reminder:'Recordatorios antes de la práctica',auth_dashboard:'Full dashboard →',auth_logout:'Cerrar sesión',auth_welcome_new:'¡Bienvenido! Tu racha aparecerá aquí después de tu primera práctica.',
@@ -1317,6 +1399,8 @@ function applyLang(lang){
     var k=el.getAttribute('data-i18n');
     if(L[k]!==undefined)el.innerHTML=L[k];
   });
+  /* Slot-Auswahl neu rendern (Titel + Lokalzeit-Format je Sprache) */
+  if(window._renderEmailSlots)window._renderEmailSlots();
   /* Rotate Samarth quote */
   var qArr=L.sam_quotes;
   if(qArr && qArr.length){
