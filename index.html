@@ -141,6 +141,10 @@ section{position:relative;z-index:1}
 .stat-cell{background:var(--bg2);padding:48px 32px;text-align:center}
 .stat-num{font-family:var(--ff-serif);font-size:clamp(36px,5vw,56px);font-weight:300;color:var(--accent);line-height:1;margin-bottom:8px}
 .stat-label{font-size:13px;color:var(--muted)}
+.days-counter{background:var(--bg2);padding:72px 32px;text-align:center}
+.days-num{font-family:var(--ff-serif);font-size:clamp(72px,13vw,150px);font-weight:300;color:var(--accent);line-height:1;margin-bottom:18px;font-variant-numeric:tabular-nums;letter-spacing:-2px}
+.days-line1{font-size:clamp(16px,2.4vw,20px);color:var(--text);margin-bottom:6px}
+.days-since{font-size:13px;color:var(--muted);letter-spacing:.3px}
 #how{background:var(--bg)}
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 .step{display:flex;flex-direction:column;align-items:flex-start}
@@ -182,14 +186,6 @@ section{position:relative;z-index:1}
 .samarth-quote-footer{font-size:13px;color:var(--muted)}
 #science{background:var(--bg3)}
 .science-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.sci-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;background:none;border:none;cursor:pointer;padding:0;margin-bottom:16px;text-align:left;font-family:inherit;color:inherit}
-.sci-toggle .section-title{margin-bottom:0}
-.sci-toggle:hover .section-title{color:var(--gold)}
-.sci-arrow{flex-shrink:0;transition:transform .3s,border-color .3s}
-#science:not(.sci-open) #sci-track{display:none}
-#science:not(.sci-open) #sci-sub{margin-bottom:0}
-#science.sci-open .sci-arrow{transform:rotate(45deg);border-color:var(--gold)}
-#science.sci-open .sci-arrow svg{stroke:var(--gold)}
 .science-card{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:28px}
 .science-badge{display:inline-block;font-size:10px;letter-spacing:1px;color:var(--accent3);background:rgba(45,206,206,0.08);border:.5px solid rgba(45,206,206,.3);border-radius:4px;padding:3px 8px;margin-bottom:14px}
 .science-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
@@ -456,11 +452,10 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
 </section>
 
 <section id="stats">
-  <div class="stats-grid">
-    <div class="stat-cell reveal"><div class="stat-num">1.581</div><div class="stat-label" id="stat1-lbl">Teilnehmer gestern</div></div>
-    <div class="stat-cell reveal m-hide"><div class="stat-num">47</div><div class="stat-label">Länder weltweit</div></div>
-    <div class="stat-cell reveal"><div class="stat-num" id="stat3-num">638</div><div class="stat-label">Sitzungen durchgeführt</div></div>
-    <div class="stat-cell reveal"><div class="stat-num">19:00</div><div class="stat-label">Uhr täglich · deine Zeitzone</div></div>
+  <div class="days-counter reveal">
+    <div class="days-num" id="days-num">1</div>
+    <div class="days-line1" id="days-line1"></div>
+    <div class="days-since" id="days-line2"></div>
   </div>
 </section>
 
@@ -544,10 +539,7 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
 <section id="science">
   <div class="section-inner">
     <div class="section-label reveal" id="sci-lbl"></div>
-    <button class="sci-toggle reveal" id="sci-toggle" aria-expanded="false">
-      <h2 class="section-title" id="sci-title"></h2>
-      <span class="faq-arrow sci-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-    </button>
+    <h2 class="section-title reveal" id="sci-title"></h2>
     <p class="section-sub reveal" id="sci-sub"></p>
     <div class="science-grid science-carousel" id="sci-track">
       <div class="science-card reveal">
@@ -580,6 +572,9 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
         <div class="science-title" id="sci-c6-t"></div>
         <div class="science-text" id="sci-c6-tx"></div>
       </div>
+    </div>
+    <div class="reviews-cta reveal">
+      <a href="wissenschaft/index.html" id="sci-all-link" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent3);font-size:14px;text-decoration:none;border:.5px solid rgba(45,206,206,.3);border-radius:24px;padding:11px 24px;transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--accent3)'" onmouseout="this.style.borderColor='rgba(45,206,206,.3)'">Mehr wissenschaftliche Arbeiten ansehen →</a>
     </div>
   </div>
 </section>
@@ -891,15 +886,8 @@ document.getElementById('faq-list').addEventListener('click',function(e){
   if(!was)item.classList.add('open');
 });
 
-/* Science section collapse toggle */
-(function(){
-  var t=document.getElementById('sci-toggle');if(!t)return;
-  t.addEventListener('click',function(){
-    var sec=document.getElementById('science');
-    var open=sec.classList.toggle('sci-open');
-    t.setAttribute('aria-expanded',open?'true':'false');
-  });
-})();
+/* Wissenschafts-Sektion ist standardmäßig ausgeklappt — kein Collapse-Toggle mehr.
+   Weiterführende Arbeiten über den Link unten (#sci-all-link → wissenschaft/). */
 
 var obs=new IntersectionObserver(function(entries){
   entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
@@ -1069,7 +1057,7 @@ var LANGS={
     btn_app:'App herunterladen',btn_more:'Mehr erfahren →',
     store_apple_s:'Laden im',store_apple:'App Store',store_google_s:'Jetzt bei',store_google:'Google Play',
     phone_label:'Praxis beginnt in',phone_btn:'Ich bin dabei',phone_phrase:'«Heute richten wir unsere Aufmerksamkeit auf Güte für alle Lebewesen»',phone_streak:'🔥 8 Tage in Folge',
-    stat1:'Teilnehmer gestern',stat2:'Länder weltweit',stat3:'Sitzungen durchgeführt',stat4:'Uhr täglich · deine Zeitzone',
+    dunit:{one:'Tag',other:'Tage'},dtail:'Praxis in Folge',dsince:'seit dem 9. September 2024',
     s2_lbl:'Die drei Ebenen',s2_title:'Warum gemeinsam?',s2_sub:'Die Praxis ist nicht nur für dich allein. Sie trägt drei Schichten des Sinns in sich.',
     c1_t:'Für dich',c1_txt:'Rückkehr zu dir selbst. Innere Stabilität. Ein täglicher Rhythmus der Achtsamkeit und Stille.',
     c2_t:'Zusammen mit anderen',c2_txt:'Gleichzeitigkeit verstärkt die Absicht. Du übst nicht allein — tausende Menschen sind im selben Moment bei dir.',
@@ -1085,6 +1073,7 @@ var LANGS={
     sam_quotes:['«Ein kollektives Bewusstsein hat keine eigene Intelligenz — es ist ein unbewusster Strom alter Muster. Wenn du Intelligenz in dir weckst, wirst du zu einem Damm, der diesen Strom aufhält.»','«Die Welt verändert sich, wenn genug Menschen aufhören, ein Resonanzkörper für die kollektive Angst zu sein.»','«Automatische Reaktionen sind das Betriebssystem des Egos. Achtsamkeit ist ein vollständiger Systemabsturz des Egos.»','«Kollektives Karma ist das Echo unserer geteilten Gedanken. In der Einheit gibt es kein Echo — nur die zeitlose Stille des Augenblicks.»','«Praxis der Einheit ist kein spiritueller Luxus. Sie ist die Notwendigkeit unserer Zeit.»','«Wenn du nicht reagierst, sondern antwortest, hast du die Ketten des kollektiven Schicksals gesprengt.»','«Es gibt keine anderen Probleme. Das Problem der Welt ist dein Problem — weil du Teil eines Bewusstseins bist. Die Lösung ist dein Erwachen.»','«Du bist nicht hier, um die Welt zu retten. Du bist hier, um zu erkennen, dass die Trennung von dir und der Welt eine Illusion ist.»','«Wut auf das Kollektiv nährt das Kollektiv. Stille angesichts des Kollektivs heilt das Kollektiv.»','«Totale Akzeptanz des gegenwärtigen Moments ist der Beginn der wahren Praxis der Einheit.»'],
     sci_lbl:'Wissenschaftlicher Kontext',sci_title:'Warum Gleichzeitigkeit wirkt',
     sci_sub:'Mehrere unabhängige Forschungsrichtungen beschreiben dasselbe Phänomen: synchrone Gruppenpraxis erzeugt einen nichtlinearen Verstärkungseffekt.',
+    sci_all:'Mehr wissenschaftliche Arbeiten ansehen →',
     
     rev_lbl:'Erfahrungen',rev_title:'Was Teilnehmer sagen',rev_all:'Mehr Erfahrungsberichte ansehen →',
     faq_lbl:'Häufige Fragen',
@@ -1135,7 +1124,7 @@ var LANGS={
     btn_app:'Скачать приложение',btn_more:'Узнать больше →',
     store_apple_s:'Загрузить в',store_apple:'App Store',store_google_s:'Доступно в',store_google:'Google Play',
     phone_label:'До начала практики',phone_btn:'Я буду',phone_phrase:'«Сегодня направляем внимание на доброту ко всему живому»',phone_streak:'🔥 8 дней подряд',
-    stat1:'участников вчера',stat2:'стран мира',stat3:'сессий проведено',stat4:'ежедневно · твой часовой пояс',
+    dunit:{one:'день',few:'дня',many:'дней',other:'дня'},dtail:'практики подряд',dsince:'с 9 сентября 2024 года',
     s2_lbl:'Три уровня смысла',s2_title:'Почему вместе?',s2_sub:'Практика не только для тебя. В ней три слоя смысла.',
     c1_t:'Для тебя',c1_txt:'Возвращение к себе. Внутренняя опора. Ежедневный ритм осознанности и тишины.',
     c2_t:'Вместе с другими',c2_txt:'Одновременность усиливает намерение. Тысячи людей рядом с тобой в этот самый момент.',
@@ -1151,6 +1140,7 @@ var LANGS={
     sam_quotes:['«У коллектива нет собственного интеллекта — это бессознательный поток старых паттернов. Когда вы пробуждаете интеллект в себе, вы становитесь дамбой, которая останавливает этот поток.»','«Мир меняется, когда достаточное количество людей перестают быть резонансным телом для страха коллектива.»','«Автоматические реакции — это операционная система эго. Осознанность — это тотальный сбой системы эго.»','«Коллективная карма — это эхо наших разделённых мыслей. В единстве нет эха, только вневременная тишина момента.»','«Практика Единства — это не духовная роскошь. Это необходимость нашего времени.»','«Если вы не реагируете, а отвечаете, вы разорвали цепи коллективной судьбы.»','«Нет чужих проблем. Проблема мира — это ваша проблема. Решение — это ваше пробуждение.»','«Вы здесь не для того, чтобы спасать мир, а для того, чтобы осознать, что отделение вас от мира — это иллюзия.»','«Гнев на коллектив кормит коллектив. Тишина перед лицом коллектива исцеляет коллектив.»','«Тотальное принятие текущего момента — это коллапс дуальности и начало истинной практики единства.»'],
     sci_lbl:'Научный контекст',sci_title:'Почему одновременность работает',
     sci_sub:'Несколько независимых направлений исследований описывают одно и то же явление: синхронная групповая практика создаёт нелинейный эффект усиления.',
+    sci_all:'Больше научных работ →',
     
     rev_lbl:'Отзывы',rev_title:'Что говорят участники',rev_all:'Больше отзывов →',
     faq_lbl:'Частые вопросы',
@@ -1201,7 +1191,7 @@ var LANGS={
     btn_app:'Download App',btn_more:'Learn more →',
     store_apple_s:'Download on',store_apple:'App Store',store_google_s:'Get it on',store_google:'Google Play',
     phone_label:'Practice begins in',phone_btn:'I\'ll be there',phone_phrase:'«Today we direct attention to kindness for all living beings»',phone_streak:'🔥 8-day streak',
-    stat1:'participants yesterday',stat2:'countries worldwide',stat3:'sessions completed',stat4:'daily · your timezone',
+    dunit:{one:'day',other:'days'},dtail:'of practice in a row',dsince:'since September 9, 2024',
     s2_lbl:'Three levels',s2_title:'Why together?',s2_sub:'The practice is not only for you. It carries three layers of meaning.',
     c1_t:'For you',c1_txt:'Return to yourself. Inner stability. A daily rhythm of mindfulness and stillness.',
     c2_t:'With others',c2_txt:'Simultaneity amplifies intention. You are not alone — thousands of people are with you at this very moment.',
@@ -1217,6 +1207,7 @@ var LANGS={
     sam_quotes:['«The collective has no intelligence of its own — it is an unconscious stream of old patterns. When you awaken intelligence in yourself, you become a dam that stops this stream.»','«The world changes when enough people stop being a resonance body for collective fear.»','«Automatic reactions are the operating system of the ego. Mindfulness is a total system crash of the ego.»','«Collective karma is the echo of our shared thoughts. In unity there is no echo — only the timeless silence of the present moment.»','«The Unity Practice is not a spiritual luxury. It is the necessity of our time.»','«If you do not react but respond, you have broken the chains of collective fate.»','«There are no other people\'s problems. The solution is your awakening.»','«You are not here to save the world. You are here to realize that the separation between you and the world is an illusion.»','«Anger at the collective feeds the collective. Silence in the face of the collective heals the collective.»','«Total acceptance of the present moment is the beginning of the true practice of unity.»'],
     sci_lbl:'Scientific context',sci_title:'Why Simultaneity Works',
     sci_sub:'Several independent research directions describe the same phenomenon: synchronous group practice creates a non-linear amplification effect.',
+    sci_all:'See more scientific studies →',
     
     rev_lbl:'Experiences',rev_title:'What participants say',rev_all:'See more testimonials →',
     faq_lbl:'Frequently asked',
@@ -1267,7 +1258,7 @@ var LANGS={
     btn_app:'Descargar app',btn_more:'Saber más →',
     store_apple_s:'Descargar en',store_apple:'App Store',store_google_s:'Disponible en',store_google:'Google Play',
     phone_label:'La práctica comienza en',phone_btn:'Estaré ahí',phone_phrase:'«Hoy dirigimos nuestra atención a la bondad hacia todos los seres»',phone_streak:'🔥 8 días seguidos',
-    stat1:'participantes ayer',stat2:'países del mundo',stat3:'sesiones realizadas',stat4:'diario · tu zona horaria',
+    dunit:{one:'día',other:'días'},dtail:'de práctica seguida',dsince:'desde el 9 de septiembre de 2024',
     s2_lbl:'Tres niveles',s2_title:'¿Por qué juntos?',s2_sub:'La práctica no es solo para ti. Lleva tres capas de significado.',
     c1_t:'Para ti',c1_txt:'Regreso a ti mismo. Estabilidad interior. Un ritmo diario de consciencia y silencio.',
     c2_t:'Con otros',c2_txt:'La simultaneidad amplifica la intención. No estás solo — miles de personas están contigo en este momento.',
@@ -1283,6 +1274,7 @@ var LANGS={
     sam_quotes:['«Un clic de mi parte — y la práctica comienza simultáneamente para miles de personas en todo el mundo, en su zona horaria, en su idioma.»','«El karma colectivo no es un destino al que estamos sujetos indefensos. En el momento en que dejas de reaccionar automáticamente, sales de la corriente — y cambias el todo.»','«No puedes controlar las acciones del colectivo afuera. Pero tienes libertad absoluta sobre tu respuesta interna — y así te conviertes en un espacio de quietud.»'],
     sci_lbl:'Contexto científico',sci_title:'Por qué funciona la simultaneidad',
     sci_sub:'Varias líneas de investigación independientes describen el mismo fenómeno: la práctica grupal sincrónica crea un efecto de amplificación no lineal.',
+    sci_all:'Ver más estudios científicos →',
     
     rev_lbl:'Experiencias',rev_title:'Lo que dicen los participantes',rev_all:'Ver más testimonios →',
     faq_lbl:'Preguntas frecuentes',
@@ -1340,7 +1332,6 @@ var I18N_MAP={
   'store-apple-small':'store_apple_s','store-apple':'store_apple',
   'store-google-small':'store_google_s','store-google':'store_google',
   'phone-label':'phone_label','phone-btn':'phone_btn','phone-phrase':'phone_phrase','phone-streak':'phone_streak',
-  'stat1-lbl':'stat1','stat2-lbl':'stat2','stat3-lbl':'stat3','stat4-lbl':'stat4',
   's2-lbl':'s2_lbl','s2-title':'s2_title','s2-sub':'s2_sub',
   'c1-title':'c1_t','c1-txt':'c1_txt','c2-title':'c2_t','c2-txt':'c2_txt','c3-title':'c3_t','c3-txt':'c3_txt',
   'how-lbl':'how_lbl','how-title':'how_title',
@@ -1355,7 +1346,7 @@ var I18N_MAP={
   'sci-c4-t':'sci_c4_t','sci-c4-tx':'sci_c4_tx',
   'sci-c5-t':'sci_c5_t','sci-c5-tx':'sci_c5_tx',
   'sci-c6-t':'sci_c6_t','sci-c6-tx':'sci_c6_tx',
-  'rev-lbl':'rev_lbl','rev-title':'rev_title','rev-all-link':'rev_all',
+  'rev-lbl':'rev_lbl','rev-title':'rev_title','rev-all-link':'rev_all','sci-all-link':'sci_all',
   'faq-lbl':'faq_lbl',
   'cta-lbl':'cta_lbl','cta-title':'cta_title','cta-em':'cta_em','cta-sub':'cta_sub',
   'btn-browser':'btn_browser',
@@ -1388,7 +1379,7 @@ function detectLang(){
   return 'de';
 }
 function _syncLangLinks(lang){
-  ['nav-wissenschaft','nav-samarth','nav-stimmen','nav-faq-link','mob-nav-wissenschaft','mob-nav-samarth','mob-nav-stimmen','mob-nav-faq','nav-dashboard','mob-nav-dashboard','footer-nav-wiss','footer-nav-samarth','footer-nav-faq','footer-nav-stimmen','rev-all-link'].forEach(function(id){
+  ['nav-wissenschaft','nav-samarth','nav-stimmen','nav-faq-link','mob-nav-wissenschaft','mob-nav-samarth','mob-nav-stimmen','mob-nav-faq','nav-dashboard','mob-nav-dashboard','footer-nav-wiss','footer-nav-samarth','footer-nav-faq','footer-nav-stimmen','rev-all-link','sci-all-link'].forEach(function(id){
     var a=document.getElementById(id);if(!a)return;
     var h=a.getAttribute('href').split('?')[0];
     var hi=h.indexOf('#');
@@ -1418,6 +1409,8 @@ function applyLang(lang){
     var k=el.getAttribute('data-i18n');
     if(L[k]!==undefined)el.innerHTML=L[k];
   });
+  /* Tage-Zähler-Texte (Deklination + Datum) bei Sprachwechsel aktualisieren */
+  if(window._renderDaysCounter)window._renderDaysCounter();
   /* Slot-Auswahl neu rendern (Titel + Lokalzeit-Format je Sprache) */
   if(window._renderEmailSlots)window._renderEmailSlots();
   /* Rotate Samarth quote */
@@ -1512,8 +1505,6 @@ setInterval(renderSessionTime,3600000);
   var pb=document.querySelector('.phone-btn');if(pb)pb.id='phone-btn';
   var pp=document.querySelector('.phone-phrase');if(pp)pp.id='phone-phrase';
   var ps=document.querySelector('.phone-streak');if(ps)ps.id='phone-streak';
-  var statL=document.querySelectorAll('.stat-label');
-  ['stat1-lbl','stat2-lbl','stat3-lbl','stat4-lbl'].forEach(function(id,i){if(statL[i])statL[i].id=id;});
   var secLabels=document.querySelectorAll('.section-label');
   var secTitles=document.querySelectorAll('.section-title');
   var secSubs=document.querySelectorAll('.section-sub');
@@ -1663,6 +1654,72 @@ applyLang = function(lang){
 document.querySelectorAll('.footer-lang-btn').forEach(function(b){
   b.classList.toggle('active', b.dataset.lang===currentLang);
 });
+
+/* ── TAGE-ZÄHLER: zählt von 1 bis heute (Start 09.09.2024) ──
+   Tempo per Ease-in-out: erst langsam, in der Mitte schnell, die letzten
+   Tage wieder einzeln. Einheitwort wird live je Sprache dekliniert
+   (Intl.PluralRules), Datumszeile ist pro Sprache fest hinterlegt. */
+(function(){
+  var START=new Date(2024,8,9); /* 9. Sep 2024, Monat 0-basiert */
+  function totalDays(){
+    var n=new Date();
+    var a=Date.UTC(START.getFullYear(),START.getMonth(),START.getDate());
+    var b=Date.UTC(n.getFullYear(),n.getMonth(),n.getDate());
+    return Math.max(1,Math.floor((b-a)/86400000)+1); /* inklusive Starttag */
+  }
+  var TOTAL=totalDays();
+  var numEl=document.getElementById('days-num');
+  var l1=document.getElementById('days-line1');
+  var l2=document.getElementById('days-line2');
+  if(!numEl||!l1||!l2)return;
+  var animated=false;
+
+  function lang(){return window.currentLang||document.documentElement.lang||'de';}
+  function dict(){return (window.LANGS&&window.LANGS[lang()])||(window.LANGS&&window.LANGS.de)||{};}
+  function unitWord(n,L,lg){
+    if(!L.dunit)return '';
+    try{var c=new Intl.PluralRules(lg).select(n);return L.dunit[c]||L.dunit.other;}
+    catch(e){return n===1?L.dunit.one:L.dunit.other;}
+  }
+  /* Wort wird NICHT pro Frame dekliniert (beim schnellen Hochzählen liest das
+     niemand) — Label steht fest auf der Endform (z. B. RU "дней"); nur die
+     Zahl läuft hoch. Korrekt im Endzustand und beim Sprachwechsel. */
+  function setNum(n){numEl.textContent=n.toLocaleString(lang());}
+  function setLabel(){
+    var lg=lang(),L=dict();
+    l1.textContent=(unitWord(TOTAL,L,lg)+' '+(L.dtail||'')).trim();
+    l2.textContent=L.dsince||'';
+  }
+  function paint(n){setNum(n);setLabel();}
+  /* von applyLang aufgerufen: Texte bei Sprachwechsel neu setzen (Endwert) */
+  window._renderDaysCounter=function(n){paint(typeof n==='number'?n:TOTAL);};
+
+  function easeInOut(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function run(){
+    if(animated)return;animated=true;
+    setLabel();
+    var DUR=4500,t0=null;
+    function frame(ts){
+      if(t0===null)t0=ts;
+      var p=Math.min(1,(ts-t0)/DUR);
+      setNum(Math.round(easeInOut(p)*(TOTAL-1))+1);
+      if(p<1)requestAnimationFrame(frame);else setNum(TOTAL);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  paint(1); /* statischer Startzustand */
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    animated=true;paint(TOTAL);return;
+  }
+  var sec=document.getElementById('stats');
+  if(sec&&'IntersectionObserver'in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});
+    },{threshold:.4});
+    io.observe(sec);
+  }else{run();}
+})();
 </script>
 <!-- Analytics: Umami (cookieless) ist im <head> eingebunden. Der frühere
      Homepage-Google-Login/Mini-Dashboard wurde entfernt — Login läuft jetzt
