@@ -75,7 +75,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .mob-lang-btn{background:none;border:.5px solid var(--border);border-radius:8px;color:var(--muted);font-size:13px;padding:8px 14px;cursor:pointer;font-family:var(--ff-sans);transition:all .2s;display:flex;align-items:center;gap:6px}
 .mob-lang-btn:hover,.mob-lang-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent2)}
 .mob-cta{background:var(--accent);color:#0A1A2F;border:none;border-radius:28px;padding:14px 32px;font-size:16px;font-weight:500;cursor:pointer;font-family:var(--ff-sans);text-decoration:none}
-#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 40px 80px;overflow:hidden}
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;overflow:hidden}
+.hero-inner{position:relative;width:100%;max-width:1100px;margin:0 auto;padding:0 40px;box-sizing:border-box}
 .hero-content{position:relative;z-index:2;max-width:640px;animation:fadeUp 1.2s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(10,26,47,.7);border:.5px solid rgba(45,206,206,.3);border-radius:20px;padding:6px 14px;margin-bottom:28px}
@@ -106,7 +107,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .store-badge-text{display:flex;flex-direction:column}
 .store-badge-text small{font-size:9px;color:var(--muted)}
 .store-badge-text span{font-size:13px;font-weight:500;color:var(--text)}
-.hero-phone-wrap{position:absolute;right:5%;top:50%;transform:translateY(-50%);animation:fadeUp 1.2s .4s ease both;z-index:2}
+.hero-phone-wrap{position:absolute;right:0;top:50%;transform:translateY(-50%);animation:fadeUp 1.2s .4s ease both;z-index:2}
 .phone-frame{width:200px;background:var(--card);border-radius:30px;border:1.5px solid var(--accent);overflow:hidden;padding-bottom:16px}
 .phone-notch{display:flex;justify-content:center;padding:10px 0 6px}
 .phone-notch-pill{width:50px;height:5px;border-radius:3px;background:var(--bg)}
@@ -263,7 +264,8 @@ footer{border-top:.5px solid var(--border);padding:40px;display:flex;align-items
   nav{padding:14px 20px}
   .nav-links{display:none}
   .nav-hamburger{display:flex}
-  #hero{padding:100px 20px 60px}
+  #hero{padding:100px 0 60px}
+  .hero-inner{padding:0 20px}
   .hero-phone-wrap{display:none}
   .section-inner{padding:72px 20px}
   .meaning-grid,.science-grid,.steps-grid{grid-template-columns:1fr;gap:14px}
@@ -285,7 +287,21 @@ footer{border-top:.5px solid var(--border);padding:40px;display:flex;align-items
 
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;mix-blend-mode:screen;opacity:0.7;}
 .hero-globe-bg{position:absolute;right:0;top:0;bottom:0;height:100%;width:72%;object-fit:cover;object-position:left center;opacity:.32;z-index:1;pointer-events:none;mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.6) 18%,black 40%);-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.6) 18%,black 40%);}
-@media(max-width:900px){.hero-globe-bg{display:none;}}
+@media(max-width:900px){.hero-globe-bg{display:block;width:100%;right:0;opacity:.12;object-position:center;mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.55) 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.55) 100%);}}
+/* ── Mobile-Optimierung: Hero gekürzt, bewusst entfernte Inhalte, Footer ── */
+@media(max-width:768px){
+  #hero .btn-secondary,
+  #hero .store-row{display:none;}
+  #hero .hero-btns{flex-direction:column;align-items:stretch;}
+  #hero .btn-primary{width:100%;justify-content:center;}
+  .m-hide,
+  #how,
+  #reviews,
+  #faq,
+  #samarth .samarth-concl-text,
+  #samarth .samarth-cta-text{display:none!important;}
+  footer .footer-links{flex-wrap:wrap;gap:10px 18px;}
+}
 /* ── REVIEWS SCROLL GRID ── */
 .reviews-scroll-wrap{position:relative;max-height:520px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
 .reviews-scroll-wrap::-webkit-scrollbar{width:4px;}
@@ -379,6 +395,7 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
   <div style="position:absolute;top:24px;right:40px;z-index:3;opacity:0.08;pointer-events:none;">
     <img src="data:image/avif;base64,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" alt="" aria-hidden="true" style="width:80px;height:80px;filter:invert(1) brightness(2);">
   </div>
+  <div class="hero-inner">
   <div class="hero-content">
     <div class="hero-badge">
       <div class="live-pulse"></div>
@@ -434,12 +451,13 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <section id="stats">
   <div class="stats-grid">
     <div class="stat-cell reveal"><div class="stat-num">1.581</div><div class="stat-label" id="stat1-lbl">Teilnehmer heute</div></div>
-    <div class="stat-cell reveal"><div class="stat-num">47</div><div class="stat-label">Länder weltweit</div></div>
+    <div class="stat-cell reveal m-hide"><div class="stat-num">47</div><div class="stat-label">Länder weltweit</div></div>
     <div class="stat-cell reveal"><div class="stat-num" id="stat3-num">638</div><div class="stat-label">Sitzungen durchgeführt</div></div>
     <div class="stat-cell reveal"><div class="stat-num">19:00</div><div class="stat-label">Uhr täglich · deine Zeitzone</div></div>
   </div>
@@ -511,7 +529,7 @@ body[data-lang=es] .rv-name.rv-ru{display:none;} body[data-lang=es] .rv-loc.rv-r
         <div class="value-card"><div class="value-t" data-i18n="sam_c2_t">Echtheit statt Masken</div><p class="value-d" data-i18n="sam_c2_d">Wenn du aufhörst, Rollen zu spielen, gibst du anderen die stille Erlaubnis, dasselbe zu tun. Du schaffst Raum für echte, tiefe Beziehungen.</p></div>
         <div class="value-card"><div class="value-t" data-i18n="sam_c3_t">Heilung für Generationen</div><p class="value-d" data-i18n="sam_c3_d">Indem du die Ketten alter Verletzungen und Ängste durchbrichst, gibst du diese nicht weiter — an deine Kinder, Liebsten und Kollegen. Du machst den Weg frei für künftige Generationen.</p></div>
         <div class="value-card"><div class="value-t" data-i18n="sam_c4_t">Bewusstheit statt blinder Reaktion</div><p class="value-d" data-i18n="sam_c4_d">Die meisten Konflikte entstehen aus verletztem Ego. Die Praxis schafft einen Raum zwischen Auslöser und Antwort. Du handelst aus Klarheit — und bringst Versöhnung, wo früher Streit entstanden wäre.</p></div>
-        <div class="value-card"><div class="value-t" data-i18n="sam_c5_t">Vom Nehmen zum Geben</div><p class="value-d" data-i18n="sam_c5_d">Wer innerlich leer ist, fordert ständig etwas von der Welt — Anerkennung, Dinge, Aufmerksamkeit. Wenn du dich durch die Praxis füllst, willst du ganz natürlich teilen. Deine Frage ans Leben wandelt sich von „Was kann ich bekommen?“ zu „Was kann ich schenken?“.</p></div>
+        <div class="value-card m-hide"><div class="value-t" data-i18n="sam_c5_t">Vom Nehmen zum Geben</div><p class="value-d" data-i18n="sam_c5_d">Wer innerlich leer ist, fordert ständig etwas von der Welt — Anerkennung, Dinge, Aufmerksamkeit. Wenn du dich durch die Praxis füllst, willst du ganz natürlich teilen. Deine Frage ans Leben wandelt sich von „Was kann ich bekommen?“ zu „Was kann ich schenken?“.</p></div>
       </div>
     </div>
     <div class="samarth-concl reveal">
