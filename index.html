@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1400,16 +1400,16 @@ var I18N_MAP={
   'faq-all-link':'faq_all_link'
 };
 
-var currentLang='de';
+var currentLang='ru';
 
 function detectLang(){
   var p=new URLSearchParams(window.location.search).get('lang');
   if(p&&LANGS[p])return p;
   var saved=localStorage.getItem('up_lang');
   if(saved&&LANGS[saved])return saved;
-  var nav=(navigator.language||navigator.userLanguage||'de').substring(0,2).toLowerCase();
+  var nav=(navigator.language||navigator.userLanguage||'ru').substring(0,2).toLowerCase();
   if(LANGS[nav])return nav;
-  return 'de';
+  return 'ru';
 }
 function _syncLangLinks(lang){
   ['nav-wissenschaft','nav-samarth','nav-stimmen','nav-faq-link','mob-nav-wissenschaft','mob-nav-samarth','mob-nav-stimmen','mob-nav-faq','nav-dashboard','mob-nav-dashboard','footer-nav-wiss','footer-nav-samarth','footer-nav-faq','footer-nav-stimmen','rev-all-link','sci-all-link'].forEach(function(id){
@@ -1481,7 +1481,7 @@ function applyLang(lang){
 function renderSessionTime(){
   var el=document.getElementById('hero-time');
   if(!el)return;
-  var lang=document.documentElement.lang||'de';
+  var lang=document.documentElement.lang||'ru';
   var L=window.LANGS&&window.LANGS[lang];
   var info=getSessionWindowInfo();
   if(typeof updateLiveUiState==='function')updateLiveUiState(info.live);
@@ -1503,7 +1503,7 @@ window.showParticipantCount=function(n){
   var el=document.getElementById('hero-count-txt');
   var ph=document.getElementById('phone-count-txt');
   var row=document.getElementById('phone-count-row');
-  var lang=document.documentElement.lang||'de';
+  var lang=document.documentElement.lang||'ru';
   var L=window.LANGS&&window.LANGS[lang];
   var suffix=L?L.timer_count:'people waiting';
   if(el){el.textContent=n.toLocaleString()+' '+suffix;el.classList.add('visible');}
@@ -1586,7 +1586,7 @@ function updateReviewLang(lang){
       updateReviewLang(lang === 'ru' ? 'ru' : lang === 'de' ? 'de' : lang === 'en' ? 'en' : 'es');
     };
   }
-  updateReviewLang(document.documentElement.lang || 'de');
+  updateReviewLang(document.documentElement.lang || 'ru');
 })();
 </script>
 
@@ -1703,8 +1703,8 @@ document.querySelectorAll('.footer-lang-btn').forEach(function(b){
   if(!numEl||!l1||!l2)return;
   var animated=false;
 
-  function lang(){return window.currentLang||document.documentElement.lang||'de';}
-  function dict(){return (window.LANGS&&window.LANGS[lang()])||(window.LANGS&&window.LANGS.de)||{};}
+  function lang(){return window.currentLang||document.documentElement.lang||'ru';}
+  function dict(){return (window.LANGS&&window.LANGS[lang()])||(window.LANGS&&window.LANGS.ru)||{};}
   function unitWord(n,L,lg){
     if(!L.dunit)return '';
     try{var c=new Intl.PluralRules(lg).select(n);return L.dunit[c]||L.dunit.other;}
