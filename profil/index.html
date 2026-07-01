@@ -520,17 +520,31 @@ window.addEventListener('load',function(){
       var sid=cfg.exists?cfg.data().current_session_id:null;var sess=null;
       if(sid){var ss=await db.collection('sessions').doc(sid).get();if(ss.exists)sess=ss.data();}
       var now=new Date();
-      if(!sess||(toDate(sess.start_time_utc)&&toDate(sess.start_time_utc)<now&&sess.status!=='live'&&sess.status!=='running')){
-        var up=await db.collection('sessions').where('start_time_utc','>',firebase.firestore.Timestamp.fromDate(now)).orderBy('start_time_utc').limit(1).get();
-        if(!up.empty)sess=up.docs[0].data();
+      // current_session_id ist ungültig, wenn es fehlt, abgesagt/beendet ist oder bereits
+      // vorbei ist (und nicht live läuft) → nächste planmäßige Session suchen.
+      var invalid=!sess||sess.status==='cancelled'||sess.status==='completed'
+        ||(toDate(sess.start_time_utc)&&toDate(sess.start_time_utc)<now&&sess.status!=='live'&&sess.status!=='running');
+      if(invalid){
+        // start_time_utc wird projektweit als ISO-STRING gespeichert (siehe admin_v2/app.js
+        // und functions/index.js) → gegen einen ISO-String filtern, NICHT gegen Timestamp,
+        // sonst Typ-Mismatch und das Ergebnis ist immer leer. Mehrere holen und die erste
+        // nicht abgesagte/beendete nehmen (pro Tag gibt es auch eine abgesagte slot-1-Session).
+        var up=await db.collection('sessions').where('start_time_utc','>',now.toISOString()).orderBy('start_time_utc').limit(8).get();
+        var pick=null;
+        up.forEach(function(d){if(pick)return;var x=d.data();if(x.status==='cancelled'||x.status==='completed')return;pick=x;});
+        if(pick)sess=pick;
+        else if(sess&&(sess.status==='cancelled'||sess.status==='completed'))sess=null;
       }
       return sess;
     }catch(e){return null;}
   }
   async function monthSessionsTotal(){
-    try{var now=new Date();var s=new Date(now.getFullYear(),now.getMonth(),1);var e=new Date(now.getFullYear(),now.getMonth()+1,1);
-      var q=await db.collection('sessions').where('start_time_utc','>=',firebase.firestore.Timestamp.fromDate(s)).where('start_time_utc','<',firebase.firestore.Timestamp.fromDate(e)).get();
-      return q.size;
+    // start_time_utc ist ein ISO-STRING → mit ISO-Strings filtern (nicht Timestamp).
+    // Abgesagte Sessions nicht mitzählen.
+    try{var now=new Date();var s=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),1));var e=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth()+1,1));
+      var q=await db.collection('sessions').where('start_time_utc','>=',s.toISOString()).where('start_time_utc','<',e.toISOString()).get();
+      var n=0;q.forEach(function(d){if(d.data().status!=='cancelled')n++;});
+      return n;
     }catch(e){return null;}
   }
 
