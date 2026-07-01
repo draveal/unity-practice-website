@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0A1A2F">
+<!-- Umami Analytics (cookieless). data-website-id aus dem Umami-Cloud-Dashboard. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="<UMAMI_WEBSITE_ID>"></script>
+<meta name="description" content="Единая практика — научный каталог: 52 исследования о коллективном намерении, синхронии, ГСЧ и медитации.">
+<meta property="og:title" content="Научный каталог — Единая практика">
+<meta property="og:description" content="52 исследования о коллективном намерении, синхронии, генераторах случайных чисел и медитации, сгруппированные по темам.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://unity-practice.com/wissenschaft/katalog/">
+<meta property="og:image" content="https://unity-practice.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Научный каталог — Единая практика">
+<meta name="twitter:description" content="52 исследования о коллективном намерении, синхронии, генераторах случайных чисел и медитации.">
+<meta name="twitter:image" content="https://unity-practice.com/og-image.jpg">
+<link rel="canonical" href="https://unity-practice.com/wissenschaft/katalog/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Научный каталог — Единая практика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1A2F;--bg2:#0c1e38;--card:#0f2444;--border:#1a3050;--accent:#E0A93F;--accent2:#1a2800;--accent3:#2DCECE;--text:#F5F7FA;--muted:#6080a0;--soft:#8ca0b8;--gold:#F2C94C;--gold-subtle:rgba(224,169,63,.22);--radius:14px;--ff-serif:'Spectral',Georgia,serif;--ff-sans:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-sans);font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;border-bottom:.5px solid rgba(79,195,161,.15);background:rgba(7,14,26,.9);backdrop-filter:blur(14px);gap:16px}
+.nav-logo{font-family:var(--ff-serif);font-size:18px;font-weight:600;color:var(--text);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-size:13px;font-weight:500;color:#0A1A2F;background:var(--accent);border:none;border-radius:24px;padding:8px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
+main{max-width:1100px;margin:0 auto;padding:140px 40px 100px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-decoration:none;margin-bottom:40px;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+.page-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);margin-bottom:16px}
+.page-title{font-family:var(--ff-serif);font-size:clamp(30px,4.5vw,52px);font-weight:300;line-height:1.15;margin-bottom:20px}
+.page-sub{font-size:15px;color:var(--soft);max-width:760px;line-height:1.75;margin-bottom:8px}
+.ru-only-note{font-size:12px;color:var(--muted);margin-bottom:36px}
+.science-badge{display:inline-block;font-size:10px;letter-spacing:.5px;color:var(--accent3);background:rgba(45,206,206,0.08);border:.5px solid rgba(45,206,206,.3);border-radius:4px;padding:3px 8px;margin-bottom:8px}
+.cat-intro{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin:24px 0 36px;font-size:13px;color:var(--soft);line-height:1.75}
+.cat-intro b{color:var(--text);font-weight:500}
+.cat-glossary{margin-top:14px}
+.cat-glossary summary{cursor:pointer;color:var(--accent3);font-weight:600;font-size:13px}
+.cat-glossary ul{margin:12px 0 0 18px;padding:0}
+.cat-glossary li{margin:6px 0;font-size:12.5px;color:var(--soft)}
+.cat-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 44px}
+.cat-filter{background:none;border:.5px solid var(--border);border-radius:20px;color:var(--soft);font-size:12px;font-weight:500;padding:8px 16px;cursor:pointer;font-family:var(--ff-sans);transition:border-color .2s,color .2s,background .2s}
+.cat-filter:hover,.cat-filter.active{border-color:var(--accent3);color:var(--accent3);background:rgba(45,206,206,.08)}
+.cat-section{margin-bottom:56px}
+.cat-section.cat-hidden{display:none}
+.cat-h2{font-family:var(--ff-serif);font-size:clamp(22px,2.6vw,32px);font-weight:300;color:var(--text);margin-bottom:10px;padding-top:32px;border-top:.5px solid var(--border)}
+.cat-section:first-of-type .cat-h2{padding-top:0;border-top:none}
+.cat-lead{font-size:14px;color:var(--soft);max-width:800px;margin-bottom:28px;line-height:1.7}
+.cat-cluster{font-size:13px;font-weight:700;letter-spacing:.5px;color:var(--accent3);margin:32px 0 14px;text-transform:uppercase}
+.cat-grid{display:flex;flex-direction:column;gap:14px}
+.cat-card{background:var(--card);border:.5px solid var(--border);border-radius:var(--radius);padding:20px 22px}
+.cat-card-top{display:flex;gap:14px;align-items:flex-start}
+.cat-nr{flex:0 0 28px;font-size:12px;font-weight:700;color:var(--muted);padding-top:3px}
+.cat-card-head{flex:1}
+.cat-title{font-size:15px;font-weight:500;color:var(--text);margin:6px 0 4px;line-height:1.4}
+.cat-original{font-size:12px;color:var(--muted);font-style:italic;line-height:1.5;margin-bottom:2px}
+.cat-takeaway{font-size:13px;color:var(--soft);line-height:1.75;margin:12px 0 0}
+.cat-details{margin-top:14px;border-top:.5px dashed var(--border);padding-top:12px}
+.cat-details summary{cursor:pointer;font-size:12px;color:var(--accent3);font-weight:600;list-style:none}
+.cat-details summary::-webkit-details-marker{display:none}
+.cat-details summary::before{content:'+ '}
+.cat-details[open] summary::before{content:'\2013 '}
+.cat-detail-body{margin-top:10px}
+.cat-citation{font-size:12px;color:var(--soft);line-height:1.7;margin-bottom:8px}
+.cat-source-link{font-size:12px;color:var(--accent3);text-decoration:none}
+.cat-source-link:hover{color:var(--gold)}
+.cat-unverified{font-size:12px;color:var(--gold);line-height:1.6;font-style:italic}
+.meth-note{font-size:13px;color:var(--muted);line-height:1.8;text-align:center;max-width:680px;margin:48px auto 0;padding-top:32px;border-top:.5px solid var(--border)}
+.mob-lang-bar{display:none}
+@media(max-width:900px){nav{padding:14px 20px}.nav-links{display:none}main{padding:100px 20px 80px}}
+@media(max-width:700px){.cat-card{padding:16px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="nav-logo">Unity Practice</a>
+  <ul class="nav-links">
+    <li><a href="../../index.html#meaning">О практике</a></li>
+    <li><a href="../index.html">Наука</a></li>
+    <li><a href="../../ueber-samarth/index.html">Самарт</a></li>
+    <li><a href="../../stimmen/index.html">Отзывы</a></li>
+    <li><a href="../../faq/index.html">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../index.html#cta-final" class="nav-cta">Скачать приложение</a>
+  </div>
+</nav>
+<main>
+  <a href="../index.html" class="back-link">&#8592; К странице &laquo;Наука&raquo;</a>
+  <div class="page-label">Научный каталог</div>
+  <h1 class="page-title">Единая практика &#8212; научный каталог исследований</h1>
+  <p class="page-sub">Работы о коллективном намерении и полевых гипотезах, глобальном внимании, физиологической и социальной синхронии, а также о медитативной практике.</p>
+  <p class="ru-only-note">Этот раздел пока доступен только на русском языке.</p>
+
+  <div class="cat-intro">
+    <b>Как читать каталог.</b>
+    <p style="margin-top:8px">В закрытой карточке показаны русское и оригинальное название, а также краткая суть работы. Открой &laquo;Библиография и источник&raquo;, чтобы увидеть полную библиографическую запись и ссылку.</p>
+    <details class="cat-glossary">
+      <summary>Пояснения к терминам</summary>
+      <ul>
+        <li><b>ГСЧ / RNG</b> &#8212; аппаратный генератор случайных чисел: обычно последовательностей нулей и единиц.</li>
+        <li><b>ВСР / HRV</b> &#8212; вариабельность сердечного ритма.</li>
+        <li><b>ЭЭГ / EEG</b> &#8212; регистрация электрической активности мозга.</li>
+        <li><b>P1 / P2 / P3</b> &#8212; направление работы: P1 &#8212; коллективное намерение и поле; P2 &#8212; синхрония и социальная координация; P3 &#8212; медитация и благополучие.</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="cat-filters">
+<button class="cat-filter active" data-filter="all" onclick="catFilter('all')">Все материалы</button>
+<button class="cat-filter" data-filter="main" onclick="catFilter('main')">Главные исследования</button>
+<button class="cat-filter" data-filter="similar" onclick="catFilter('similar')">Похожие и смежные</button>
+<button class="cat-filter" data-filter="russian" onclick="catFilter('russian')">Русская, советская и ранняя линия</button>
+<button class="cat-filter" data-filter="meditation" onclick="catFilter('meditation')">Медитация и благополучие</button>
+  </div>
+
+<section class="cat-section" data-section="main">
+  <h2 class="cat-h2">Главные работы: коллективное намерение и полевые эффекты</h2>
+  <p class="cat-lead">Верхний раздел содержит наиболее известные работы, прямо рассматривающие коллективную практику, общее внимание, макросоциальные показатели и генераторы случайных чисел.</p>
+  <h3 class="cat-cluster">Коллективная медитация и общественные показатели</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">01</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Снижение городской преступности при групповой практике ТМ</h4>
+          <p class="cat-original">Test of a Field Model of Consciousness and Social Change: The Transcendental Meditation and TM-Sidhi Program and Decreased Urban Crime</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Авторы сопоставили размер групповой практики ТМ/ТМ‑Сидхи с показателями преступности в 48 городах. Согласно их анализу, при достижении заданного порога групповой практики уровни городской преступности снижались.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Dillbeck, M. C., Banus, C. B., Polanzi, C., &amp; Landrith, G. S. III. “Test of a field model of consciousness and social change: The Transcendental Meditation and TM-Sidhi program and decreased urban crime.” The Journal of Mind and Behavior, 1988, 9(4), 457–486.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Test+of+a+field+model+of+consciousness+and+social+change%3A+The+Transcendental+Meditation+and+TM-Sidhi+program+and+decreased+urban+crime%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">02</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Международный проект мира на Ближнем Востоке: Ливан, 1983</h4>
+          <p class="cat-original">International Peace Project in the Middle East: The Effects of the Maharishi Technology of the Unified Field</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">В работе сопоставлены периоды большой групповой практики в Иерусалиме с временными рядами конфликта в Ливане. Авторы сообщают о снижении показателей военных потерь и связанных с конфликтом индикаторов в дни проведения практики.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Orme‑Johnson, D. W., Alexander, C. N., Davies, J. L., Chandler, H. M., &amp; Larimore, W. E. “International Peace Project in the Middle East: The Effects of the Maharishi Technology of the Unified Field.” Journal of Conflict Resolution, 1988, 32, 776–812.</p><a class="cat-source-link" href="https://journals.sagepub.com/action/doSearch?AllField=International+Peace+Project+in+the+Middle+East" target="_blank" rel="noopener">Страница журнала / полный текст ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">03</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Вашингтон, 1993: групповая практика и насильственная преступность</h4>
+          <p class="cat-original">Effects of Group Practice of the Transcendental Meditation Program on Preventing Violent Crime in Washington, D.C.</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Исследование заранее фиксировало гипотезу о снижении насильственной преступности при росте числа участников групповой практики. Авторы сообщили о снижении показателя насильственной преступности в период национальной демонстрации летом 1993 года.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Hagelin, J. S., Rainforth, M. V., Orme‑Johnson, D. W., Cavanaugh, K. L., Alexander, C. N., Shatkin, S. F., Davies, J. L., Hughes, A. O., &amp; Ross, E. (1999). “Effects of Group Practice of the Transcendental Meditation Program on Preventing Violent Crime in Washington, D.C.” Social Indicators Research, 47(2), 153–201.</p><a class="cat-source-link" href="https://doi.org/10.1023/A:1006978911496" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">04</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Ливанская война: оценка влияния коллективного снижения напряжения</h4>
+          <p class="cat-original">Alleviating Political Violence Through Reducing Collective Tension: Impact Assessment Analysis of the Lebanon War</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Работа использует анализ временных рядов для оценки связи между коллективной практикой и показателями политического насилия в период войны в Ливане. Авторы рассматривают изменения индикаторов конфликта как соответствующие периодам повышенной численности группы.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Davies, J. L., &amp; Alexander, C. N. “Alleviating Political Violence Through Reducing Collective Tension: Impact Assessment Analysis of the Lebanon War.” Journal of Social Behavior and Personality, 2005, 17, 285–338.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Alleviating+Political+Violence+Through+Reducing+Collective+Tension%3A+Impact+Assessment+Analysis+of+the+Lebanon+War%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">05</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Семнадцатилетнее исследование полевых эффектов сознания в США</h4>
+          <p class="cat-original">Field-Effects of Consciousness: A Seventeen-Year Study of the Effects of Group Practice of the Transcendental Meditation and TM-Sidhi Programs on Reducing National Stress in the United States</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Авторы анализируют почти два десятилетия национальных временных рядов и численность участников групповой практики. Работа формулирует вывод о связи групповой практики со снижением агрегированного «национального стресса».</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">“Field‑Effects of Consciousness: A Seventeen‑Year Study of the Effects of Group Practice of the Transcendental Meditation and TM‑Sidhi Programs on Reducing National Stress in the United States.” World Journal of Social Science, 2022. Авторский список и том необходимо сверить по первичной записи.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Field-Effects+of+Consciousness%3A+A+Seventeen-Year+Study+of+the+Effects+of+Group+Practice+of+the+Transcendental+Meditation+and+TM-Sidhi+Programs+on+Reducing+National+Stress+in+the+United+States%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+</div>
+<h3 class="cat-cluster">Глобальное внимание и сеть ГСЧ / RNG</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">06</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Global Consciousness Project: глобальная сеть генераторов случайных чисел</h4>
+          <p class="cat-original">Global Consciousness Project / EGG Network</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Проект непрерывно собирает данные от распределённой сети аппаратных генераторов случайных чисел — ГСЧ (RNG). Предварительно описанные события общего мирового внимания проверяются на статистические отклонения от ожидаемой случайности.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Global Consciousness Project / EGG Network. Международная сеть аппаратных генераторов случайных чисел, непрерывно записывающая синхронные данные с 1998 года; проектный протокол объединяет предопределённые анализы событий.</p><a class="cat-source-link" href="https://global-mind.org/" target="_blank" rel="noopener">Архив данных GCP 1.0 ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">07</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Глобальный резонанс сознания: принцесса Диана и Мать Тереза</h4>
+          <p class="cat-original">Global Resonance of Consciousness: Princess Diana and Mother Teresa</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">В этой работе анализируются данные генераторов случайных чисел в периоды двух глобально значимых смертей. Авторы изучают, возникали ли в эти интервалы отклонения от ожидаемого случайного распределения данных.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Nelson, R. D., Bœsch, H., Boller, E., Dobyns, Y. H., Houtkooper, J. M., Lettieri, A., Radin, D. I., Russek, L. G. S., Schwartz, G. E., &amp; Wesch, J. (1998). “Global Resonance of Consciousness: Princess Diana and Mother Teresa.” Electronic Journal for Anomalous Phenomena.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Global+Resonance+of+Consciousness%3A+Princess+Diana+and+Mother+Teresa%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">08</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Поиск глобального сознания: семнадцатилетний анализ</h4>
+          <p class="cat-original">Searching for Global Consciousness: A 17-Year Exploration</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Работа суммирует многолетние данные сети GCP и рассматривает статистический паттерн вокруг заранее выбранных мировых событий. Она важна как общий отчёт о масштабе данных, протоколах событий и совокупном анализе проекта.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Bancel, P. A. (2017). “Searching for Global Consciousness: A 17‑Year Exploration.” EXPLORE: The Journal of Science and Healing.</p><a class="cat-source-link" href="https://www.sciencedirect.com/search?qs=Searching+for+Global+Consciousness%3A+A+17-Year+Exploration" target="_blank" rel="noopener">Страница журнала / полный текст ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">09</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">События 11 сентября 2001 года в данных GCP</h4>
+          <p class="cat-original">Was There Evidence of Global Consciousness on September 11, 2001?</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Статья отдельно рассматривает записи сети GCP во время событий 11 сентября 2001 года. Центральный вопрос работы — обнаруживаются ли в этот период статистические отклонения, выходящие за рамки ожидаемой случайности.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Scargle, J. D. (2002). “Was There Evidence of Global Consciousness on September 11, 2001?” Journal of Scientific Exploration, 16(4), 571–577.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Was+There+Evidence+of+Global+Consciousness+on+September+11%2C+2001%3F%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">10</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Независимый анализ данных GCP по 11 сентября 2001 года</h4>
+          <p class="cat-original">Global Consciousness Project: An Independent Analysis of the 11 September 2001 Events</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Это независимый технический разбор того же исторического эпизода и набора данных. Карточка нужна, чтобы читать не только проектную интерпретацию, но и отдельный анализ статистического подхода.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">May, E. C., Spottiswoode, S. J. P., Utts, J. M., &amp; James, C. L. “Global Consciousness Project: An Independent Analysis of the 11 September 2001 Events.” Независимый технический анализ данных GCP.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Global+Consciousness+Project%3A+An+Independent+Analysis+of+the+11+September+2001+Events%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+</div>
+<h3 class="cat-cluster">Намерение, случайные процессы и сердечная когерентность</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">11</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Заявленная работа Dispenza &amp; McCraty о ретритах и ГСЧ</h4>
+          <p class="cat-original">Dispenza &amp; McCraty: local and global RNG during meditation retreats</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Заявленный тезис состоит в том, что во время коллективных медитаций на ретритах наблюдалась синхронизация локальных и глобальных ГСЧ. Для включения этой записи как полноценной публикации требуется найти точное название, авторский состав, журнал, том, страницы и идентификатор статьи.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Заявленная в прежнем каталоге запись: “Dispenza &amp; McCraty — EXPLORE, 2026”, о синхронизациях локальных и глобальных RNG на пяти ретритах. На момент пересборки не найдено полного библиографического описания: заголовка, тома, выпуска, страниц и DOI.</p><p class="cat-unverified">⚠ Точная библиографическая запись (журнал, том, страницы, DOI) не подтверждена — приведено как гипотеза/утверждение, не как проверенная публикация.</p></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">12</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Намерение человека и генераторы случайных чисел: метаанализ</h4>
+          <p class="cat-original">Examining Psychokinesis: The Interaction of Human Intention with Random Number Generators — A Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ объединяет лабораторные эксперименты, в которых проверялось влияние намерения человека на выход аппаратных ГСЧ. Он рассматривает суммарный эффект и отдельные статистические факторы, которые могут влиять на оценку результата.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Bösch, H., Steinkamp, F., &amp; Boller, E. (2006). “Examining Psychokinesis: The Interaction of Human Intention with Random Number Generators — A Meta‑analysis.” Psychological Bulletin, 132(4), 497–523.</p><a class="cat-source-link" href="https://doi.org/10.1037/0033-2909.132.4.497" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">13</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Воздействие сознания на броски костей: метаанализ</h4>
+          <p class="cat-original">Effects of Consciousness on the Fall of Dice: A Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Работа объединяет эксперименты, где участники пытались намерением повлиять на результаты бросков костей. Это историческая линия исследований намерения и физических случайных процессов.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Radin, D. I., &amp; Ferrari, D. C. (1991). “Effects of Consciousness on the Fall of Dice: A Meta‑analysis.” Journal of Scientific Exploration, 5(1), 61–83.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Effects+of+Consciousness+on+the+Fall+of+Dice%3A+A+Meta-analysis%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">14</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Психокинетический тест с электронным оборудованием</h4>
+          <p class="cat-original">A PK Test With Electronic Equipment</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Ранняя лабораторная работа проверяла, может ли намерение участника смещать выход электронного случайного процесса. Она важна как один из исходных протоколов линии «намерение → ГСЧ».</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Schmidt, H. (1970). “A PK Test With Electronic Equipment.” Journal of Parapsychology, 34, 175–181.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22A+PK+Test+With+Electronic+Equipment+Schmidt+1970%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">15</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Намерение оператора и бинарные последовательности: программа PEAR</h4>
+          <p class="cat-original">Correlations of Random Binary Sequences with Pre-Stated Operator Intention: A Review of a 12-Year Program</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Обзор программы PEAR описывает многолетние эксперименты с бинарными случайными последовательностями и заранее заявленным намерением оператора. В нём собраны протоколы, способы контроля и агрегированные результаты серии экспериментов.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Jahn, R. G., Dunne, B. J., Bradish, G. J., Dobyns, Y. H., Dunne, C. A., &amp; Dobyns, Y. H. “Correlations of Random Binary Sequences with Pre‑Stated Operator Intention: A Review of a 12‑Year Program.” Journal of Scientific Exploration.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Correlations+of+Random+Binary+Sequences+with+Pre-Stated+Operator+Intention+A+Review+of+a+12-Year+Program%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">16</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Дистанционное намерение и кристаллы воды</h4>
+          <p class="cat-original">Double-Blind Test of the Effects of Distant Intention on Water Crystal Formation</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">В двойном слепом эксперименте участники в Японии направляли намерение на образцы воды в Калифорнии. Авторы сообщили о статистически значимом различии в слепой оценке изображений кристаллов.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Radin, D., Hayssen, G., Emoto, M., &amp; Kizu, T. (2006). “Double‑Blind Test of the Effects of Distant Intention on Water Crystal Formation.” EXPLORE, 2(5).</p><a class="cat-source-link" href="https://doi.org/10.1016/j.explore.2006.06.004" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">17</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Дистанционное целительное намерение: обзор научных данных</h4>
+          <p class="cat-original">Distant Healing Intention Therapies: An Overview of the Scientific Evidence</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Обзор собирает исследования, где намерение направлялось на человека на расстоянии без обычного физического контакта. Он помогает увидеть, какие типы протоколов, исходов и статистических подходов уже использовались.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Radin, D., Schlitz, M., &amp; Baur, C. (2015). “Distant Healing Intention Therapies: An Overview of the Scientific Evidence.” Global Advances in Health and Medicine, 4(Suppl), 67–71.</p><a class="cat-source-link" href="https://doi.org/10.7453/gahmj.2015.012.suppl" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">18</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Магнитное поле сердца и измеримые показатели сердечной вариабельности</h4>
+          <p class="cat-original">Magnetic Fields Around the Torso: Production by Electrical Activity of the Human Heart</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">В классической работе было измерено магнитное поле, создаваемое электрической активностью сердца. Дополнительные источники в карточке объясняют, как измеряют вариабельность сердечного ритма (ВСР/HRV) в современных исследованиях.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Cohen, D. (1967). “Magnetic Fields Around the Torso: Production by Electrical Activity of the Human Heart.” Science, 156(3775), 652–654. Дополнительно: Shaffer &amp; Ginsberg (2017), обзор метрик HRV.</p><a class="cat-source-link" href="https://doi.org/10.1126/science.156.3775.652" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">19</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Global Coherence Initiative: измерительный проект коллективной когерентности</h4>
+          <p class="cat-original">Global Coherence Initiative</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Инициатива строит сеть магнитометрических наблюдений и формулирует гипотезы о связях между коллективными эмоциональными состояниями, намерением и геомагнитной средой. Это исследовательский проект и инфраструктура данных, а не одна законченная публикация.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">HeartMath Institute / Global Coherence Initiative. Проект, использующий сеть магнитометров и формулирующий гипотезы о связях между человеческим состоянием, геомагнитными вариациями и коллективной когерентностью.</p><a class="cat-source-link" href="https://www.heartmath.org/gci/" target="_blank" rel="noopener">Global Coherence Initiative — официальный проект ↗</a></div>
+      </details>
+    </article>
+</div>
+</section>
+<section class="cat-section" data-section="similar">
+  <h2 class="cat-h2">Похожие исследования: намерение, синхрония, физиология и социальное влияние</h2>
+  <p class="cat-lead">Эти работы не всегда изучают коллективное намерение напрямую, но помогают понять близкие механизмы: синхронию, физиологические реакции, социальное влияние и способы проверки сложных гипотез.</p>
+  <h3 class="cat-cluster">Смежные теоретические и экспериментальные направления</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">20</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Опережающая физиологическая реакция перед непредсказуемыми стимулами</h4>
+          <p class="cat-original">Predictive Physiological Anticipation Preceding Seemingly Unpredictable Stimuli: A Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ рассматривает физиологические изменения, появлявшиеся до предъявления кажущихся непредсказуемыми эмоциональных стимулов. Он относится к смежной линии исследований времени, ожидания и аномального предвосхищения.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Mossbridge, J. A., Tressoldi, P., &amp; Utts, J. (2012). “Predictive Physiological Anticipation Preceding Seemingly Unpredictable Stimuli: A Meta‑analysis.” Frontiers in Psychology, 3, 390.</p><a class="cat-source-link" href="https://doi.org/10.3389/fpsyg.2012.00390" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">21</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">«Чувствуя будущее»: ретроактивное влияние на познание и аффект</h4>
+          <p class="cat-original">Feeling the Future: Experimental Evidence for Anomalous Retroactive Influences on Cognition and Affect</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Серия экспериментов проверяла, могут ли будущие стимулы быть статистически связаны с текущими решениями и реакциями участников. Карточка полезна как отдельная линия исследований аномального познания, а не как тест групповой медитации.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Bem, D. J. (2011). “Feeling the Future: Experimental Evidence for Anomalous Retroactive Influences on Cognition and Affect.” Journal of Personality and Social Psychology, 100(3), 407–425.</p><a class="cat-source-link" href="https://doi.org/10.1037/a0021524" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">22</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Морфический резонанс</h4>
+          <p class="cat-original">A New Science of Life: The Hypothesis of Formative Causation</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Шелдрейк предлагает теоретическую гипотезу о том, что усвоенные паттерны могут облегчать повторение сходных паттернов в других системах. Это концептуальная работа; она задаёт язык гипотезы, а не описывает один конкретный эксперимент.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Sheldrake, R. (1981). A New Science of Life: The Hypothesis of Formative Causation. Книга / теоретическая гипотеза.</p><a class="cat-source-link" href="https://www.sheldrake.org/research/morphic-resonance" target="_blank" rel="noopener">Авторский исследовательский раздел ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">23</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Резонансы Шумана и ЭЭГ: поисковый исследовательский трек</h4>
+          <p class="cat-original">Schumann Resonance, Human EEG and Coherence</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Карточка объединяет работы, в которых сопоставляют диапазоны резонансов Шумана и электрическую активность мозга. Здесь нужно читать точные методики: что именно измерялось, у кого, в каких условиях и каким статистическим способом.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">В исходной карточке была ссылка ResearchGate на Persinger et al.; прямой журнал/DOI и точное соответствие формулировке требуется установить отдельно.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Persinger+human+EEG+Schumann+resonance+coherence%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">24</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Эксперимент Аспекта и неравенства Белла</h4>
+          <p class="cat-original">Experimental Test of Bell’s Inequalities Using Time-Varying Analyzers</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Физический эксперимент проверял неравенства Белла с анализаторами, параметры которых менялись во времени. Он важен как базовый контекст для обсуждения квантовой нелокальности, но не является экспериментом о коллективном человеческом намерении.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Aspect, A., Dalibard, J., &amp; Roger, G. (1982). “Experimental Test of Bell’s Inequalities Using Time‑Varying Analyzers.” Physical Review Letters, 49, 1804–1807.</p><a class="cat-source-link" href="https://doi.org/10.1103/PhysRevLett.49.1804" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+</div>
+<h3 class="cat-cluster">Физиологическая и социальная синхрония</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">25</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Метрики и нормы вариабельности сердечного ритма</h4>
+          <p class="cat-original">An Overview of Heart Rate Variability Metrics and Norms</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Обзор систематизирует показатели ВСР/HRV, способы расчёта и типичные диапазоны значений. Это практическая методическая опора для любого будущего измерения физиологической когерентности.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Shaffer, F., &amp; Ginsberg, J. P. (2017). “An Overview of Heart Rate Variability Metrics and Norms.” Frontiers in Public Health, 5, 258.</p><a class="cat-source-link" href="https://doi.org/10.3389/fpubh.2017.00258" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">26</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">ВСР и вагусный тонус: рекомендации для исследований</h4>
+          <p class="cat-original">Heart Rate Variability and Cardiac Vagal Tone in Psychophysiological Research</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Статья даёт рекомендации по планированию эксперимента, анализу и отчётности при работе с ВСР. Она полезна для того, чтобы будущие измерения Единая практика можно было сопоставлять с современными психофизиологическими стандартами.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Laborde, S., Mosley, E., &amp; Thayer, J. F. (2017). “Heart Rate Variability and Cardiac Vagal Tone in Psychophysiological Research — Recommendations for Experiment Planning, Data Analysis, and Data Reporting.” Frontiers in Psychology, 8, 213.</p><a class="cat-source-link" href="https://doi.org/10.3389/fpsyg.2017.00213" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">27</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Синхронное возбуждение в ритуале хождения по огню</h4>
+          <p class="cat-original">Synchronized Arousal Between Performers and Related Spectators in a Fire-Walking Ritual</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Авторы измеряли физиологическое возбуждение у участников ритуала и связанных с ними зрителей. Работа показывает, как общий ритуальный контекст может сопровождаться синхронными физиологическими изменениями у разных людей.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Konvalinka, I., Xygalatas, D., Bulbulia, J., Schjødt, U., Jegindø, E.-M., Wallot, S., Van Orden, G., &amp; Roepstorff, A. (2011). “Synchronized Arousal Between Performers and Related Spectators in a Fire‑Walking Ritual.” PNAS, 108(20), 8514–8519.</p><a class="cat-source-link" href="https://doi.org/10.1073/pnas.1016955108" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">28</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Музыкальная структура и вариабельность сердечного ритма у певцов</h4>
+          <p class="cat-original">Music Structure Determines Heart Rate Variability of Singers</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Исследование анализировало сердечные ритмы певцов во время совместного исполнения. Авторы показали, что музыкальная структура и общая фразировка связаны с координацией ВСР между участниками.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Vickhoff, B., Malmgren, H., Åström, R., et al. (2013). “Music Structure Determines Heart Rate Variability of Singers.” Frontiers in Psychology, 4, 334.</p><a class="cat-source-link" href="https://doi.org/10.3389/fpsyg.2013.00334" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">29</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Синхрония и её социальные эффекты: метаанализ</h4>
+          <p class="cat-original">To Be in Synchrony or Not? A Meta-analysis of Synchrony’s Effects on Behavior, Perception, Cognition and Affect</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ объединяет эксперименты, где люди двигались, действовали или воспринимали ритм синхронно. Он оценивает, как синхронность связана с поведением, восприятием, познанием и аффектом.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Mogan, R., Fischer, R., &amp; Bulbulia, J. A. (2017). “To Be in Synchrony or Not? A Meta‑analysis of Synchrony’s Effects on Behavior, Perception, Cognition and Affect.” Journal of Experimental Social Psychology, 72, 13–20.</p><a class="cat-source-link" href="https://doi.org/10.1016/j.jesp.2016.11.009" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">30</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Синхрония и сотрудничество</h4>
+          <p class="cat-original">Synchrony and Cooperation</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Эксперимент проверял, влияет ли синхронное действие на готовность сотрудничать. Работа представляет простой проверяемый механизм: общий ритм и координация могут менять последующее социальное поведение.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Wiltermuth, S. S., &amp; Heath, C. (2009). “Synchrony and Cooperation.” Psychological Science, 20(1), 1–5.</p><a class="cat-source-link" href="https://doi.org/10.1111/j.1467-9280.2009.02402.x" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">31</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Всё решает время: межличностная синхрония и симпатия</h4>
+          <p class="cat-original">It’s All in the Timing: Interpersonal Synchrony Increases Affiliation</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Экспериментально проверялось, усиливает ли синхронность движений чувство взаимной симпатии. Авторы исследовали именно краткую, контролируемую форму координации между людьми.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Hove, M. J., &amp; Risen, J. L. (2009). “It’s All in the Timing: Interpersonal Synchrony Increases Affiliation.” Cognition, 113(1), 118–124.</p><a class="cat-source-link" href="https://doi.org/10.1016/j.cognition.2009.03.007" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">32</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Синхрония и социальная настройка сострадания</h4>
+          <p class="cat-original">Synchrony and the Social Tuning of Compassion</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Работа изучает, может ли синхронное действие изменить социальное восприятие и сострадательную реакцию. Это относится к линии исследований эмоциональной и поведенческой координации.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Valdesolo, P., &amp; DeSteno, D. (2011). “Synchrony and the Social Tuning of Compassion.” Emotion / Journal of Experimental Social Psychology.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22Synchrony+and+the+Social+Tuning+of+Compassion%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+</div>
+<h3 class="cat-cluster">Социальные сети и распространение состояний</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">33</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Распространение счастья в большой социальной сети</h4>
+          <p class="cat-original">Dynamic Spread of Happiness in a Large Social Network: Longitudinal Analysis over 20 Years in the Framingham Heart Study</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Лонгитюдный анализ социальной сети изучал, как изменения счастья соотносятся с динамикой у людей, связанных дружбой и другими отношениями. Работа помогает описать социальные пути распространения эмоциональных состояний.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Fowler, J. H., &amp; Christakis, N. A. (2008). “Dynamic Spread of Happiness in a Large Social Network: Longitudinal Analysis Over 20 Years in the Framingham Heart Study.” BMJ, 337, a2338.</p><a class="cat-source-link" href="https://doi.org/10.1136/bmj.a2338" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">34</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Одиночество в социальной сети</h4>
+          <p class="cat-original">Alone in the Crowd: The Structure and Spread of Loneliness in a Large Social Network</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Исследование отслеживало одиночество в большой сети социальных связей. Оно показывает, как психологические состояния могут иметь сетевую структуру и изменяться вместе с отношениями между людьми.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Cacioppo, J. T., Fowler, J. H., &amp; Christakis, N. A. (2009). “Alone in the Crowd: The Structure and Spread of Loneliness in a Large Social Network.” Journal of Personality and Social Psychology, 97(6), 977–991.</p><a class="cat-source-link" href="https://doi.org/10.1037/a0016076" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">35</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Социальное влияние и онлайн-мобилизация: эксперимент с 61 миллионом участников</h4>
+          <p class="cat-original">A 61-Million-Person Experiment in Social Influence and Political Mobilization</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Крупный онлайн-эксперимент проверял, как сообщения с социальными сигналами влияют на политическую мобилизацию. Он даёт масштабный пример того, как видимое участие других людей может менять массовое поведение.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Bond, R. M., Fariss, C. J., Jones, J. J., et al. (2012). “A 61‑Million‑Person Experiment in Social Influence and Political Mobilization.” Nature, 489, 295–298.</p><a class="cat-source-link" href="https://doi.org/10.1038/nature11421" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">36</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Зеркальные нейроны: наблюдение и действие</h4>
+          <p class="cat-original">The Mirror-Neuron System</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Обзор описывает нейронные системы, активные как при собственном действии, так и при наблюдении действий других. Он даёт нейробиологический фон для тем социального восприятия, но не тестирует дистанционный групповой эффект.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Rizzolatti, G., &amp; Craighero, L. (2004). “The Mirror‑Neuron System.” Annual Review of Neuroscience, 27, 169–192.</p><a class="cat-source-link" href="https://doi.org/10.1146/annurev.neuro.27.070203.144230" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">37</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Эмоциональное заражение через социальную сеть</h4>
+          <p class="cat-original">Experimental Evidence of Massive-Scale Emotional Contagion through Social Networks</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Эксперимент с лентой новостей проверял, влияет ли изменение эмоциональной окраски контента на последующие публикации пользователей. Авторы сообщили, что изменение доли позитивного или негативного контента сопровождалось изменением эмоционального языка ответов.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Kramer, A. D. I., Guillory, J. E., &amp; Hancock, J. T. (2014). “Experimental Evidence of Massive‑Scale Emotional Contagion through Social Networks.” PNAS, 111(24), 8788–8790.</p><a class="cat-source-link" href="https://doi.org/10.1073/pnas.1320040111" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">38</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Теория социального заражения в динамических сетях</h4>
+          <p class="cat-original">Social Contagion Theory: Examining Dynamic Social Networks and Human Behavior</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Статья разбирает, как поведение и эмоциональные состояния могут распространяться в реальных социальных сетях. Она полезна для понимания измеримых путей передачи влияния через отношения, сообщения и повторяющееся взаимодействие.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Christakis, N. A., &amp; Fowler, J. H. (2013). “Social Contagion Theory: Examining Dynamic Social Networks and Human Behavior.” Statistics in Medicine, 32(4), 556–577.</p><a class="cat-source-link" href="https://doi.org/10.1002/sim.5408" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+</div>
+<h3 class="cat-cluster">Поведенческие модели и методологическая проверка</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">39</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Межмозговая синхронизация при игре на гитаре дуэтом</h4>
+          <p class="cat-original">Intra- and Interbrain Synchronization and Network Properties When Playing Guitar in Duets</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Исследование записывало ЭЭГ у музыкантов, играющих вместе, и анализировало внутримозговую и межмозговую синхронизацию. Оно показывает, как совместная задача и общий ритм могут быть связаны с измеримой координацией между участниками.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Sänger, J., Müller, V., &amp; Lindenberger, U. (2012). “Intra‑ and Interbrain Synchronization and Network Properties When Playing Guitar in Duets.” Frontiers in Human Neuroscience, 6, 312.</p><a class="cat-source-link" href="https://doi.org/10.3389/fnhum.2012.00312" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">40</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Цыплята и автономный робот: измеряемый импринтинг и следование</h4>
+          <p class="cat-original">Automated Analysis of Behavioural Variability and Filial Imprinting of Chicks (Gallus gallus) Using Autonomous Robots</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">После раннего контакта часть цыплят формировала импринтинг на автономного робота и следовала за ним как за суррогатной наседкой. В выборке из 205 цыплят исследователи количественно измеряли расстояние до робота, скорость, траектории и типы поведения; импринтированные цыплята чаще держались рядом и следовали за роботом.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Gribovskiy, A., Mondada, F., Deneubourg, J. L., Cazenille, L., Bredeche, N., &amp; Halloy, J. (2015).</p><a class="cat-source-link" href="https://arxiv.org/abs/1509.01957" target="_blank" rel="noopener">Открыть первичный препринт ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">41</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Методологические разборы исследований Maharishi-effect</h4>
+          <p class="cat-original">A Methodological Critique of a Test of the Maharishi Technology of the Unified Field</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Этот блок собирает методологические работы о дизайне временных рядов, выборе исходов и статистических допущениях в исследованиях Maharishi-effect. Он нужен, чтобы проверять будущие исследования коллективной практики на более строгом уровне.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Schrodt, P. A. “A Methodological Critique of a Test of the Maharishi Technology of the Unified Field.” Journal of Conflict Resolution. Fales, E., &amp; Markovsky, B. (1997). “Evaluating Heterodox Theories.” Social Forces, 76(2), 511–525.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22A+Methodological+Critique+of+a+Test+of+the+Maharishi+Technology+of+the+Unified+Field%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">42</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Медитация и просоциальность: систематический обзор</h4>
+          <p class="cat-original">The Limited Prosocial Effects of Meditation: A Systematic Review and Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Обзор объединяет исследования о том, меняет ли медитативная практика просоциальное поведение. Он полезен для выбора измеримых социальных исходов в сообществах практики.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Kreplin, U., Farias, M., &amp; Brazil, I. A. (2018). “The Limited Prosocial Effects of Meditation: A Systematic Review and Meta‑analysis.” Scientific Reports, 8, 2403.</p><a class="cat-source-link" href="https://doi.org/10.1038/s41598-018-20299-z" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+</div>
+</section>
+<section class="cat-section" data-section="russian">
+  <h2 class="cat-h2">Русская, советская и ранняя исследовательская линия</h2>
+  <p class="cat-lead">Отобраны только работы, в которых есть тематически важные идеи о коллективных процессах, ноосфере или мысленном воздействии. Исторический статус указан внутри каждой карточки.</p>
+  <article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">43</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Ноосфера: научная мысль как планетное явление</h4>
+          <p class="cat-original">The Biosphere and the Noosphere</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Работа Вернадского вводит историко-научный контекст ноосферы: человеческая мысль и деятельность рассматриваются как планетарный фактор. Это концептуальная работа, а не эксперимент с ГСЧ или групповой медитацией.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Вернадский, В. И. (1945). “The Biosphere and the Noosphere.” American Scientist, 33(1), 1–12. Русская работа: «Несколько слов о ноосфере» (1944).</p><a class="cat-source-link" href="https://www.jstor.org/action/doBasicSearch?Query=%22The+Biosphere+and+the+Noosphere%22" target="_blank" rel="noopener">Найти в научном архиве JSTOR ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">44</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Экспериментальные исследования мысленного внушения</h4>
+          <p class="cat-original">Experiments in Mental Suggestion</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Васильев описывает советскую экспериментальную линию исследований мысленного внушения и попыток передачи сигнала на расстоянии. Это исторический первичный источник для P1; при чтении важно отдельно проверить условия эксперимента, экранирование, регистрацию ответов и независимость наблюдателей.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Васильев, Л. Л. (1962). «Экспериментальные исследования мысленного внушения». Москва. Английское издание: Experiments in Mental Suggestion (1963).</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22%D0%AD%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5+%D0%B8%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F+%D0%BC%D1%8B%D1%81%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE+%D0%B2%D0%BD%D1%83%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%22" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">45</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P2 — синхрония и социальная координация</span>
+          <h4 class="cat-title">Коллективная рефлексология</h4>
+          <p class="cat-original">Collective Reflexology</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Бехтерев рассматривал коллективное поведение как предмет объективного наблюдения и анализа. Это ранняя русская работа о групповых процессах и социальной координации; она включена как исторический фундамент, а не как современный эксперимент с ГСЧ.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Бехтерев, В. М. (1921). «Коллективная рефлексология». Петроград: Колос.</p><a class="cat-source-link" href="https://scholar.google.com/scholar?q=%22%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F+%D1%80%D0%B5%D1%84%D0%BB%D0%B5%D0%BA%D1%81%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F%22+%D0%91%D0%B5%D1%85%D1%82%D0%B5%D1%80%D0%B5%D0%B2" target="_blank" rel="noopener">Найти по точному названию ↗</a></div>
+      </details>
+    </article>
+</section>
+<section class="cat-section" data-section="meditation">
+  <h2 class="cat-h2">Медитация, благополучие и просоциальные эффекты</h2>
+  <p class="cat-lead">Этот раздел расположен ниже, потому что он описывает прежде всего индивидуальные и групповые эффекты практики для благополучия, а не полевые гипотезы.</p>
+  <h3 class="cat-cluster">Медитация и психологическое благополучие</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">46</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P3 — медитация и благополучие</span>
+          <h4 class="cat-title">Медитативные программы, психологический стресс и благополучие</h4>
+          <p class="cat-original">Meditation Programs for Psychological Stress and Well-being: A Systematic Review and Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Систематический обзор объединяет исследования медитативных программ по стрессу, тревоге, депрессивным симптомам и благополучию. Это базовая карточка для понимания индивидуальных эффектов регулярной практики.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Goyal, M., Singh, S., Sibinga, E. M. S., et al. (2014). “Meditation Programs for Psychological Stress and Well‑being: A Systematic Review and Meta‑analysis.” JAMA Internal Medicine, 174(3), 357–368.</p><a class="cat-source-link" href="https://doi.org/10.1001/jamainternmed.2013.13018" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">47</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P3 — медитация и благополучие</span>
+          <h4 class="cat-title">Терапия на основе mindfulness: комплексный метаанализ</h4>
+          <p class="cat-original">Mindfulness-based Therapy: A Comprehensive Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ оценивает результаты исследований терапевтических программ, основанных на осознанности. Он суммирует изменения психологических показателей в разных клинических и неклинических группах.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Khoury, B., Lecomte, T., Fortin, G., et al. (2013). “Mindfulness‑based Therapy: A Comprehensive Meta‑analysis.” Clinical Psychology Review, 33(6), 763–771.</p><a class="cat-source-link" href="https://doi.org/10.1016/j.cpr.2013.05.005" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">48</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P3 — медитация и благополучие</span>
+          <h4 class="cat-title">Медитация любящей доброты и позитивные эмоции: метаанализ</h4>
+          <p class="cat-original">The Effect of Loving-Kindness Meditation on Positive Emotions: A Meta-analytic Review</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ обобщает исследования медитации любящей доброты и её связи с позитивными эмоциями. Он относится к прикладной линии позитивных эффектов регулярной практики.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Zeng, X., Chiu, C. P. K., Wang, R., Oei, T. P. S., &amp; Leung, F. Y. K. (2015). “The Effect of Loving‑Kindness Meditation on Positive Emotions: A Meta‑analytic Review.” Frontiers in Psychology, 6, 1693.</p><a class="cat-source-link" href="https://doi.org/10.3389/fpsyg.2015.01693" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">49</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P3 — медитация и благополучие</span>
+          <h4 class="cat-title">Mindfulness-медитация и иммунная система: систематический обзор РКИ</h4>
+          <p class="cat-original">Mindfulness Meditation and the Immune System: A Systematic Review of Randomized Controlled Trials</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Обзор случайных контролируемых исследований оценивает, как mindfulness-медитация связана с иммунными показателями. Он позволяет увидеть, какие биомаркеры уже измерялись в контролируемых протоколах.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Black, D. S., &amp; Slavich, G. M. (2016). “Mindfulness Meditation and the Immune System: A Systematic Review of Randomized Controlled Trials.” Annals of the New York Academy of Sciences, 1373(1), 13–24.</p><a class="cat-source-link" href="https://doi.org/10.1111/nyas.12998" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">50</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P3 — медитация и благополучие</span>
+          <h4 class="cat-title">Медитация и активность теломеразы: метааналитический обзор</h4>
+          <p class="cat-original">A Meta-analytic Review of the Effects of Mindfulness Meditation on Telomerase Activity</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ рассматривает исследования, измерявшие теломеразу в связи с mindfulness-медитацией. Это биомаркерный трек, который расположен ниже основных работ о коллективном намерении.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Schutte, N. S., &amp; Malouff, J. M. (2014). “A Meta‑analytic Review of the Effects of Mindfulness Meditation on Telomerase Activity.” Psychoneuroendocrinology, 42, 45–48.</p><a class="cat-source-link" href="https://doi.org/10.1016/j.psyneuen.2013.12.017" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">51</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P3 — медитация и благополучие</span>
+          <h4 class="cat-title">Психологические эффекты медитации: метаанализ</h4>
+          <p class="cat-original">The Psychological Effects of Meditation: A Meta-analysis</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Метаанализ объединяет исследования психологических эффектов медитации в разных форматах практики. Он даёт широкую картину того, какие исходы чаще всего измеряются и как они меняются.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Sedlmeier, P., Eberth, J., Schwarz, M., Zimmermann, D., Haarig, F., Jaeger, S., &amp; Kunze, S. (2012). “The Psychological Effects of Meditation: A Meta‑analysis.” Psychological Bulletin, 138(6), 1139–1171.</p><a class="cat-source-link" href="https://doi.org/10.1037/a0028168" target="_blank" rel="noopener">Оригинальная публикация / DOI ↗</a></div>
+      </details>
+    </article>
+</div>
+<h3 class="cat-cluster">Собственный исследовательский протокол</h3><div class="cat-grid">
+<article class="cat-card">
+      <div class="cat-card-top">
+        <span class="cat-nr">52</span>
+        <div class="cat-card-head">
+          <span class="science-badge">P1 — коллективное намерение / поле</span>
+          <h4 class="cat-title">Протокол будущего исследования «Единая практика»</h4>
+          <p class="cat-original">Pre-registered comparison of synchronous and asynchronous practice</p>
+        </div>
+      </div>
+      <p class="cat-takeaway">Это не внешняя публикация, а набросок проверяемого будущего протокола. Он предлагает сравнивать синхронную и асинхронную практику при одинаковом числе участников, длительности и заранее заданных конечных точках.</p>
+      <details class="cat-details">
+        <summary>Библиография и источник</summary>
+        <div class="cat-detail-body"><p class="cat-citation">Проектная запись, не внешняя статья: предзарегистрированное сравнение синхронной и асинхронной практики (N одинаковых участников; одинаковая длительность; конечные точки заранее заданы).</p><a class="cat-source-link" href="https://osf.io/registries" target="_blank" rel="noopener">Открыть реестр / протокол ↗</a></div>
+      </details>
+    </article>
+</div>
+</section>
+
+  <p class="meth-note">Эта подборка собрана из независимых научных публикаций и рабочих источников по темам коллективного намерения, синхронии и медитации. Для одной записи (№11) точная библиографическая запись не подтверждена &#8212; это указано отдельно в карточке. Единая практика опирается на эти материалы как на контекст, а не как на доказательство.</p>
+</main>
+<script>
+function catFilter(id){
+  document.querySelectorAll('.cat-filter').forEach(function(b){b.classList.toggle('active',b.dataset.filter===id);});
+  document.querySelectorAll('.cat-section').forEach(function(s){
+    s.classList.toggle('cat-hidden', id!=='all' && s.dataset.section!==id);
+  });
+}
+</script>
+</body>
+</html>

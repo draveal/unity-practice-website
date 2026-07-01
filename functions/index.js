@@ -31,9 +31,6 @@ const crypto = require('crypto');
 //   firebase functions:secrets:set RESEND_API_KEY
 const RESEND_API_KEY = defineSecret('RESEND_API_KEY');
 
-// Empfänger des Feedbacks.
-const FEEDBACK_TO = 'draveal99@gmail.com';
-
 // Absender + öffentliche Basis-URL der Functions (für Abmelde-Links in Mails).
 const MAIL_FROM = 'Unity Practice <onboarding@resend.dev>'; // später: verifizierte Domain
 const FUNCTIONS_BASE = 'https://europe-west1-unity-practice-one.cloudfunctions.net';
@@ -217,46 +214,7 @@ exports.emailReminders = onSchedule(
   }
 );
 
-/* ==========================================================================
-   Feedback-Versand via Resend (HTTP-Function, hosting-unabhängig)
-   Endpoint:  POST  https://<region>-unity-practice-one.cloudfunctions.net/feedback
-   Body:      { userEmail, category, message }
-   Der Resend-Key kommt ausschließlich aus dem Firebase-Secret RESEND_API_KEY.
-   ========================================================================== */
-function escHtml(s) {
-  return String(s || '').replace(/[&<>"]/g, (c) => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
-  ));
-}
-
-/* Einfaches IP-basiertes Rate-Limit gegen Spam (kein Auth/Captcha auf diesem
-   Endpoint). Erlaubt max. RATE_LIMIT_MAX Anfragen pro RATE_LIMIT_WINDOW_MS
-   und IP, gespeichert in Firestore (Functions sind stateless über Instanzen
-   hinweg, daher kein In-Memory-Zähler). */
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 Stunde
-const RATE_LIMIT_MAX = 5;
-async function checkRateLimit(key) {
-  const id = crypto.createHash('sha256').update(key).digest('hex');
-  const ref = db.collection('rate_limits').doc(id);
-  const now = Date.now();
-  try {
-    return await db.runTransaction(async (tx) => {
-      const snap = await tx.get(ref);
-      const data = snap.exists ? snap.data() : null;
-      if (!data || now - data.windowStart > RATE_LIMIT_WINDOW_MS) {
-        tx.set(ref, { windowStart: now, count: 1 });
-        return true;
-      }
-      if (data.count >= RATE_LIMIT_MAX) return false;
-      tx.update(ref, { count: data.count + 1 });
-      return true;
-    });
-  } catch (e) {
-    logger.warn('Rate-Limit-Check fehlgeschlagen', e);
-    return true; // bei Firestore-Fehler nicht blockieren
-  }
-}
-
+/* Setzt die CORS-Header (gemeinsam von den HTTP-Functions genutzt). */
 function applyCors(req, res) {
   const origin = req.headers.origin;
   if (isAllowedOrigin(origin)) {
@@ -266,58 +224,6 @@ function applyCors(req, res) {
   res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type');
 }
-
-exports.feedback = onRequest(
-  { region: 'europe-west1', secrets: [RESEND_API_KEY], cors: false },
-  async (req, res) => {
-    applyCors(req, res);
-    if (req.method === 'OPTIONS') { res.status(204).send(''); return; }
-    if (req.method !== 'POST') { res.status(405).json({ error: 'Method Not Allowed' }); return; }
-
-    const ip = req.headers['x-forwarded-for'] || req.ip || 'unknown';
-    if (!(await checkRateLimit('feedback:' + ip))) {
-      res.status(429).json({ error: 'Zu viele Anfragen, bitte später erneut versuchen.' });
-      return;
-    }
-
-    const apiKey = RESEND_API_KEY.value();
-    if (!apiKey) { res.status(500).json({ error: 'RESEND_API_KEY nicht gesetzt' }); return; }
-
-    const data = (typeof req.body === 'object' && req.body) || {};
-    const userEmail = data.userEmail || 'unbekannt';
-    const category = data.category || 'Feedback';
-    const message = (data.message || '').trim();
-    if (!message) { res.status(400).json({ error: 'Nachricht fehlt' }); return; }
-
-    try {
-      const resp = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: { Authorization: 'Bearer ' + apiKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          from: 'Unity Practice <onboarding@resend.dev>', // später: verifizierte Domain
-          to: [FEEDBACK_TO],
-          reply_to: /@/.test(userEmail) ? userEmail : undefined,
-          subject: 'Unity Practice Feedback: ' + category,
-          html:
-            '<h3>Neues Feedback erhalten</h3>' +
-            '<p><strong>Von:</strong> ' + escHtml(userEmail) + '</p>' +
-            '<p><strong>Kategorie:</strong> ' + escHtml(category) + '</p>' +
-            '<p><strong>Nachricht:</strong></p>' +
-            '<p>' + escHtml(message).replace(/\n/g, '<br>') + '</p>',
-        }),
-      });
-      if (!resp.ok) {
-        const detail = await resp.text();
-        res.status(502).json({ error: 'Resend-Fehler', detail });
-        return;
-      }
-      res.status(200).json({ ok: true });
-    } catch (e) {
-      logger.error('Feedback-Versand fehlgeschlagen', e);
-      res.status(500).json({ error: String(e) });
-    }
-  }
-);
 
 /* ==========================================================================
    E-Mail-Erinnerung abonnieren (Startseiten-Formular)

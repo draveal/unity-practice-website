@@ -70,6 +70,8 @@ main{max-width:1100px;margin:0 auto;padding:140px 40px 100px}
 .wave-table tr:last-child td{border-bottom:none}
 @media(max-width:700px){.wave-table{font-size:12px}.wave-table th,.wave-table td{padding:8px 8px}}
 .wn-title{font-family:var(--ff-serif);font-size:clamp(24px,3vw,42px);font-weight:300;color:var(--text);line-height:1.2;margin-top:8px}
+.cat-link-cta{display:block;text-align:center;font-size:13px;color:var(--accent3);text-decoration:none;margin:40px 0;padding:16px;border:.5px solid var(--border);border-radius:var(--radius);transition:border-color .2s,color .2s}
+.cat-link-cta:hover{border-color:var(--accent3);color:var(--gold)}
 @media(max-width:900px){nav{padding:14px 20px}.nav-links{display:none}main{padding:100px 20px 80px}.science-grid{grid-template-columns:1fr}.lang-btns{display:none}.mob-lang-bar{display:flex}}
 </style>
 </head>
@@ -266,6 +268,8 @@ main{max-width:1100px;margin:0 auto;padding:140px 40px 100px}
     </tbody>
   </table>
 
+  <a href="katalog/index.html" class="cat-link-cta" data-i18n="cat_link">Vollständiger Studienkatalog — 52 Studien (aktuell auf Russisch) →</a>
+
   <p class="meth-note" data-i18n="meth_note">Diese Studien stammen aus unabhängigen Forschungsgruppen weltweit und wurden in referierten Journals veröffentlicht. Unity Practice stützt sich auf diese Forschung als Kontext — nicht als Beweis. Das Experiment findet täglich um 19:00 Uhr statt.</p>
 </main>
 <script>
@@ -281,6 +285,7 @@ var T={
     c5_badge:'MORPHISCHE FELDER',c5_t:'Wenn genug Wesen ein Muster erlernen, wird es für andere leichter',c5_tx:'Sheldrake nannte es morphische Resonanz. Die Frage: Was geschieht, wenn tausende Menschen täglich dieselbe innere Ausrichtung praktizieren?',
     c6_badge:'ASPECT-EXPERIMENT',c6_t:'Quantenkohärenz: instantaner Einfluss unabhängig von der Distanz',c6_tx:'Ob dasselbe für Bewusstsein gilt, ist Gegenstand ernsthafter universitärer Forschung. Unity Practice ist das Experiment.',
     meth_note:'Diese Studien stammen aus unabhängigen Forschungsgruppen weltweit und wurden in referierten Journals veröffentlicht. Unity Practice stützt sich auf diese Forschung als Kontext — nicht als Beweis. Das Experiment findet täglich um 19:00 Uhr statt.',
+    cat_link:'Vollständiger Studienkatalog — 52 Studien (aktuell auf Russisch) →',
     wn_lbl:'WEITERE NACHWEISE',wn_h:'Kollektives Bewusstsein & Feldeffekte',
     wn1_badge:'WASHINGTON D.C. — 1993',wn1_t:'Das Kriminalitätsexperiment mit Vorhersage',wn1_tx:'Rund 4.000 TM-Praktizierende versammelten sich im Sommer 1993 — die Hypothese war vorab veröffentlicht. Gewaltkriminalität sank um 23 %; Wahrscheinlichkeit für Zufall: weniger als 2 zu 1 Milliarde.',
     wn2_badge:'LIBANON-STUDIE',wn2_t:'Kriegstote sinken, wenn die Gruppe meditiert',wn2_tx:'Bei sieben Meditationstreffen, bei denen die Teilnehmerzahl die kritische Schwelle überschritt, sanken Kriegstote um 71 %, Verletzte um 68 %. Friedensbereitschaft stieg um 66 %.',
@@ -309,7 +314,7 @@ var T={
     wt7_a:'Distant Healing Meta-Analyse',wt7_b:'Evidenzbasierte Medizin',wt7_c:'Effekte messbar, Mechanismus offen',
     wt8_a:'Chanting / Neurophysiologie',wt8_b:'Neurowissenschaft',wt8_c:'Chanting koordiniert Gehirn- und Herzrhythmus gleichzeitig'},
   ru:{nav_about:'О практике',nav_wiss:'Наука',nav_samarth:'Самарт',nav_stimmen:'Отзывы',nav_faq:'FAQ',nav_cta:'Скачать приложение',
-    back:'← На главную',lbl:'Наука',title:'Что показывает исследование',
+    back:'← На главную',lbl:'Наука',title:'Что показывают исследования',
     sub:'Шесть независимых научных направлений указывают на одно: коллективное внимание создаёт измеримые эффекты в мире.',
     vid_h:'Видео-раздел (в разработке)',vid_p:'Здесь появятся объяснительные видео, анимации и интервью о научных основах.',
     c1_badge:'ЭФФЕКТ МАХАРИШИ',c1_t:'1987: одновременная медитация в 48 городах',c1_tx:'Уровень преступности снизился в среднем на 16% — воспроизводимо, статистически значимо.',
@@ -317,8 +322,9 @@ var T={
     c3_badge:'GLOBAL CONSCIOUSNESS PROJECT',c3_t:'С 1998 года 70 генераторов случайных чисел работают круглосуточно по всему миру',c3_tx:'Во время крупных событий с общим вниманием значения статистически отклоняются. Вероятность случайности: менее 0,001%.',
     c4_badge:'ФАУЛЕР И КРИСТАКИС',c4_t:'Счастье заразно на 3 уровнях',c4_tx:'В 20-летнем исследовании с 5 000 человек: если твой друг становится счастливее, твой шанс растёт на 15%. Друг друга — ещё на 10%.',
     c5_badge:'МОРФИЧЕСКИЕ ПОЛЯ',c5_t:'Когда достаточно существ усваивает паттерн, другим становится легче',c5_tx:'Шелдрейк назвал это морфическим резонансом. Вопрос: что происходит, когда тысячи людей каждый день практикуют одну внутреннюю настройку?',
-    c6_badge:'ЭКСПЕРИМЕНТ АСПЕКА',c6_t:'Квантовая когерентность: мгновенное влияние независимо от расстояния',c6_tx:'Применимо ли это к сознанию — предмет серьёзных университетских исследований. Unity Practice — это эксперимент.',
-    meth_note:'Эти исследования проводились независимыми группами учёных по всему миру и опубликованы в рецензируемых журналах. Unity Practice опирается на них как на контекст — не как на доказательство. Эксперимент происходит ежедневно в 19:00.',
+    c6_badge:'ЭКСПЕРИМЕНТ АСПЕКА',c6_t:'Квантовая когерентность: мгновенное влияние независимо от расстояния',c6_tx:'Применимо ли это к сознанию — предмет серьёзных университетских исследований. Единая практика — это эксперимент.',
+    meth_note:'Эти исследования проводились независимыми группами учёных по всему миру и опубликованы в рецензируемых журналах. Единая практика опирается на них как на контекст — не как на доказательство. Эксперимент происходит ежедневно в 19:00.',
+    cat_link:'Полный каталог исследований — 52 работы →',
     wn_lbl:'ДОПОЛНИТЕЛЬНЫЕ СВИДЕТЕЛЬСТВА',wn_h:'Коллективное сознание и полевые эффекты',
     wn1_badge:'ВАШИНГТОН, О.К. — 1993',wn1_t:'Эксперимент по преступности с опубликованным прогнозом',wn1_tx:'Около 4.000 практикующих ТМ собрались летом 1993 года в Вашингтоне — гипотеза была опубликована заранее. Уровень насильственной преступности снизился на 23%; вероятность случайности: менее 2 на миллиард.',
     wn2_badge:'ИССЛЕДОВАНИЕ В ЛИВАНЕ',wn2_t:'Военные потери снижаются, когда группа медитирует',wn2_tx:'В ходе семи медитационных встреч, когда число участников превышало критический порог: погибших стало меньше на 71%, раненых — на 68%. Признаки готовности к миру выросли на 66%.',
@@ -357,6 +363,7 @@ var T={
     c5_badge:'MORPHIC FIELDS',c5_t:'When Enough Beings Learn a Pattern, It Becomes Easier for Others',c5_tx:'Sheldrake called it morphic resonance. The question: what happens when thousands of people practice the same inner alignment every day?',
     c6_badge:'ASPECT EXPERIMENT',c6_t:'Quantum Coherence: Instantaneous Influence Independent of Distance',c6_tx:'Whether the same applies to consciousness is the subject of serious university research. Unity Practice is the experiment.',
     meth_note:'These studies come from independent research groups worldwide and were published in peer-reviewed journals. Unity Practice draws on this research as context — not as proof. The experiment takes place every day at 19:00.',
+    cat_link:'Full research catalog — 52 studies (currently in Russian) →',
     wn_lbl:'FURTHER EVIDENCE',wn_h:'Collective Consciousness & Field Effects',
     wn1_badge:'WASHINGTON D.C. — 1993',wn1_t:'The Crime Experiment with a Published Prediction',wn1_tx:'Around 4,000 TM practitioners gathered in summer 1993 in Washington D.C. — the hypothesis was published in advance. Violent crime fell by 23%. Probability of chance: less than 2 in 1 billion.',
     wn2_badge:'LEBANON STUDY',wn2_t:'War Deaths Drop When the Group Meditates',wn2_tx:'During seven meditation gatherings where attendance exceeded the critical threshold: war deaths fell by 71%, war-related injuries by 68%. Signs of peace readiness rose 66%.',
@@ -395,6 +402,7 @@ var T={
     c5_badge:'CAMPOS MÓRFICOS',c5_t:'Cuando suficientes seres aprenden un patrón, se vuelve más fácil para otros',c5_tx:'Sheldrake lo llamó resonancia mórfica. La pregunta: ¿qué ocurre cuando miles de personas practican la misma alineación interior cada día?',
     c6_badge:'EXPERIMENTO DE ASPECT',c6_t:'Coherencia cuántica: influencia instantánea independiente de la distancia',c6_tx:'Si lo mismo aplica a la conciencia es objeto de investigación universitaria seria. Unity Practice es el experimento.',
     meth_note:'Estos estudios provienen de grupos de investigación independientes de todo el mundo y fueron publicados en revistas revisadas por pares. Unity Practice se apoya en esta investigación como contexto — no como prueba. El experimento tiene lugar todos los días a las 19:00.',
+    cat_link:'Catálogo completo de estudios — 52 estudios (actualmente en ruso) →',
     wn_lbl:'FURTHER EVIDENCE',wn_h:'Collective Consciousness & Field Effects',
     wn1_badge:'WASHINGTON D.C. — 1993',wn1_t:'The Crime Experiment with a Published Prediction',wn1_tx:'Around 4,000 TM practitioners gathered in summer 1993 in Washington D.C. — the hypothesis was published in advance. Violent crime fell by 23%. Probability of chance: less than 2 in 1 billion.',
     wn2_badge:'LEBANON STUDY',wn2_t:'War Deaths Drop When the Group Meditates',wn2_tx:'During seven meditation gatherings where attendance exceeded the critical threshold: war deaths fell by 71%, war-related injuries by 68%. Signs of peace readiness rose 66%.',

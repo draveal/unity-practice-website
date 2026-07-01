@@ -59,9 +59,8 @@ main{max-width:800px;margin:0 auto;padding:140px 40px 100px}
 .fact-num{display:block;font-family:var(--ff-serif);font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
 .fact-lbl{font-size:12px;color:var(--muted);line-height:1.4}
 .samarth-hero{display:flex;align-items:flex-start;gap:40px;margin-bottom:40px}
-.samarth-photo-wrap{flex-shrink:0;width:160px;height:160px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(242,201,76,.35);box-shadow:0 0 40px rgba(242,201,76,.12)}
-.samarth-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.samarth-photo-placeholder{width:100%;height:100%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:48px;font-family:var(--ff-serif);color:var(--muted)}
+.samarth-photo-wrap{flex-shrink:0;width:160px;height:160px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(242,201,76,.35);box-shadow:0 0 40px rgba(242,201,76,.12);background:var(--card)}
+.samarth-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;transform:scale(2.15);transform-origin:50% 0%}
 .samarth-hero-text{flex:1}.samarth-hero-text .page-sub{margin-bottom:0}
 @media(max-width:600px){.samarth-hero{flex-direction:column;align-items:center}.samarth-hero-text{text-align:center}}
 .mob-lang-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(10,26,47,.97);border-top:.5px solid var(--border);padding:12px 20px;justify-content:center;gap:12px;backdrop-filter:blur(10px)}
@@ -92,7 +91,7 @@ main{max-width:800px;margin:0 auto;padding:140px 40px 100px}
   <a href="../index.html" class="back-link" data-i18n="back">← Zurück zur Startseite</a>
   <div class="samarth-hero">
     <div class="samarth-photo-wrap">
-      <img src="samarth.jpg" alt="Samarth Sammasati" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'samarth-photo-placeholder\'>S</div>'">
+      <img src="/assets/samarth-avatar.webp" alt="Samarth Sammasati">
     </div>
     <div class="samarth-hero-text">
       <div class="page-label" data-i18n="lbl">Über Samarth</div>
@@ -129,7 +128,7 @@ main{max-width:800px;margin:0 auto;padding:140px 40px 100px}
 var T={
   de:{nav_about:'Über die Praxis',nav_wiss:'Wissenschaft',nav_samarth:'Samarth',nav_stimmen:'Stimmen',nav_faq:'FAQ',nav_cta:'App herunterladen',
     back:'← Zurück zur Startseite',lbl:'Über Samarth',title:'Samarth Sammasati',
-    sub:'Lehrer, Forscher und Initiator von Unity Practice. Keine Bühneninszenierung — keine Guru-Rolle. Ein Mensch, der eine tägliche synchrone Praxis für alle zugänglich macht.',
+    sub:'Ohne Guru-Rolle — einfach ein Mensch, der das Glück hatte, wahren Lehrern zu begegnen und tiefes Wissen von ihnen zu übernehmen. Heute gibt er dieses Wissen weiter, indem er die tägliche synchrone Praxis für alle zugänglich macht.',
     quote:'«Kollektives Karma ist kein Schicksal, dem wir hilflos ausgeliefert sind. Sobald du aufhörst, automatisch zu reagieren, verlässt du den Strom — und veränderst das Ganze.»',
     bio1_h:'Hintergrund',
     bio1_p1:'Samarth Sammasati arbeitet seit über 15 Jahren mit den Prinzipien kollektiver Bewusstseinsveränderung. Seine Arbeit verbindet kontemplative Traditionen mit modernen Erkenntnissen der Bewusstseinsforschung — ohne dogmatische Einrahmung.',
@@ -138,22 +137,22 @@ var T={
     bio2_p1:'Die Praxis selbst hat keinen Preis. Wer partizipiert, trägt bei — allein durch seine Anwesenheit. Das ist das Prinzip von Unity Practice: Resonanz braucht keine Bezahlung, sie braucht Teilnahme.',
     bio2_p2:'Samarth bietet die tägliche Praxis kostenlos an, weil er überzeugt ist, dass Zugangsbeschränkungen dem Kern des Projekts widersprechen würden. Das verlängerte Format mit Q&A ist für registrierte Teilnehmer verfügbar.',
     f1:'Jahre Erfahrung',f2:'Länder weltweit',f3:'Tage pro Woche',f4:'immer kostenlos',
-    ph_h:'Erweiterter Inhalt (in Entwicklung)',ph_p:'Ausführliche Biografie, Projekt-Hintergrund, Interviews und Videomaterial folgen hier.'},
+    ph_h:'Erweiterter Inhalt (in Entwicklung)',ph_p:'Ein erweitertes Format mit Fragen und Antworten ist für registrierte Teilnehmer verfügbar.'},
   ru:{nav_about:'О практике',nav_wiss:'Наука',nav_samarth:'Самарт',nav_stimmen:'Отзывы',nav_faq:'FAQ',nav_cta:'Скачать приложение',
     back:'← На главную',lbl:'О Самарте',title:'Самарт Самасати',
-    sub:'Учитель, исследователь и инициатор Unity Practice. Без сценического образа — без роли гуру. Человек, который делает ежедневную синхронную практику доступной для всех.',
+    sub:'Без роли гуру — просто человек, которому посчастливилось встретить настоящих учителей и перенять от них глубокое знание. Сегодня он передаёт это знание дальше, делая ежедневную синхронную практику доступной для всех.',
     quote:'«Коллективная карма — это не судьба, которой мы беспомощно подчинены. Как только ты перестаёшь реагировать автоматически, ты выходишь из потока — и меняешь целое.»',
     bio1_h:'История',
     bio1_p1:'Самарт Самасати более 15 лет работает с принципами коллективного изменения сознания. Его работа соединяет созерцательные традиции с современными исследованиями в области сознания — без догматических рамок.',
-    bio1_p2:'Unity Practice возникла из вопроса: что происходит, когда тысячи людей каждый день в одно и то же время практикуют одну и ту же внутреннюю настройку? Не как духовное обещание — а как воспроизводимый эксперимент.',
+    bio1_p2:'Единая практика возникла из вопроса: что происходит, когда тысячи людей каждый день в одно и то же время практикуют одну и ту же внутреннюю настройку? Не как духовное обещание — а как воспроизводимый эксперимент.',
     bio2_h:'Почему бесплатно?',
-    bio2_p1:'У самой практики нет цены. Тот, кто участвует, вносит вклад — уже самим своим присутствием. Это принцип Unity Practice: резонанс не требует оплаты, он требует участия.',
+    bio2_p1:'У самой практики нет цены. Тот, кто участвует, вносит вклад — уже самим своим присутствием. Это принцип Единой практики: резонанс не требует оплаты, он требует участия.',
     bio2_p2:'Самарт предлагает ежедневную практику бесплатно, потому что убеждён: ограничения доступа противоречат сути проекта. Расширенный формат с Q&A доступен для зарегистрированных участников.',
     f1:'лет опыта',f2:'стран мира',f3:'дней в неделю',f4:'всегда бесплатно',
-    ph_h:'Расширенный контент (в разработке)',ph_p:'Подробная биография, история проекта, интервью и видеоматериалы появятся здесь.'},
+    ph_h:'Расширенный контент (в разработке)',ph_p:'Расширенный формат с вопросами и ответами доступен для зарегистрированных участников.'},
   en:{nav_about:'About',nav_wiss:'Science',nav_samarth:'Samarth',nav_stimmen:'Voices',nav_faq:'FAQ',nav_cta:'Download App',
     back:'← Back to Home',lbl:'About Samarth',title:'Samarth Sammasati',
-    sub:'Teacher, researcher and initiator of Unity Practice. No stage persona — no guru role. A person who makes a daily synchronized practice accessible to everyone.',
+    sub:'No guru role — just a person who was fortunate enough to meet true teachers and receive deep knowledge from them. Today he passes this knowledge on, making the daily synchronized practice accessible to everyone.',
     quote:'"Collective karma is not a fate we are helplessly subject to. The moment you stop reacting automatically, you step out of the stream — and change the whole."',
     bio1_h:'Background',
     bio1_p1:'Samarth Sammasati has been working with the principles of collective consciousness change for over 15 years. His work connects contemplative traditions with modern insights from consciousness research — without dogmatic framing.',
@@ -162,10 +161,10 @@ var T={
     bio2_p1:'The practice itself has no price. Whoever participates contributes — simply through their presence. That is the principle of Unity Practice: resonance needs no payment, it needs participation.',
     bio2_p2:'Samarth offers the daily practice free of charge because he is convinced that access restrictions would contradict the core of the project. The extended format with Q&A is available for registered participants.',
     f1:'years of experience',f2:'countries worldwide',f3:'days a week',f4:'always free',
-    ph_h:'Extended Content (coming soon)',ph_p:'Detailed biography, project background, interviews and video material will follow here.'},
+    ph_h:'Extended Content (coming soon)',ph_p:'An extended format with questions and answers is available for registered participants.'},
   es:{nav_about:'Sobre la práctica',nav_wiss:'Ciencia',nav_samarth:'Samarth',nav_stimmen:'Voces',nav_faq:'FAQ',nav_cta:'Descargar app',
     back:'← Volver al inicio',lbl:'Sobre Samarth',title:'Samarth Sammasati',
-    sub:'Maestro, investigador e iniciador de Unity Practice. Sin personaje escénico — sin rol de gurú. Una persona que hace accesible una práctica diaria sincronizada para todos.',
+    sub:'Sin el papel de gurú — simplemente una persona que tuvo la suerte de encontrar a verdaderos maestros y recibir de ellos un conocimiento profundo. Hoy transmite ese conocimiento, haciendo que la práctica diaria sincronizada sea accesible para todos.',
     quote:'"El karma colectivo no es un destino al que estamos sometidos sin remedio. En el momento en que dejas de reaccionar automáticamente, sales del flujo — y cambias el todo."',
     bio1_h:'Trasfondo',
     bio1_p1:'Samarth Sammasati lleva más de 15 años trabajando con los principios del cambio colectivo de consciencia. Su trabajo conecta tradiciones contemplativas con conocimientos modernos de la investigación de la consciencia — sin marco dogmático.',
@@ -174,7 +173,7 @@ var T={
     bio2_p1:'La práctica en sí no tiene precio. Quien participa contribuye — simplemente con su presencia. Ese es el principio de Unity Practice: la resonancia no necesita pago, necesita participación.',
     bio2_p2:'Samarth ofrece la práctica diaria de forma gratuita porque está convencido de que las restricciones de acceso contradirían el núcleo del proyecto. El formato extendido con Q&A está disponible para participantes registrados.',
     f1:'años de experiencia',f2:'países en el mundo',f3:'días a la semana',f4:'siempre gratuito',
-    ph_h:'Contenido ampliado (en desarrollo)',ph_p:'Biografía detallada, trasfondo del proyecto, entrevistas y material de video seguirán aquí.'}
+    ph_h:'Contenido ampliado (en desarrollo)',ph_p:'Un formato ampliado con preguntas y respuestas está disponible para participantes registrados.'}
 };
 function applyLang(lang){
   if(!T[lang])return;
