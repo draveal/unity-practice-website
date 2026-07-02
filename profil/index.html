@@ -350,18 +350,19 @@ document.addEventListener('click',function(e){var b=e.target.closest('.lb');if(b
 (function(){var p=new URLSearchParams(location.search).get('lang');var l=(p&&T[p])?p:(localStorage.getItem('up_lang')||(navigator.language||'de').substring(0,2));applyLang(T[l]?l:'de');})();
 </script>
 <!-- Umami Analytics (cookieless). Host + data-website-id aus dem Umami-Cloud-Dashboard. -->
-<script defer src="https://cloud.umami.is/script.js" data-website-id="<UMAMI_WEBSITE_ID>"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="003a4df4-e683-46c0-a088-c990da19b394"></script>
 <script defer>
 /* Feedback-Endpoint: Supabase Edge Function (kostenloser Tier, ersetzt die alte
    Firebase-Function, die den Blaze-Plan gebraucht hätte).
    ⚠️ <PROJECT_REF> durch den echten Supabase-Projekt-Ref ersetzen
    (Supabase Dashboard → Project Settings → Reference ID), z. B.
    https://abcd1234.supabase.co/functions/v1/feedback */
-var FEEDBACK_URL='https://<PROJECT_REF>.supabase.co/functions/v1/feedback';
+var FEEDBACK_URL='https://ppfmfffpdsbixkjiuoil.supabase.co/functions/v1/feedback';
 /* URL der Admin-Konsole (admin_v2), abgesichert über Cloudflare Access (ADR-016).
-   Platzhalter <ADMIN_HOST> nach Einrichtung des Access-geschützten Subdomains setzen,
-   z.B. https://admin.unity-practice.pages.dev/ */
-var ADMIN_CONSOLE_URL='https://<ADMIN_HOST>/';
+   Leer lassen, solange der Access-geschützte Subdomain noch nicht öffentlich ist —
+   der Link wird nur gerendert, wenn hier eine echte HTTPS-URL steht, z.B.
+   https://admin.unity-practice.pages.dev/ */
+var ADMIN_CONSOLE_URL='';
 window.addEventListener('load',function(){
   var firebaseConfig={apiKey:'AIzaSyBDzW-qdbkqkBlaIJuQ5wIC6HMt66utg7w',authDomain:'unity-practice-one.firebaseapp.com',projectId:'unity-practice-one',storageBucket:'unity-practice-one.firebasestorage.app',messagingSenderId:'71640644837',appId:'1:71640644837:web:f746c7024dde4f7784e80c',measurementId:'G-FVWGSQH3XZ'};
   var loadingEl=document.getElementById('dash-loading');
@@ -556,6 +557,8 @@ window.addEventListener('load',function(){
     // Admin-Konsolen-Link nur für Nutzer mit admins/{uid} (operator/superadmin).
     // Sichtbarkeit = reines UX; echter Schutz: Cloudflare Access + Firestore Rules (ADR-016).
     (function(){var al=document.getElementById('admin-console-link');if(!al)return;
+      var hasAdminUrl=/^https:\/\//.test(ADMIN_CONSOLE_URL);
+      if(!hasAdminUrl){al.style.display='none';return;}
       db.collection('admins').doc(user.uid).get().then(function(s){
         if(s.exists){al.href=ADMIN_CONSOLE_URL;al.style.display='';}else{al.style.display='none';}
       }).catch(function(){al.style.display='none';});})();
