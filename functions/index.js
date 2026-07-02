@@ -12,7 +12,7 @@
 
    Schema:
      config/app.current_session_id   → aktuelle/nächste Session-ID (optional)
-     sessions/{sid}.start_time_utc    → Firestore-Timestamp
+     sessions/{sid}.start_time_utc    → kanonischer UTC-ISO-String (kein Timestamp)
      email_subscribers/{sha256(email)} → Web-Abonnenten (kein App-Konto)
 
    Idempotenz: Pro Session wird die Reminder-Mail genau einmal verschickt —
@@ -100,10 +100,12 @@ async function upcomingSessions(now) {
 
   // 2) Alle Sessions, die in den nächsten 40 Min starten
   try {
-    const horizon = new Date(now.getTime() + 40 * 60000);
+    // start_time_utc is stored as a canonical UTC ISO string, e.g. 2026-07-02T02:00:00.000Z.
+    const nowIso = now.toISOString();
+    const horizonIso = new Date(now.getTime() + 40 * 60000).toISOString();
     const q = await db.collection('sessions')
-      .where('start_time_utc', '>', admin.firestore.Timestamp.fromDate(now))
-      .where('start_time_utc', '<=', admin.firestore.Timestamp.fromDate(horizon))
+      .where('start_time_utc', '>', nowIso)
+      .where('start_time_utc', '<=', horizonIso)
       .get();
     q.forEach((doc) => { if (!found.has(doc.id)) found.set(doc.id, doc.data()); });
   } catch (e) { logger.error('sessions-Query fehlgeschlagen', e); }
