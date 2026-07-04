@@ -106,6 +106,11 @@ im Obsidian-Vault festgehalten (nicht nur im Chat):
 - Entscheidungen: `C:\Users\alexd\Documents\Knowledge\Apps\Unity Practice\02-Entscheidungen.md`
 - Offene Punkte/Baustellen: `C:\Users\alexd\Documents\Knowledge\Apps\Unity Practice\06-Offene-Punkte.md`
 Format: ein Abschnitt pro Eintrag (Datum + Kurztitel), auf Russisch, anhängen statt überschreiben.
+**Immer automatisch pflegen** — nicht erst auf Nachfrage: Jeder neue offene Punkt
+(uncommittete Änderungen am Sitzungsende, gefundene Bugs/Platzhalter, aufgeschobene
+Aufgaben, Deploy-Status-Unklarheiten) wird sofort in `06-Offene-Punkte.md` ergänzt,
+und erledigte Punkte werden mit ✅ + Datum markiert statt gelöscht — damit nichts
+zwischen Sessions verloren geht.
 
 **Verifikation:** Änderungen im Preview-Browser testen (Sprachumschaltung, Konsole
 auf Fehler prüfen), bevor sie als erledigt gemeldet werden.

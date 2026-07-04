@@ -62,6 +62,10 @@ main{max-width:860px;margin:0 auto;padding:110px 40px 60px}
 .stat-lbl{font-size:12px;color:var(--muted);margin-top:4px}
 .stat-sub{font-size:11px;color:var(--soft);margin-top:2px}
 /* C calendar */
+.cal-title-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cal-nav{background:none;border:.5px solid var(--border);border-radius:8px;color:var(--muted);width:36px;height:36px;line-height:1;font-size:20px;font-family:var(--ff-sans);text-transform:none;letter-spacing:normal;cursor:pointer;flex:none;transition:border-color .2s,color .2s}
+.cal-nav:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.cal-nav:disabled{opacity:.3;cursor:default}
 .cal-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-size:11px;color:var(--muted)}
 .cal-key{display:inline-flex;align-items:center;gap:6px}
 .cal-dot{width:11px;height:11px;border-radius:3px;display:inline-block}
@@ -191,13 +195,17 @@ select.set-select{background:var(--bg2);color:var(--text);border:.5px solid var(
         <div class="stat-box"><div class="stat-num" id="ov-total">0</div><div class="stat-lbl" data-i18n="ov_total">Gesamte Sessions</div><div class="stat-sub" id="ov-total-since"></div></div>
         <div class="stat-box"><div class="stat-num" id="ov-streak">0</div><div class="stat-lbl" data-i18n="ov_streak">Aktuelle Serie</div><div class="stat-sub" id="ov-streak-unit" data-i18n="ov_streak_unit">Tage in Folge</div></div>
         <div class="stat-box"><div class="stat-num" id="ov-longest">0</div><div class="stat-lbl" data-i18n="ov_longest">Längste Serie</div><div class="stat-sub" data-i18n="ov_longest_unit">Persönlicher Rekord</div></div>
-        <div class="stat-box"><div class="stat-num" id="ov-month">0</div><div class="stat-lbl" data-i18n="ov_month">Dieser Monat</div><div class="stat-sub" id="ov-month-sub"></div></div>
+        <div class="stat-box"><div class="stat-num" id="ov-attended">0</div><div class="stat-lbl" data-i18n="ov_attended">Insgesamt besucht</div></div>
       </div>
     </div>
 
     <!-- C: Kalender -->
     <div class="panel">
-      <div class="panel-title"><span data-i18n="cal_lbl">Anwesenheitskalender</span> · <span id="cal-month"></span></div>
+      <div class="panel-title cal-title-row">
+        <button class="cal-nav" id="cal-prev" type="button">‹</button>
+        <span><span data-i18n="cal_lbl">Anwesenheitskalender</span> · <span id="cal-month"></span></span>
+        <button class="cal-nav" id="cal-next" type="button">›</button>
+      </div>
       <div class="cal-head">
         <span class="cal-key"><span class="cal-dot here"></span> <span data-i18n="cal_here">Dabei gewesen</span></span>
         <span class="cal-key"><span class="cal-dot not"></span> <span data-i18n="cal_not">Nicht dabei</span></span>
@@ -283,8 +291,8 @@ var T={
   login_prompt:'Melde dich mit Google an, um dein Dashboard zu sehen.',login_btn:'Mit Google anmelden',
   acct_lbl:'Konto',acct_google:'mit Google verknüpft',acct_anon:'anonym',logout:'Abmelden',help_btn:'Hilfe & Feedback',admin_console:'Admin console',
   next_lbl:'Nächste Session',next_today:'Heute',next_starts:'beginnt in',next_text:'Abendpraxis mit Samarth · ca. {min} Min',next_join:'Teilnehmen',next_none:'Keine geplante Session',
-  ov_lbl:'Deine Übersicht',ov_total:'Gesamte Sessions',ov_total_since:'seit {date}',ov_streak:'Aktuelle Serie',ov_streak_unit:'Tage in Folge',ov_longest:'Längste Serie',ov_longest_unit:'Persönlicher Rekord',ov_month:'Dieser Monat',ov_month_sub:'{a} von {b} Sessions',
-  cal_lbl:'Anwesenheitskalender',cal_here:'Dabei gewesen',cal_not:'Nicht dabei',
+  ov_lbl:'Deine Übersicht',ov_total:'Gesamte Sessions',ov_total_since:'seit {date}',ov_streak:'Aktuelle Serie',ov_streak_unit:'Tage in Folge',ov_longest:'Längste Serie',ov_longest_unit:'Persönlicher Rekord',ov_attended:'Insgesamt besucht',
+  cal_lbl:'Anwesenheitskalender',cal_here:'Dabei gewesen',cal_not:'Nicht dabei',cal_prev:'Vorheriger Monat',cal_next:'Nächster Monat',
   mil_lbl:'Meilensteine deiner Praxis',mil_done:'Erreicht',mil_future:'Zukünftig',mil_active:'In Arbeit',mil_remaining:'Noch {n} Sessions bis zum nächsten Meilenstein',
   mil7_t:'7 Tage – Erste Woche',mil7_d:'Du bist zur Praxis zurückgekehrt. Das ist der wichtigste Schritt.',
   mil30_t:'30 Tage – Erster Monat',mil30_d:'Ein Monat gemeinsamer Praxis. Du bist Teil des Feldes.',
@@ -302,8 +310,8 @@ var T={
   login_prompt:'Войди через Google, чтобы увидеть свой кабинет.',login_btn:'Войти через Google',
   acct_lbl:'Аккаунт',acct_google:'связан с Google',acct_anon:'анонимно',logout:'Выйти',help_btn:'Помощь и отзыв',admin_console:'Админ-консоль',
   next_lbl:'Следующая сессия',next_today:'Сегодня',next_starts:'начнётся через',next_text:'Вечерняя практика с Самартом · ок. {min} мин',next_join:'Присоединиться',next_none:'Нет запланированной сессии',
-  ov_lbl:'Твой обзор',ov_total:'Всего сессий',ov_total_since:'с {date}',ov_streak:'Текущая серия',ov_streak_unit:'дней подряд',ov_longest:'Самая длинная серия',ov_longest_unit:'личный рекорд',ov_month:'Этот месяц',ov_month_sub:'{a} из {b} сессий',
-  cal_lbl:'Календарь участия',cal_here:'Был(а)',cal_not:'Не был(а)',
+  ov_lbl:'Твой обзор',ov_total:'Всего сессий',ov_total_since:'с {date}',ov_streak:'Текущая серия',ov_streak_unit:'дней подряд',ov_longest:'Самая длинная серия',ov_longest_unit:'личный рекорд',ov_attended:'Всего сессий посещено',
+  cal_lbl:'Календарь участия',cal_here:'Был(а)',cal_not:'Не был(а)',cal_prev:'Предыдущий месяц',cal_next:'Следующий месяц',
   mil_lbl:'Вехи твоей практики',mil_done:'Достигнуто',mil_future:'Впереди',mil_active:'В процессе',mil_remaining:'Ещё {n} сессий до следующей вехи',
   mil7_t:'7 дней – Первая неделя',mil7_d:'Ты вернулся к практике. Это самый важный шаг.',
   mil30_t:'30 дней – Первый месяц',mil30_d:'Месяц совместной практики. Ты часть поля.',
@@ -321,8 +329,8 @@ var T={
   login_prompt:'Sign in with Google to see your dashboard.',login_btn:'Sign in with Google',
   acct_lbl:'Account',acct_google:'linked with Google',acct_anon:'anonymous',logout:'Sign out',help_btn:'Help & Feedback',admin_console:'Admin console',
   next_lbl:'Next session',next_today:'Today',next_starts:'starts in',next_text:'Evening practice with Samarth · ~{min} min',next_join:'Join',next_none:'No scheduled session',
-  ov_lbl:'Your overview',ov_total:'Total sessions',ov_total_since:'since {date}',ov_streak:'Current streak',ov_streak_unit:'days in a row',ov_longest:'Longest streak',ov_longest_unit:'personal record',ov_month:'This month',ov_month_sub:'{a} of {b} sessions',
-  cal_lbl:'Attendance calendar',cal_here:'Attended',cal_not:'Not attended',
+  ov_lbl:'Your overview',ov_total:'Total sessions',ov_total_since:'since {date}',ov_streak:'Current streak',ov_streak_unit:'days in a row',ov_longest:'Longest streak',ov_longest_unit:'personal record',ov_attended:'Total attended',
+  cal_lbl:'Attendance calendar',cal_here:'Attended',cal_not:'Not attended',cal_prev:'Previous month',cal_next:'Next month',
   mil_lbl:'Milestones of your practice',mil_done:'Achieved',mil_future:'Upcoming',mil_active:'In progress',mil_remaining:'{n} more sessions to the next milestone',
   mil7_t:'7 days – First week',mil7_d:'You returned to the practice. That is the most important step.',
   mil30_t:'30 days – First month',mil30_d:'A month of shared practice. You are part of the field.',
@@ -371,6 +379,7 @@ window.addEventListener('load',function(){
   var auth=firebase.auth(),db=firebase.firestore(); window._fb={auth:auth,db:db};
   var elOut=document.getElementById('dash-loggedout'),elIn=document.getElementById('dash-loggedin');
   var lastData=null,countdownTimer=null,currentUserEmail='';
+  var calOffset=0,calSet=null;
   function t(k){return (T[curLang]&&T[curLang][k])||k;}
   function fmtTpl(k,map){var s=t(k);for(var p in map)s=s.replace('{'+p+'}',map[p]);return s;}
   function escHtml(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
@@ -464,22 +473,49 @@ window.addEventListener('load',function(){
     document.getElementById('ov-streak').textContent=d.streak;
     var su=document.getElementById('ov-streak-unit');if(su)su.textContent=streakUnit(d.streak);
     document.getElementById('ov-longest').textContent=d.longest;
-    document.getElementById('ov-month').textContent=d.monthCount;
-    document.getElementById('ov-month-sub').textContent=(d.monthTotal!=null)?fmtTpl('ov_month_sub',{a:d.monthCount,b:d.monthTotal}):'';
+    document.getElementById('ov-attended').textContent=d.total;
   }
   function renderCalendar(set){
-    var now=new Date();var y=now.getFullYear(),m=now.getMonth();
-    document.getElementById('cal-month').textContent=now.toLocaleDateString(curLang,{month:'long',year:'numeric'});
-    var first=new Date(y,m,1);var startDow=(first.getDay()+6)%7; // Mo=0
-    var days=new Date(y,m+1,0).getDate();var cells='';
+    calSet=set;
+    var now=new Date();var y=now.getFullYear(),m=now.getMonth()+calOffset;
+    var first=new Date(y,m,1);
+    document.getElementById('cal-month').textContent=first.toLocaleDateString(curLang,{month:'long',year:'numeric'});
+    var fy=first.getFullYear(),fm=first.getMonth();
+    var startDow=(first.getDay()+6)%7; // Mo=0
+    var days=new Date(fy,fm+1,0).getDate();var cells='';
     for(var i=0;i<startDow;i++)cells+='<div class="cal-cell empty"></div>';
     for(var dnum=1;dnum<=days;dnum++){
-      var dd=new Date(Date.UTC(y,m,dnum));var here=set.has(utcKey(dd));
-      var today=(dnum===now.getDate());
+      var dd=new Date(Date.UTC(fy,fm,dnum));var here=set.has(utcKey(dd));
+      var today=(calOffset===0&&dnum===now.getDate());
       cells+='<div class="cal-cell'+(here?' here':'')+(today?' today':'')+'">'+dnum+'</div>';
     }
     document.getElementById('cal-grid').innerHTML=cells;
+    var prevBtn=document.getElementById('cal-prev'),nextBtn=document.getElementById('cal-next');
+    if(prevBtn)prevBtn.setAttribute('aria-label',t('cal_prev'));
+    if(nextBtn){nextBtn.setAttribute('aria-label',t('cal_next'));nextBtn.disabled=(calOffset>=0);}
   }
+  function calNav(delta){
+    if(calOffset+delta>0)return; // kein Blick in die Zukunft
+    calOffset+=delta;
+    if(calSet)renderCalendar(calSet);
+  }
+  (function(){
+    var prevBtn=document.getElementById('cal-prev'),nextBtn=document.getElementById('cal-next'),grid=document.getElementById('cal-grid');
+    if(prevBtn)prevBtn.addEventListener('click',function(){calNav(-1);});
+    if(nextBtn)nextBtn.addEventListener('click',function(){calNav(1);});
+    if(!grid)return;
+    var startX=0,startY=0,tracking=false;
+    var SWIPE_MIN=40;
+    grid.addEventListener('touchstart',function(e){
+      if(e.touches.length!==1)return;
+      startX=e.touches[0].clientX;startY=e.touches[0].clientY;tracking=true;
+    },{passive:true});
+    grid.addEventListener('touchend',function(e){
+      if(!tracking)return;tracking=false;
+      var dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;
+      if(Math.abs(dx)>SWIPE_MIN&&Math.abs(dx)>Math.abs(dy))calNav(dx<0?1:-1);
+    },{passive:true});
+  })();
   function renderMilestones(total){
     var ms=[{n:7,t:'mil7_t',d:'mil7_d'},{n:30,t:'mil30_t',d:'mil30_d'},{n:100,t:'mil100_t',d:'mil100_d'},{n:365,t:'mil365_t',d:'mil365_d'}];
     var nextIdx=ms.findIndex(function(x){return total<x.n;});
@@ -539,16 +575,6 @@ window.addEventListener('load',function(){
       return sess;
     }catch(e){return null;}
   }
-  async function monthSessionsTotal(){
-    // start_time_utc ist ein ISO-STRING → mit ISO-Strings filtern (nicht Timestamp).
-    // Abgesagte Sessions nicht mitzählen.
-    try{var now=new Date();var s=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),1));var e=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth()+1,1));
-      var q=await db.collection('sessions').where('start_time_utc','>=',s.toISOString()).where('start_time_utc','<',e.toISOString()).get();
-      var n=0;q.forEach(function(d){if(d.data().status!=='cancelled')n++;});
-      return n;
-    }catch(e){return null;}
-  }
-
   async function loadDashboard(user){
     currentUserEmail=user.email||'';
     document.getElementById('acct-email').textContent=currentUserEmail;
@@ -567,23 +593,21 @@ window.addEventListener('load',function(){
       document.getElementById('set-language').textContent=(p.language||document.documentElement.lang||'—').toUpperCase();
       document.getElementById('set-timezone').textContent=p.timezone||Intl.DateTimeFormat().resolvedOptions().timeZone||'—';
     }catch(e){}
-    var set=new Set(),total=0,history=[],earliest=null;
-    var now=new Date(),thisMonth=now.getUTCMonth(),thisYear=now.getUTCFullYear(),monthCount=0;
+    var LAUNCH_DATE=new Date(Date.UTC(2024,8,9)); // Start der Praxis: 09.09.2024
+    var set=new Set(),total=0,history=[];
     try{
       var as=await db.collection('users').doc(user.uid).collection('attendance').get();
       as.forEach(function(doc){var a=doc.data()||{};
         var d=toDate(a.completed_at)||toDate(a.committed_at);
         if(a.completed){total++;}
-        if(d){set.add(utcKey(d));if(!earliest||d<earliest)earliest=d;
-          if(d.getUTCFullYear()===thisYear&&d.getUTCMonth()===thisMonth&&a.completed)monthCount++;
+        if(d){set.add(utcKey(d));
           history.push({date:d,min:a.duration_min||a.duration||null,present:a.participant_count||null,completed:!!a.completed});}
       });
     }catch(e){}
     history.sort(function(x,y){return y.date-x.date;});
     var session=await loadNextSession();
-    var monthTotal=await monthSessionsTotal();
-    lastData={total:total,since:earliest?earliest.toLocaleDateString(curLang,{month:'long',year:'numeric'}):'',
-      streak:streakFrom(set),longest:longestFrom(set),monthCount:monthCount,monthTotal:monthTotal,
+    lastData={total:total,since:LAUNCH_DATE.toLocaleDateString(curLang,{day:'2-digit',month:'long',year:'numeric'}),
+      streak:streakFrom(set),longest:longestFrom(set),
       set:set,history:history,session:session};
     window._dashRerender();
   }
